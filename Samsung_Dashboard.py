@@ -254,16 +254,12 @@ SAMSUNG_THEME_CSS = """
         opacity: 0.85;
     }
     
-    /* Dark Mode Filter: Inverts black logo to clean white in dark themes */
-    @media (prefers-color-scheme: dark) {
-        .samsung-sidebar-logo {
-            filter: invert(1) brightness(1.2) !important;
-        }
-    }
-    
+    /* Dark Mode: When Streamlit app is switched to Dark Theme */
     [data-theme="dark"] .samsung-sidebar-logo,
     .stApp[data-theme="dark"] .samsung-sidebar-logo,
-    section[data-testid="stSidebar"][data-theme="dark"] .samsung-sidebar-logo {
+    [data-testid="stSidebar"][data-theme="dark"] .samsung-sidebar-logo,
+    [data-testid="stSidebarUserContent"][data-theme="dark"] .samsung-sidebar-logo,
+    .dark .samsung-sidebar-logo {
         filter: invert(1) brightness(1.2) !important;
     }
     
