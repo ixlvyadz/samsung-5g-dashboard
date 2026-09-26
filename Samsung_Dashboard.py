@@ -236,13 +236,13 @@ SAMSUNG_THEME_CSS = """
     
     /* SAMSUNG OFFICIAL SIDEBAR LOGO */
     .samsung-sidebar-logo-container {
-        padding: 0.25rem 0 0.65rem 0;
+        padding: 0.85rem 0 1.25rem 0;
         display: flex;
         align-items: center;
     }
     
     .samsung-sidebar-logo {
-        width: 112px;
+        width: 170px;
         height: auto;
         max-width: 100%;
         display: block;
@@ -251,7 +251,7 @@ SAMSUNG_THEME_CSS = """
     }
     
     .samsung-sidebar-logo:hover {
-        opacity: 0.85;
+        opacity: 0.88;
     }
     
     /* Dark Mode: When Streamlit app is switched to Dark Theme */
@@ -1672,10 +1672,7 @@ with st.sidebar:
             <span style="font-family: 'Outfit', -apple-system, sans-serif; font-size: 1.6rem; font-weight: 900; letter-spacing: 0.12em; color: #1428A0; display: inline-block;">SAMSUNG</span>
         </div>
         """, unsafe_allow_html=True)
-    st.markdown("<div style='height: 8px;'></div>", unsafe_allow_html=True)
-    st.markdown("<div style='font-size: 1.15rem; font-weight: 800; color: #000000; letter-spacing: -0.02em;'>Filters</div>", unsafe_allow_html=True)
-    st.caption("Customize dataset cohort across all analytical views.")
-    
+        
     # Reset filters button (clean secondary styling)
     if st.button("Reset All Filters", use_container_width=True, type="secondary"):
         for key in list(st.session_state.keys()):
@@ -1778,14 +1775,34 @@ with st.sidebar:
         
     st.markdown("<div style='height: 1px; background-color: #E2E8F0; margin: 1.4rem 0;'></div>", unsafe_allow_html=True)
     
-    # Compact Metadata Callout in Sidebar
-    provenance_html = f"""<div style='background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 10px; padding: 0.75rem 0.9rem; font-size: 0.8rem; color: #475569; line-height: 1.6;'>
-<div><strong>Clean Records:</strong> {audit_info['cleaned_rows']}</div>
-<div><strong>Actual Historical:</strong> {audit_info['actual_records']}</div>
-<div><strong>2026 Forecast:</strong> {audit_info['forecast_records']}</div>
-<div><strong>Duplicates Removed:</strong> {audit_info['duplicates_removed']}</div>
+    # Centralized Dataset Provenance in Sidebar Footer
+    sidebar_quality_html = f"""<div style='background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 10px; padding: 0.75rem 0.9rem; font-size: 0.8rem; color: #334155; line-height: 1.55;'>
+<div style="font-weight: 700; color: #0F172A; margin-bottom: 0.2rem;">Cleaned from {audit_info['initial_rows']} → {audit_info['cleaned_rows']} records</div>
+<div style="color: #64748B; font-size: 0.75rem;">{audit_info['actual_records']} Actual • {audit_info['forecast_records']} Forecast</div>
 </div>"""
-    st.markdown(provenance_html, unsafe_allow_html=True)
+    st.markdown(sidebar_quality_html, unsafe_allow_html=True)
+    
+    with st.expander("Data quality details", expanded=False):
+        st.markdown(f"""
+        <div style="font-size: 0.78rem; color: #475569; line-height: 1.6;">
+            <div>• <strong>Duplicates Removed:</strong> {audit_info['duplicates_removed']}</div>
+            <div>• <strong>Negative Values Fixed:</strong> {audit_info['negative_ms_fixed']}</div>
+            <div>• <strong>Price Tiers Imputed:</strong> {audit_info['price_tier_imputed']}</div>
+            <div>• <strong>Units Imputed:</strong> {audit_info['units_imputed']}</div>
+            <div>• <strong>Revenue Imputed:</strong> {audit_info['revenue_imputed']}</div>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        csv_cleaned = df_clean.to_csv(index=False).encode('utf-8')
+        st.download_button(
+            label="Download Cleaned CSV",
+            data=csv_cleaned,
+            file_name="Samsung_5G_Cleaned_Dataset.csv",
+            mime="text/csv",
+            type="primary",
+            use_container_width=True
+        )
+        
     st.caption("Engine: Python 3.13 | pandas 3.0 | statsmodels 0.15")
 
 
@@ -3958,78 +3975,5 @@ with tab_underperforming:
         hide_index=True
     )
     st.caption("Note: Realized ASP is volume-weighted (Total Revenue ÷ Total Units Sold).")
-
-
-# ==============================================================================
-# 8. FOOTER: ABOUT THIS DATA (DATA QUALITY, PROVENANCE & CLEANING PIPELINE)
-# ==============================================================================
-st.markdown("---")
-with st.expander("About this data: Data Quality, Provenance & Cleaning Pipeline", expanded=False):
-    st.markdown("""<div class="section-header-box" style="margin-bottom: 1rem;">
-<h3 style="margin: 0; font-size: 1.25rem; color: #0F172A; font-weight: 800;">Data Quality, Provenance & Cleaning Pipeline</h3>
-<p style="margin: 0.3rem 0 0 0; font-size: 0.86rem; color: #64748B;">Methodological disclosure of the Data Preparation stage executed in Python (pandas & NumPy). Documents all cleaning transformations, deduplications, imputations, and mathematical definitions.</p>
-</div>""", unsafe_allow_html=True)
-    
-    dq1, dq2, dq3, dq4 = st.columns(4)
-    with dq1:
-        st.metric("Raw Initial Records", f"{audit_info['initial_rows']:,}")
-        st.caption("Uncleaned raw CSV")
-    with dq2:
-        st.metric("Duplicates Removed", f"{audit_info['duplicates_removed']}")
-        st.caption("Exact row duplicates")
-    with dq3:
-        st.metric("Negative Values Fixed", f"{audit_info['negative_ms_fixed']}")
-        st.caption("Market Share corrected")
-    with dq4:
-        st.metric("Clean Records Deployed", f"{audit_info['cleaned_rows']:,}")
-        st.caption(f"{audit_info['actual_records']} Actual / {audit_info['forecast_records']} Forecast")
-        
-    st.markdown("#### Data Preparation Pipeline Architecture")
-    st.markdown("""
-    ```text
-    [Raw Dataset: 816 Rows]
-          │
-          ├── Step 1: Deduplication ───────────────► 6 duplicate records dropped (810 remaining)
-          │
-          ├── Step 2: Text Standardization ────────► Standardized Region, Quarter (Q1-Q4), 5G Capability (Yes/No)
-          │
-          ├── Step 3: Currency Parsing ────────────► Stripped '$' and ',' from Revenue ($) -> converted to float64
-          │
-          ├── Step 4: Sign Correction ─────────────► Corrected 11 negative Market Share (%) entries via abs()
-          │
-          ├── Step 5: Price Tier Imputation ───────► Mapped 15 missing tiers deterministically from Product Model
-          │
-          ├── Step 6: Mutual Units/Revenue Fill ───► Imputed missing Units (24) and Revenue (32) via Model Median ASP
-          │
-          ├── Step 7: Macro Indicator Imputation ──► Hierarchical median fill (Region+Year+Quarter -> Region+Year)
-          │
-          └── Step 8: Derived Metrics ─────────────► Computed derived ASP (Revenue / Units) and timeline indices
-    ```
-    """)
-    
-    st.markdown("#### Cleaned Dataset Export")
-    csv_cleaned = df_clean.to_csv(index=False).encode('utf-8')
-    st.download_button(
-        label="Download Cleaned Commercial Dataset (CSV)",
-        data=csv_cleaned,
-        file_name="Samsung_5G_Cleaned_Dataset.csv",
-        mime="text/csv",
-        type="primary"
-    )
-    
-    st.markdown("#### Strategic Business Inquiries Supported by this Dashboard")
-    st.markdown("""
-    1. **5G vs. Non-5G Performance:** Fully visualized in Tabs 1 & 2, highlighting the 2021 adoption tipping point and revenue transition.
-    2. **5G Revenue Generation:** Realized $4.8+ billion gross revenue from 5G devices across 2020–2026.
-    3. **Sales Proportion:** 5G unit share progressed from 0% in 2019 to 100% by 2023.
-    4. **Top Models:** Galaxy A15 5G, A32 5G, and A73 5G lead unit volume; Galaxy S23, S24, and S25 5G lead revenue generation.
-    5. **Underperforming Models:** Addressed in Tab 7 with priority classification.
-    6. **Regional Drivers:** Asia-Pacific and North America lead in volume and network speeds; Latin America and MEA lead in Samsung market share.
-    7. **Regional Laggards:** Latin America and MEA exhibit lower carrier coverage and download speeds.
-    8. **Longitudinal Change:** Mapped from 2019 to 2026 with quarterly and yearly toggles in Tab 4.
-    9. **Infrastructure Relations:** Quantified with Pearson correlation coefficients and OLS regressions in Tab 6.
-    10. **Momentum:** Sustained 100% 5G baseline with growth opportunities shifting to emerging market upgrades.
-    11. **Future Forecasting:** Econometric forward projections in Tab 5 with 95% confidence intervals.
-    """)
 
 # End of Streamlit Application
