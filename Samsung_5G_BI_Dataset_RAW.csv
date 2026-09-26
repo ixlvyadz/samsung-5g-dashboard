@@ -1,0 +1,817 @@
+Year,Quarter,Product Model,Price Tier,5G Capability,Units Sold,Revenue ($),Market Share (%),Regional 5G Coverage (%),5G Subscribers (millions),Avg 5G Speed (Mbps),Preference for 5G (%),Region,Data Type
+2022,Q3,Galaxy Z Flip3 5G,Premium Foldable,Yes,2317,3826710.15,38.4,42.63,16.5,124.57,51.84,Latin America,Actual
+2022,Q4,Galaxy A32 5G,Budget,Yes,2485,539605.29,36.35,58.9,30.24,189.63,69.19,asia-pacific,Actual
+2019,Q3,Galaxy S10,Mid,No,34652,14617183.46,34.54,22.65,6.83,81.69,48.16,Asia-Pacific,Actual
+2024,Q1,Galaxy A14 5G,Budget,Yes,17065,3524744.26,28.62,73.02,36.8,236.37,76.93,North America,Actual
+2020,Q2,Galaxy S10,Mid,No,4949,2118625.65,28.59,24.46,9.25,93.14,50.36,Europe,Actual
+2024,q1,Galaxy A73 5G,Mid,Yes,1237,521428.02,29.29,73.57,34.85,232.22,77.86,north america,Actual
+2026,q2,Galaxy S26 5G,Flagship,Yes,,24430585.72,31.39,87.41,43.48,275.95,83.97,Europe,Actual
+2021,q2,Galaxy Z Fold2 5G,Premium Foldable,Yes,8811,13867821.11,35.13,40.78,20.53,135.17,58.42,asia-pacific,Actual
+2026,Q1,Galaxy A16 5G,Budget,Yes,41166,9062610.67,38.78,96.55,51.88,296.46,89.29,Asia-Pacific,Actual
+2021,Q1,Galaxy Z Fold2 5G,Premium Foldable,Yes,10055,16408997.9,27.2,39.36,17.81,134.06,60.85,NORTH AMERICA,Actual
+2024,q3,Galaxy S24 5G,Flagship,yes,27616,24217315.27,30.93,69.34,33.57,213.98,74.64,Europe,Actual
+2021,Q1,Galaxy Note10,Premium,No,899,855555.84,34.8,38.07,17.88,126.34,56.76,Asia-Pacific,Actual
+2026,q4,Galaxy A16 5G,Budget,Yes,1345,,31.64,92,46.19,285.1,87.99,Europe,Forecast
+2021,Q4,Galaxy Z Fold3 5G,Premium Foldable,Yes,3733,6239609.24,39.29,30.44,10.1,94.42,46.65,Middle East & Africa,Actual
+2022,Q1,Galaxy Z Fold2 5G,Premium Foldable,Yes,354,593089.35,30.18,44.52,19.58,145.45,60.11,europe,Actual
+2025,Q2,Galaxy Z Flip5 5G,Premium Foldable,Yes,355,591360.82,32.27,,38.05,243.54,78.4,Europe,Actual
+2022,Q1,Galaxy Z Fold2 5G,Premium Foldable,Yes,300,503602.65,36.93,33.98,14.59,112.51,51.34,Latin America,Actual
+2023,Q3,Galaxy S22 5G,Flagship,Yes,5236,4379113.85,28.3,69.7,32.42,,74.65,North America,Actual
+2021,Q1,Galaxy A52 5G,Mid,yes,15288,"$5,906,652.08",28.37,43.53,17.25,138.92,62.51,North America,Actual
+2021,Q3,Galaxy S20,Flagship,No,1248,1137183.82,-30.27,38.77,17.43,130.59,58.33,Europe,Actual
+2022,Q4,Galaxy A52 5G,Mid,Yes,1478,662992.12,38.04,40.1,18.04,126.28,55.14,LATIN AMERICA,Actual
+2023,Q1,Galaxy A73 5G,Mid,Yes,503980,10624581.06,32.05,55.42,25.27,175.22,66.6,Europe,Actual
+2024,Q4,Galaxy A14 5G,Budget,Yes,1495,323718.4,31.21,72.44,35.83,231.15,77.34,Europe,Actual
+2021,Q3,Galaxy Z Flip3 5G,Premium Foldable,yes,1960,3375388.73,37.28,30.21,12.01,95.96,47.7,Latin America,Actual
+2024,Q2,Galaxy A14 5G,Budget,Yes,17492,3869669.43,36.89,74.96,40.45,234.45,79.68,asia-pacific,Actual
+2024,Q4,Galaxy Z Fold6 5G,Premium Foldable,yes,8724,14535840.49,38.4,82.93,,254.12,82.72,asia-pacific,Actual
+2024,Q4,Galaxy Z Fold6 5G,Premium Foldable,Yes,2608,"$4,613,448.89",38.63,61.49,26.84,175.48,65.59,Latin America,Actual
+2026,Q2,Galaxy S26 5G,Flagship,Yes,33563,28658488.43,30.34,96.03,50.16,298.44,90.91,North America,Actual
+2021,Q1,Galaxy A32 5G,Budget,yes,35478,7738744.09,39.33,23.51,7.71,77.35,42.38,Middle East & Africa,Actual
+2020,Q4,Galaxy S20,Flagship,No,14384,12430860.12,36.65,25.96,8.97,80.16,45.9,LATIN AMERICA,Actual
+2022,Q2,Galaxy A32 5G,Budget,Yes,19014,4251221.6,36.34,52.48,28.65,174.06,66.79,Asia-Pacific,Actual
+2020,Q2,Galaxy Note10,Premium,No,18454,17883426.44,27.33,33.89,12.92,111.56,56.17,North America,Actual
+2023,Q1,Galaxy S23 5G,Flagship,Yes,11444,9347934.55,40.03,40.22,14.74,124.57,52.18,Middle East & Africa,Actual
+2020,Q3,Galaxy Note20,Premium,No,7505,7748599.4,39.17,17.96,7.65,68.59,40.52,Middle East & Africa,Actual
+2022,Q3,Galaxy Z Fold3 5G,Premium Foldable,Yes,4989,8673479.72,,49.46,23.01,160.11,62.24,EUROPE,Actual
+2025,Q1,Galaxy S24 5G,Flagship,yes,11512,9551622.04,39.6,63.3,27.77,186.97,65.45,Latin America,Actual
+2021,Q1,Galaxy Z Fold2 5G,Premium Foldable,Yes,10417,15436480.68,35.45,40.69,19.32,127.02,58.67,Asia-Pacific,Actual
+2020,Q1,Galaxy Note10,Premium,No,12118,11653103.98,36.82,16.81,5.41,62.31,40.61,Latin America,Actual
+2024,q2,Galaxy Z Flip5 5G,Premium Foldable,Yes,3959,6064257.54,39.07,52.03,19.62,,58.03,MIDDLE EAST & AFRICA,Actual
+2023,Q3,Galaxy Z Flip5 5G,Premium Foldable,Yes,6016,11536011.9,36.02,65.62,36.21,206.6,74.08,Asia-Pacific,Actual
+2021,q4,Galaxy A52 5G,,Yes,26214,10409309.53,28.58,47.6,22.22,153.01,66.7,North America,Actual
+2023,Q2,Galaxy Z Flip3 5G,Premium Foldable,Yes,300,485496.71,38.61,48.78,20.83,137.49,57.75,Latin America,Actual
+2020,Q4,Galaxy S20,Flagship,No,15292,12976670.45,39.03,23.11,6.47,71.11,40.22,middle east & africa,Actual
+2025,Q2,Galaxy Z Fold6 5G,Premium Foldable,Yes,9709,15334064.38,29.16,86.93,43.61,269.53,85.72,North America,Actual
+2020,Q4,Galaxy Note10,Premium,No,3838,3776911.54,28.11,40.17,13.98,122.45,58.04,North America,Actual
+2020,Q4,Galaxy Note20,Premium,No,,21156323.43,27.69,41.47,15.22,127.31,61.53,North America,Actual
+2022,Q4,Galaxy A73 5G,Mid,Yes,34128,14986922.73,38.26,37.82,13.68,117.29,48.09,Middle East & Africa,Actual
+2025,Q1,Galaxy S25 5G,Flagship,Yes,19473,16434821.28,28.94,86.42,42.45,259.58,82.95,North America,Actual
+2021,Q1,Galaxy S21,Flagship,No,15377,12270577.5,30.78,32.35,13.59,113.25,53.8,Europe,Actual
+2022,Q2,Galaxy A32 5G,Budget,yes,22557,4855443.35,38.62,35.24,13.61,110.15,47.28,MIDDLE EAST & AFRICA,Actual
+2026,Q2,Galaxy Z Fold6 5G,Premium Foldable,Yes,300,468997.07,40.6,66.82,27.58,194.75,67.04,MIDDLE EAST & AFRICA,Actual
+2025,Q3,Galaxy S25 5G,Flagship,yes,17183,14779761.32,39.26,68.5,29.8,197.34,70.21,latin america,Actual
+2022,Q2,Galaxy Z Fold3 5G,Premium Foldable,Yes,7404,11990881.87,30.1,46.48,21.1,152.43,60.48,Europe,Actual
+2021,Q3,Galaxy Note20,Premium,No,4700,"$4,143,508.64",38.63,30.82,12.51,99.48,,LATIN AMERICA,Actual
+2020,Q4,Galaxy S20,Flagship,No,25021,22532241.26,29.17,38.13,14.87,124.13,59.27,North America,Actual
+2023,Q2,Galaxy A73 5G,Mid,yes,16391,7281405.33,27,65.36,30.92,209.6,74.35,North America,Actual
+2023,Q2,Galaxy A14 5G,Budget,yes,53130,11480149.52,39.21,42.31,16.27,130.95,54.34,Middle East & Africa,Actual
+2021,q3,Galaxy S21,Flagship,No,33539,30055993.68,27.9,46.09,20.02,147.3,64.54,north america,Actual
+2019,q4,Galaxy Note10,Premium,No,20543,20344885.35,27.65,28.44,8.5,93.38,53.58,North America,Actual
+2024,Q4,Galaxy S24 5G,Flagship,Yes,28330,23631789.28,31.44,73.18,34.28,232.18,75.72,Europe,Actual
+2020,q2,Galaxy S10,Mid,No,5589,2474496.64,36.87,19.68,7.21,66.57,41.56,LATIN AMERICA,Actual
+2024,q3,Galaxy A14 5G,Budget,yes,3427,722815.33,29.33,80.34,39.53,247.22,,North America,Actual
+2024,q4,Galaxy S23 5G,Flagship,yes,1193,,32.53,70.99,34.7,233.47,76.1,europe,Actual
+2025,Q2,Galaxy S25 5G,,Yes,13879,11461255.78,38.54,67.43,28.51,191.91,67.73,Latin America,Actual
+2024,Q2,Galaxy A15 5G,Budget,Yes,43974,9520773.12,40.01,50.67,20.2,145.52,56.55,Middle East & Africa,Actual
+2020,Q1,Galaxy Note10,Premium,No,17994,17602989.64,34.65,27.42,11.72,94.97,51.09,Asia-Pacific,Actual
+2022,Q3,Galaxy Z Fold3 5G,Premium Foldable,Yes,2661,4270004.35,38.46,36.23,14.8,117.16,48.19,Middle East & Africa,Actual
+2020,Q1,Galaxy S20,Flagship,No,10339,9913070.35,37.62,17.42,5.55,66.1,39.34,Latin America,Actual
+2022,Q2,Galaxy S22 5G,Flagship,Yes,30777,24809885.5,28.42,55.47,24.91,177.21,69.9,NORTH AMERICA,Actual
+2024,q3,Galaxy Z Flip5 5G,Premium Foldable,yes,2605,4284478.89,39.06,51.96,19.69,156.53,58.7,Middle East & Africa,Actual
+2023,Q4,Galaxy S22 5G,Flagship,Yes,948,855315.62,40.12,46.39,17.57,136.98,54.49,Middle East & Africa,Actual
+2024,Q4,Galaxy S23 5G,Flagship,Yes,785,"$681,457.21",39.34,61.15,26.44,176.4,63.61,Latin America,Actual
+2024,Q2,Galaxy A15 5G,Budget,Yes,44683,8972222.1,36.4,75.14,40.42,237.91,79.33,Asia-Pacific,Actual
+2021,Q2,Galaxy Note20,Premium,No,13877,13158614.68,35.7,42.34,20.18,135.72,59.64,Asia-Pacific,Actual
+2021,Q1,Galaxy Z Fold2 5G,Premium Foldable,Yes,10055,16408997.9,27.2,39.36,17.81,134.06,60.85,North America,Actual
+2023,Q2,Galaxy A73 5G,Mid,Yes,18797,6912505.13,29.58,55.73,26.49,183.85,,Europe,Actual
+2023,q2,Galaxy S22 5G,Flagship,Yes,8576,7017487.12,37.21,64.26,33.78,202.95,72.65,Asia-Pacific,Actual
+2023,Q1,Galaxy S22 5G,Flagship,Yes,11531,9429740.6,39.22,44.24,18.83,135.78,55.65,latin america,Actual
+2024,Q2,Galaxy S24 5G,Flagship,Yes,23269,"$18,378,097.04",37.17,74.96,41.18,243.3,78.34,Asia-Pacific,Actual
+2025,Q1,Galaxy A15 5G,Budget,Yes,36194,7854170.68,37.58,63.47,28.32,182.34,65.64,Latin America,Actual
+2022,Q1,Galaxy S21,Flagship,no,9565,7863214.26,39.16,30.76,11.22,,46.58,Middle East & Africa,Actual
+2024,q1,Galaxy S24 5G,Flagship,Yes,12210,10026335.15,39.49,47.89,17.89,140.73,58.17,Middle East & Africa,Actual
+2023,Q1,Galaxy A14 5G,Budget,Yes,14334,"$3,403,965.16",27.83,61.65,29.23,,72.69,North America,Actual
+2022,Q4,Galaxy S22 5G,Flagship,Yes,15799,12718138.56,38.58,43.56,19.17,130.37,53.91,LATIN AMERICA,Actual
+2023,Q1,Galaxy S22 5G,Flagship,Yes,15648,13077919.97,37.3,63.42,33.39,193.36,71.16,Asia-Pacific,Actual
+2023,q1,Galaxy S23 5G,Flagship,Yes,18427,15118975.46,28.67,64.79,29.87,196.18,72.71,North America,Actual
+2023,q4,Galaxy S23 5G,Flagship,Yes,16413,12449649.48,39.22,51.86,21.88,155.66,59.78,LATIN AMERICA,Actual
+2020,Q3,Galaxy Z Fold2 5G,Premium Foldable,yes,2098,3292499.85,37.45,21.51,8.55,74.27,41.89,Latin America,Actual
+2024,Q3,Galaxy A14 5G,Budget,Yes,8152,1846384.33,38.32,,24.95,175.58,63.91,Latin America,Actual
+2022,Q4,Galaxy Z Fold3 5G,Premium Foldable,Yes,1481,2339623.03,39.2,37.35,13.17,117.76,50.33,Middle East & Africa,Actual
+2020,Q4,Galaxy Z Fold2 5G,Premium Foldable,Yes,3179,"$5,551,621.28",37.91,23.86,9.25,80.19,44.47,LATIN AMERICA,Actual
+2022,Q1,Galaxy Z Fold2 5G,Premium Foldable,yes,418,703464.21,29.25,49.9,,166.63,68.5,NORTH AMERICA,Actual
+2019,Q4,Galaxy S10,Mid,No,24568,9683522.63,38.55,11.2,3.51,49.15,37.15,MIDDLE EAST & AFRICA,Actual
+2023,Q2,Galaxy S23 5G,Flagship,Yes,25068,20911135,30.07,65.16,31.63,200.36,72.26,North America,Actual
+2023,Q1,Galaxy Z Flip3 5G,Premium Foldable,Yes,435,729221.5,38.52,,19.82,138.04,54.73,Latin America,Actual
+2020,Q1,Galaxy Note10,Premium,no,25151,24639068.78,26.91,33.31,11.09,98.36,54.59,North America,Actual
+2019,Q1,Galaxy S10,Mid,No,15647,6842017.57,37.64,5.65,0.99,40.56,31.4,Middle East & Africa,Actual
+2021,Q1,Galaxy S21,Flagship,No,14073,11142767.41,35.2,38.25,19.93,130.89,57.65,Asia-Pacific,Actual
+2024,Q1,Galaxy A73 5G,Mid,Yes,1337,544352.19,37.35,72.77,39.99,233.15,76.24,asia-pacific,Actual
+2023,Q2,Galaxy S23 5G,Flagship,Yes,22803,"$18,726,455.39",30.96,56.42,27.57,183.17,67.93,EUROPE,Actual
+2022,Q4,Galaxy Z Flip3 5G,Premium Foldable,yes,1463,2496786.92,39.89,,13.93,,50.73,Middle East & Africa,Actual
+2024,Q3,Galaxy Z Fold6 5G,Premium Foldable,Yes,2641,4316631.15,39.64,53.2,20.8,153.05,58.61,Middle East & Africa,Actual
+2026,Q3,Galaxy S26 5G,Flagship,Yes,10122,8338184.55,39.19,99,54.94,312.69,92.98,Asia-Pacific,Forecast
+2024,q3,Galaxy Z Flip5 5G,Premium Foldable,Yes,6599,10128457.93,37.21,79.39,42.18,243.68,81.5,Asia-Pacific,Actual
+2026,Q1,Galaxy A16 5G,Budget,Yes,44646,10030294.67,40.91,,25.26,187.2,65.59,MIDDLE EAST & AFRICA,Actual
+2022,Q3,Galaxy S22 5G,Flagship,Yes,34371,28428227.33,27.66,58.46,26.75,179.91,70.23,North America,Actual
+2025,Q1,Galaxy S25 5G,Flagship,Yes,10615,9450795.17,40.45,63.84,29.31,187.54,66.35,Latin America,Actual
+2022,Q3,Galaxy S21,Flagship,No,1546,1395461.39,28.51,56.24,26.08,180.05,,North America,Actual
+2026,Q2,Galaxy S25 5G,Flagship,Yes,12463,,29.91,98.01,49.14,300.46,90.68,North America,Actual
+2021,Q3,Galaxy Z Fold2 5G,Premium Foldable,Yes,4123,6291659.68,28.04,45.45,21,148.99,62.7,North America,Actual
+2021,Q2,Galaxy Z Fold2 5G,Premium Foldable,Yes,7002,10525795.57,28.42,45.93,17.94,147.63,63.01,North America,Actual
+2022,Q2,Galaxy S21,Flagship,no,5684,"$5,354,399.62",29.2,54.71,25.13,177.98,67.95,north america,Actual
+2023,Q1,Galaxy S23 5G,Flagship,Yes,9199,"$7,623,123.07",38.64,43.22,18.65,132.99,56.58,Latin America,Actual
+2023,q2,Galaxy S22 5G,Flagship,Yes,9245,7719975.72,30.99,57.25,26.17,178.89,66.85,Europe,Actual
+2024,Q2,Galaxy A15 5G,Budget,Yes,25949,6004581.26,-30.9,66.58,31.75,216.16,73.39,Europe,Actual
+2021,Q1,Galaxy S20,Flagship,No,13979,12233062.46,27.51,42.85,17.15,139.54,,north america,Actual
+2023,Q1,Galaxy S22 5G,Flagship,Yes,21192,18515893.94,28.81,65.06,29.88,199.24,73.25,north america,Actual
+2019,Q4,Galaxy S10,Mid,No,19209,8528782.15,27.34,31.06,8.78,94.9,54.01,North America,Actual
+2025,Q1,Galaxy S25 5G,Flagship,Yes,16250,11999735.72,32.1,75.04,36.26,233.41,75.82,Europe,Actual
+2021,Q2,Galaxy Note20,Premium,No,18368,16542302.88,30.11,36.6,15.52,128.77,52.6,europe,Actual
+2023,Q2,Galaxy S23 5G,Flagship,Yes,14265,13136025.46,37.9,48.1,20.91,143.35,58,Latin America,Actual
+2020,Q3,Galaxy Note10,Premium,No,4690,"$4,113,737.72",36.84,21.63,8.53,77.54,42.92,Latin America,Actual
+2021,q2,Galaxy A32 5G,Budget,Yes,22478,4691921.61,27.47,,19.31,141.63,62.52,NORTH AMERICA,Actual
+2025,Q2,Galaxy Z Fold6 5G,Premium Foldable,Yes,,17030863.34,39.29,87.12,47.02,273.24,84.06,ASIA-PACIFIC,Actual
+2021,Q4,Galaxy S21,Flagship,No,19670,16206710.71,36.68,48.36,23.79,157.97,62.39,Asia-Pacific,Actual
+2021,q1,Galaxy A32 5G,Budget,Yes,15910,3430259.67,28.05,40.54,16.58,136.17,60.76,North America,Actual
+2021,Q3,Galaxy A52 5G,Mid,yes,31888,14062997.95,39.48,27.51,9.28,95.33,43.35,Middle East & Africa,Actual
+2022,Q2,Galaxy A32 5G,Budget,yes,19173,4135437.03,37.44,37.29,15.66,119.64,52.74,Latin America,Actual
+2024,Q3,Galaxy S24 5G,Flagship,Yes,20841,18808522.25,40.66,51.74,20.73,,57.3,Middle East & Africa,Actual
+2023,Q3,Galaxy Z Flip5 5G,Premium Foldable,Yes,1962,3211504.83,37.94,46.98,21.23,150.38,58.55,Latin America,Actual
+2024,Q3,Galaxy Z Fold6 5G,Premium Foldable,Yes,5163,8612361.28,29.42,78.75,,242.79,81.46,North America,Actual
+2023,Q2,Galaxy Z Flip3 5G,Premium Foldable,Yes,300,516969.47,39.68,44.09,16.19,130.32,55.51,MIDDLE EAST & AFRICA,Actual
+2026,Q4,Galaxy A16 5G,Budget,Yes,,444253.58,39.09,99,57.82,320,95.68,Asia-Pacific,Forecast
+2026,q2,Galaxy Z Fold6 5G,Premium Foldable,Yes,350,"$570,346.15",31.65,88.31,43.12,274.48,83.59,Europe,Actual
+2025,q2,Galaxy A15 5G,Budget,Yes,9817,2034862.13,31.9,78.43,,245.03,81.35,Europe,Actual
+2026,Q2,Galaxy S25 5G,Flagship,Yes,10697,8531213.07,32.14,87.33,42.64,271.94,84.76,europe,Actual
+2024,Q4,Galaxy A15 5G,Budget,Yes,54327,"$11,426,483.25",38.3,,27.09,180.83,65.98,Latin America,Actual
+2023,Q1,Galaxy A14 5G,Budget,Yes,18378,3946600.12,31.02,52.23,25.17,172.59,65.89,Europe,Actual
+2025,Q3,Galaxy A16 5G,Budget,yes,43513,9374401.74,38.78,67.62,30.29,192.62,68.03,latin america,Actual
+2024,Q3,Galaxy S24 5G,Flagship,Yes,24518,21037582.94,37.97,79.14,41.8,247.96,79.25,Asia-Pacific,Actual
+2026,Q2,Galaxy A16 5G,Budget,Yes,24089,5728524.73,40.14,66.99,27.72,196.48,66.16,Middle East & Africa,Actual
+2022,Q4,Galaxy A32 5G,Budget,Yes,1558,315059.67,31.6,50.73,23.82,167.44,64.15,EUROPE,Actual
+2026,Q4,Galaxy S25 5G,Flagship,Yes,814,694705.05,40.84,71.58,28.93,202.41,69.4,Middle East & Africa,Forecast
+2026,Q1,Galaxy S26 5G,Flagship,yes,10242,7757663.32,41.53,,25.29,193.05,65.62,MIDDLE EAST & AFRICA,Actual
+2019,Q3,Galaxy Note10,Premium,no,7924,7382771.82,,9.02,2.44,46.6,,Middle East & Africa,Actual
+2022,Q1,Galaxy Z Flip3 5G,Premium Foldable,Yes,4680,7585304.88,39.51,32.06,12.2,101.06,46.84,middle east & africa,Actual
+2020,Q3,Galaxy S10,Mid,No,1243,479963.28,27.46,35.62,12.48,124.94,58.48,North America,Actual
+2022,Q3,Galaxy S21,Flagship,No,,727265.63,38.75,34.7,13.84,117.01,49.39,MIDDLE EAST & AFRICA,Actual
+2021,Q2,Galaxy S21,Flagship,No,20915,17678882.54,35.77,41.19,20.4,133.74,59.94,Asia-Pacific,Actual
+2025,q1,Galaxy S24 5G,Flagship,Yes,15431,13079676.39,37.69,84.6,45.73,267.82,84.47,Asia-Pacific,Actual
+2022,Q1,Galaxy S21,Flagship,no,12763,11010894.53,31.3,44.01,,,59.51,europe,Actual
+2026,Q3,Galaxy A16 5G,Budget,Yes,4651,"$1,078,581.95",32.17,89.75,45.33,282.57,86.69,europe,Forecast
+2020,Q2,Galaxy S20,Flagship,No,22565,19592259.24,29.84,26.3,9.96,93.88,50.33,Europe,Actual
+2024,Q3,Galaxy Z Flip5 5G,Premium Foldable,Yes,2371,3959683.55,38.85,57.28,26.42,169.78,62.12,Latin America,Actual
+2021,Q2,Galaxy S20,Flagship,No,4640,"$3,834,514.65",30.62,33.57,16.54,123.63,54.94,Europe,Actual
+2024,Q2,Galaxy Z Flip5 5G,Premium Foldable,Yes,3041,"$5,263,236.26",39.42,56.76,24.23,165.07,61.33,LATIN AMERICA,Actual
+2022,Q1,Galaxy S21,Flagship,no,10897,10055180.71,35.82,49.77,24.87,160.67,63.27,asia-pacific,Actual
+2021,Q4,Galaxy S21,Flagship,No,15018,13529029.71,38.1,29.32,,97.24,45.18,Middle East & Africa,Actual
+2022,Q1,Galaxy Z Fold2 5G,Premium Foldable,Yes,418,703464.21,29.25,49.9,,166.63,68.5,North America,Actual
+2023,Q1,Galaxy S23 5G,Flagship,Yes,12972,10343994.32,37.07,60.96,31.58,194.88,67.69,ASIA-PACIFIC,Actual
+2023,Q4,Galaxy A14 5G,Budget,Yes,57586,13241566.3,40.43,62.05,18.74,140.19,54.85,MIDDLE EAST & AFRICA,Actual
+2023,q1,Galaxy A73 5G,Mid,yes,29044,11911129.77,40.57,40.27,14.47,124.46,49.86,Middle East & Africa,Actual
+2022,Q3,Galaxy A32 5G,Budget,Yes,8503,2048361.66,38.41,40.96,16.76,125.23,54.31,LATIN AMERICA,Actual
+2022,Q1,Galaxy S22 5G,Flagship,Yes,18192,14543397.33,-28.33,,23.57,160.37,66.31,North America,Actual
+2019,Q2,Galaxy S10,Mid,No,30985,13125206.77,33.43,,6.82,64.52,44.64,Asia-Pacific,Actual
+2021,Q3,Galaxy Z Flip3 5G,Premium Foldable,yes,5371,8929659.59,27.69,46.97,19.75,147.92,62.23,North America,Actual
+2024,Q4,Galaxy Z Flip5 5G,Premium Foldable,Yes,2981,4839452.81,31.53,71.13,34.63,232.51,76.37,Europe,Actual
+2023,Q3,Galaxy A73 5G,Mid,Yes,8975,3830112.28,30.56,59.18,27.88,189.72,68.67,Europe,Actual
+2023,Q4,Galaxy A14 5G,Budget,Yes,50274,11862704.11,38,70.91,37.2,221.35,74.59,Asia-Pacific,Actual
+2021,Q2,Galaxy Note20,Premium,No,,10998966.92,39.11,25.08,9.07,91.71,43.16,Middle East & Africa,Actual
+2023,Q2,Galaxy S23 5G,Flagship,Yes,16854,14842692.03,40.44,42.58,15.99,123.53,54.18,middle east & africa,Actual
+2021,Q4,Galaxy Z Fold2 5G,Premium Foldable,yes,1207,2062548.6,30.86,41.47,18.69,135.93,57.37,europe,Actual
+2021,Q3,Galaxy Z Fold3 5G,Premium Foldable,Yes,6262,10765709.25,35.41,46.15,22.4,146.49,61.23,Asia-Pacific,Actual
+2022,Q2,Galaxy A32 5G,Budget,Yes,9211,,28.42,54.68,24.9,173.11,68.54,north america,Actual
+2025,Q2,Galaxy A15 5G,Budget,yes,17313,4009566.27,40.58,59.51,23.95,171.12,62.51,middle east & africa,Actual
+2022,Q3,Galaxy A73 5G,Mid,Yes,25793,"$10,969,686.77",31.18,47.54,22.56,159.42,63.75,Europe,Actual
+2021,q1,Galaxy S20,Flagship,no,13307,,30.47,33.78,14.9,118.2,54.51,EUROPE,Actual
+2025,q4,Galaxy S25 5G,Flagship,Yes,25695,20323583.69,31.96,82.49,41.38,259.87,83.75,Europe,Actual
+2023,Q4,Galaxy A73 5G,Mid,Yes,4656,1949987,37.76,70.27,37.19,218.15,73.43,Asia-Pacific,Actual
+2021,Q4,Galaxy A52 5G,Mid,Yes,26102,10954918.1,38.63,29.07,11.15,93.07,45.48,middle east & africa,Actual
+2020,Q4,Galaxy Note10,Premium,no,2362,2184407.75,38.32,19.43,6.71,76.37,40.34,Middle East & Africa,Actual
+2019,Q3,Galaxy S10,Mid,No,28115,11713074.5,38.18,9.92,2.59,44.74,32.98,middle east & africa,Actual
+2022,Q1,Galaxy Note20,Premium,no,815,773489.77,35.98,48.2,24.44,162.96,63.6,Asia-Pacific,Actual
+2022,Q1,Galaxy Z Flip3 5G,Premium Foldable,Yes,3298,5744890.22,-38.43,,15.03,112.07,50.34,Latin America,Actual
+2021,Q3,Galaxy S20,Flagship,No,1532,1339297.55,27.25,48.73,20.21,153.35,63.92,north america,Actual
+2024,Q1,Galaxy A73 5G,Mid,Yes,1249,501061.97,39.44,48.52,18.57,,56.47,middle east & africa,Actual
+2025,q4,Galaxy Z Fold6 5G,Premium Foldable,Yes,1154,1881639.57,39.24,68.8,31.86,202.29,69.23,Latin America,Actual
+2022,Q2,Galaxy Z Fold3 5G,Premium Foldable,yes,10431,18217649.44,36.24,53.36,26.3,,66.14,asia-pacific,Actual
+2022,Q1,Galaxy A52 5G,Mid,Yes,20093,8329860.22,36.25,64.81,25.35,161.67,63.76,Asia-Pacific,Actual
+2021,q4,Galaxy A32 5G,Budget,Yes,57978,"$12,594,219.54",,28.52,11.87,95.87,44.25,MIDDLE EAST & AFRICA,Actual
+2026,Q4,Galaxy S25 5G,Flagship,Yes,797,685861.39,40.01,77.95,36.22,226.2,74.53,Latin America,Forecast
+2024,q1,Galaxy A14 5G,Budget,Yes,37610,8597775,40,47.73,20.23,142.84,55.18,Middle East & Africa,Actual
+2021,Q3,Galaxy Z Flip3 5G,Premium Foldable,Yes,2516,4206481.26,39.06,27.23,10.23,89.59,44.85,MIDDLE EAST & AFRICA,Actual
+2019,Q4,Galaxy S10,Mid,No,24568,9683522.63,38.55,11.2,3.51,49.15,37.15,Middle East & Africa,Actual
+2025,q1,Galaxy S24 5G,Flagship,yes,,9195911.42,39.77,56.5,22.44,168.44,60.81,Middle East & Africa,Actual
+2020,Q1,Galaxy S20,Flagship,No,15039,14465656.74,28.56,21.29,9.23,82.07,46.65,EUROPE,Actual
+2023,Q1,Galaxy Z Flip3 5G,Premium Foldable,Yes,623,972068.28,39.14,39.5,14.99,121.54,51.55,Middle East & Africa,Actual
+2025,Q1,Galaxy A15 5G,Budget,yes,37542,"$7,459,434.73",39.96,57,22.93,167.67,59.44,Middle East & Africa,Actual
+2020,q1,Galaxy S20,Flagship,No,12758,10150494.17,34.92,26.91,12.41,99,52.38,Asia-Pacific,Actual
+2021,Q4,Galaxy Z Fold2 5G,Premium Foldable,Yes,780,1275101.55,,29.81,10.15,96.48,44.89,Middle East & Africa,Actual
+2026,q4,Galaxy S25 5G,Flagship,Yes,1482,1265023.4,30.15,99,53.59,320,94.36,North America,Forecast
+2025,Q4,Galaxy S25 5G,Flagship,Yes,14833,12530293.59,39.04,71.37,31.01,203.51,70.05,Latin America,Actual
+2022,Q1,Galaxy Z Flip3 5G,Premium Foldable,Yes,9915,15539973.19,28.58,52.01,23.1,164.37,67.4,North America,Actual
+2023,Q4,Galaxy Z Flip5 5G,Premium Foldable,Yes,8847,14837757.63,36.93,67.49,36.42,225.79,75.58,Asia-Pacific,Actual
+2020,Q1,Galaxy S20,Flagship,No,11202,10384579.57,38.3,15.78,5.66,56.9,36.1,MIDDLE EAST & AFRICA,Actual
+2022,Q4,Galaxy Z Fold3 5G,Premium Foldable,Yes,,3961086.69,30.7,51.68,23.63,166.51,65.47,europe,Actual
+2024,Q2,Galaxy S23 5G,Flagship,yes,7098,5737752.4,39.94,49.39,18.62,150.74,57.03,Middle East & Africa,Actual
+2025,Q1,Galaxy S25 5G,Flagship,Yes,10353,8766666.37,40.24,56.23,22.19,164.52,60.32,MIDDLE EAST & AFRICA,Actual
+2025,Q1,Galaxy A15 5G,Budget,yes,32382,,37.44,84.53,45.92,256.51,82.34,Asia-Pacific,Actual
+2022,Q1,Galaxy Z Fold3 5G,Premium Foldable,Yes,8128,12927231.67,30.15,41.46,19.92,141.99,59.08,europe,Actual
+2022,Q4,Galaxy S22 5G,,Yes,24032,21541483.77,37.26,59.8,31.3,189.37,67.69,asia-pacific,Actual
+2022,q2,Galaxy A52 5G,Mid,Yes,10782,4578986.2,38.78,32.59,14.58,100.09,48.97,MIDDLE EAST & AFRICA,Actual
+2020,Q3,Galaxy S10,Mid,No,1526,616154.04,35.3,33.76,15.01,112.95,55.55,ASIA-PACIFIC,Actual
+2022,Q1,Galaxy A32 5G,Budget,Yes,22256,5014990.35,31.32,44.5,19.84,148.84,59.55,EUROPE,Actual
+2022,Q3,Galaxy Z Fold3 5G,Premium Foldable,yes,7453,11940791.21,35.69,54.6,29.21,176.85,67.33,ASIA-PACIFIC,Actual
+2022,Q1,Galaxy A32 5G,,yes,34297,7705149.95,37.45,34.83,14.46,111,,Latin America,Actual
+2025,Q2,Galaxy Z Fold6 5G,Premium Foldable,Yes,7524,,31.52,77.78,37.37,243.94,77.87,Europe,Actual
+2025,Q1,Galaxy A15 5G,Budget,yes,18466,3700720.42,30.86,73.04,36.66,232.47,78.35,Europe,Actual
+2022,Q1,Galaxy S22 5G,Flagship,Yes,9724,8299286.3,37.28,35.36,15.1,113.8,50.59,latin america,Actual
+2024,Q4,Galaxy A15 5G,Budget,Yes,19485,4317957.86,28.9,82.34,40.39,252.79,81.59,North America,Actual
+2025,Q3,Galaxy S25 5G,Flagship,yes,26989,22371111.96,37.92,89.18,49.59,279.88,85.57,Asia-Pacific,Actual
+2020,Q3,Galaxy S20,Flagship,No,35651,30428024.03,28.47,36.44,13.76,113.54,59.43,North America,Actual
+2024,Q1,Galaxy A73 5G,Mid,Yes,1178,492308.61,39.17,52.77,24.01,159.2,61.47,Latin America,Actual
+2021,Q1,Galaxy Note10,Premium,No,491,428983.66,37.99,26.77,10.22,91.36,48.48,Latin America,Actual
+2023,Q1,Galaxy Z Fold3 5G,Premium Foldable,Yes,1123,1787209.2,30.35,53.25,24.65,177.76,66.98,Europe,Actual
+2023,q3,Galaxy Z Flip5 5G,Premium Foldable,yes,2564,4020096.24,39.4,42.18,17.39,135.56,52.89,Middle East & Africa,Actual
+2020,Q2,Galaxy S20,Flagship,No,30980,27136927.72,27.35,33.41,11.2,110.53,57.62,north america,Actual
+2020,Q4,Galaxy Note20,Premium,no,16658,15371157,35.24,34.52,17.15,118.54,55.72,Asia-Pacific,Actual
+2024,Q1,Galaxy S24 5G,Flagship,Yes,18834,16387214.6,28.81,75.97,35.98,227.41,78.36,North America,Actual
+2020,Q3,Galaxy S20,Flagship,No,25478,21180152.61,34.77,32.67,14.66,114.77,54.12,Asia-Pacific,Actual
+2020,Q3,Galaxy Note20,Premium,No,7182,7039585.68,38.03,21.87,8.34,78.09,42.15,latin america,Actual
+2022,q2,Galaxy A32 5G,Budget,yes,12266,2695434.5,30.98,,20.84,146.13,61.38,europe,Actual
+2024,Q1,Galaxy S24 5G,Flagship,Yes,14498,11043025.08,36.19,72.43,37.76,232.25,75.02,Asia-Pacific,Actual
+2022,Q4,Galaxy Z Fold3 5G,Premium Foldable,Yes,3248,5570988.05,28.2,62.23,27.83,192.44,69.74,north america,Actual
+2022,Q3,Galaxy Z Fold3 5G,Premium Foldable,Yes,6397,9901870.56,28.54,58.4,26.85,182.23,70.07,north america,Actual
+2019,Q3,Galaxy Note10,Premium,No,12173,10842859.93,29.66,16.09,5.19,,44.94,Europe,Actual
+2025,Q2,Galaxy Z Flip5 5G,Premium Foldable,yes,300,475828.28,39.58,58.79,23.17,174.16,59.92,Middle East & Africa,Actual
+2022,Q4,Galaxy A32 5G,Budget,Yes,1169,261902.95,28.94,61.24,27.68,193.26,70.06,north america,Actual
+2021,Q3,Galaxy A32 5G,Budget,Yes,56943,"$12,819,619.15",37.96,26.37,10.18,86.24,44.79,Middle East & Africa,Actual
+2020,Q1,Galaxy S20,Flagship,no,18032,14858557.22,27.03,30.83,10.51,99.82,56.12,NORTH AMERICA,Actual
+2024,q4,Galaxy S24 5G,Flagship,Yes,20689,16900832.22,37.06,82.41,44.14,255.1,81.21,asia-pacific,Actual
+2021,Q4,Galaxy Z Fold2 5G,Premium Foldable,Yes,1913,2829222.37,35.82,46.59,24.35,145.55,,ASIA-PACIFIC,Actual
+2026,Q4,Galaxy A16 5G,Budget,Yes,2191,428967.83,39.74,77.26,36.6,225.01,74.74,Latin America,Forecast
+2021,Q4,Galaxy Z Flip3 5G,Premium Foldable,Yes,9170,15025005.41,28.15,49.94,,157.05,64.78,North America,Actual
+2023,Q4,Galaxy A73 5G,Mid,yes,4145,1790723.71,39.03,53.68,22.62,151.81,60.77,latin america,Actual
+2025,Q2,Galaxy A16 5G,Budget,Yes,31151,7102999.72,39.51,65.97,29.03,185.25,67.95,Latin America,Actual
+2026,Q3,Galaxy A16 5G,Budget,Yes,8545,1922826.39,39.05,99,56.55,313.18,94.36,Asia-Pacific,Forecast
+2021,Q3,Galaxy Z Fold3 5G,Premium Foldable,Yes,2098,3470315.08,,29.18,12.85,102.67,47.64,Latin America,Actual
+2021,Q2,Galaxy S20,Flagship,no,3366,3125270.66,38.96,24.22,9.49,87.12,,middle east & africa,Actual
+2023,Q2,Galaxy A14 5G,Budget,Yes,,11155896.75,39.28,47.9,20,137.21,56.18,Latin America,Actual
+2025,Q2,Galaxy A15 5G,Budget,Yes,6958,1412010.36,30.19,87.86,43.31,270.87,86.27,north america,Actual
+2021,Q2,Galaxy A32 5G,Budget,yes,42916,9350098.02,35.17,41.94,21.19,136.77,60.36,Asia-Pacific,Actual
+2023,Q4,Galaxy S23 5G,Flagship,Yes,29613,25462336.84,28.36,72.71,33.87,227.82,77.27,North America,Actual
+2025,Q2,Galaxy S24 5G,Flagship,yes,225540,10454566.44,29.21,86.34,43.99,271.47,84.82,North America,Actual
+2021,Q4,Galaxy S21,Flagship,No,21811,17454693.25,30.67,38.82,17.58,140.3,55.95,Europe,Actual
+2022,Q2,Galaxy Z Fold3 5G,Premium Foldable,Yes,8870,15458273.68,28.16,55.05,25.14,175.54,66.67,North America,Actual
+2024,Q2,Galaxy Z Flip5 5G,Premium Foldable,Yes,9102,15905799.75,29.07,76.92,36.89,241.52,78.73,North America,Actual
+2023,Q3,Galaxy S22 5G,Flagship,Yes,3144,2661630.26,36.99,70.43,35.54,209.99,74.15,Asia-Pacific,Actual
+2021,q3,Galaxy A52 5G,Mid,yes,35877,14415749.14,36.67,30.34,11.88,100.48,48.09,Latin America,Actual
+2021,Q4,Galaxy Note20,Premium,No,2369,2141584.62,38.05,27.91,10.77,92.55,46.14,Middle East & Africa,Actual
+2024,Q1,Galaxy A15 5G,Budget,Yes,29294,6485367.76,38.34,52.22,22.58,163.62,60.79,LATIN AMERICA,Actual
+2020,Q2,Galaxy Note10,Premium,no,,9457661.77,37.7,21.24,6.54,76.46,42.46,Latin America,Actual
+2021,Q3,Galaxy Z Flip3 5G,Premium Foldable,Yes,7258,12210672.79,36.08,42.83,22.64,146.52,61.48,asia-pacific,Actual
+2026,Q1,Galaxy S25 5G,Flagship,Yes,20119,15306079.68,32.14,86.76,42.32,265.21,83.78,EUROPE,Actual
+2025,q1,Galaxy Z Flip5 5G,Premium Foldable,Yes,1421,"$2,457,228.93",38.95,84.87,45.64,259.17,83.05,Asia-Pacific,Actual
+2021,Q1,Galaxy Note20,Premium,No,25746,22331143.13,-28.5,42.25,15.09,136.32,60.83,NORTH AMERICA,Actual
+2022,Q1,Galaxy A32 5G,Budget,Yes,41758,9323988.56,35.74,47.92,25.29,161.77,65.08,Asia-Pacific,Actual
+2025,Q1,Galaxy A15 5G,Budget,yes,37542,7459434.73,39.96,57,22.93,167.67,59.44,Middle East & Africa,Actual
+2024,Q1,Galaxy Z Flip5 5G,Premium Foldable,Yes,7424,11399145.46,31,63.61,30.4,205.64,71.84,europe,Actual
+2025,Q2,Galaxy Z Flip5 5G,Premium Foldable,Yes,300,573013.4,39.3,67.24,29.82,186.85,68.07,Latin America,Actual
+2025,Q4,Galaxy S25 5G,Flagship,yes,23775,20000975.91,38.65,93.3,50.06,292.45,89.43,Asia-Pacific,Actual
+2021,Q3,Galaxy S21,Flagship,No,18741,,37.16,30.63,12.53,99.44,47.39,LATIN AMERICA,Actual
+2023,Q1,Galaxy S23 5G,Flagship,Yes,15640,12665362.59,29.91,51.5,25.34,175.47,65.61,Europe,Actual
+2025,Q3,Galaxy A15 5G,Budget,Yes,3870,810584.8,32.11,81.61,38.1,253.23,80.19,Europe,Actual
+2021,Q3,Galaxy S21,Flagship,No,24609,21955209.73,35.54,45.1,22.19,145.8,60.71,Asia-Pacific,Actual
+2019,Q4,Galaxy Note10,Premium,No,11671,,36.9,15.8,4.87,57.94,39.51,Latin America,Actual
+2020,Q3,Galaxy Note20,Premium,No,12888,13100257.41,29,27.26,11.06,101.92,52.8,EUROPE,Actual
+2024,Q2,Galaxy S23 5G,Flagship,Yes,5874,5099827.12,38.51,58.21,24.29,165.59,62.98,Latin America,Actual
+2025,q4,Galaxy A15 5G,Budget,Yes,53420,534114.67,39.29,69.74,30.58,204.3,69.88,Latin America,Actual
+2022,Q4,Galaxy S22 5G,,Yes,26400,,31.44,50.02,23.16,169,66.03,europe,Actual
+2023,Q4,Galaxy A14 5G,Budget,Yes,26343,5786105.95,30.88,60.76,31.11,198.54,68.93,Europe,Actual
+2026,Q2,Galaxy S26 5G,Flagship,Yes,26286,22610801.08,38.22,99,53.45,306.95,91.5,Asia-Pacific,Actual
+2021,Q1,Galaxy Note20,Premium,no,17032,,34.9,38.67,18.27,128.78,58.29,ASIA-PACIFIC,Actual
+2021,Q1,Galaxy Note10,Premium,no,1077,1010409.94,29.45,32.47,15.02,110.45,51.7,Europe,Actual
+2024,q4,Galaxy A14 5G,Budget,Yes,2721,599800.69,39.57,54.13,,159.93,59.91,Middle East & Africa,Actual
+2025,Q2,Galaxy A15 5G,Budget,Yes,16052,3443582.63,37.54,86.45,48.4,273.94,85.1,Asia-Pacific,Actual
+2023,Q1,Galaxy Z Flip3 5G,Premium Foldable,Yes,1134,1911959.08,29.85,54.04,23.84,173.74,66.89,Europe,Actual
+2023,Q3,Galaxy S23 5G,Flagship,Yes,22311,19312933.57,39.76,41.57,17.58,134.89,54.2,Middle East & Africa,Actual
+2023,q2,Galaxy Z Flip3 5G,Premium Foldable,yes,335,567190.98,31.55,58.29,26.32,182.76,68.48,Europe,Actual
+2022,Q2,Galaxy S22 5G,Flagship,Yes,17201,14994260.73,37.82,36.21,15.26,120.71,51.92,LATIN AMERICA,Actual
+2023,Q4,Galaxy S22 5G,Flagship,Yes,1363,"$1,128,821.82",30.58,60.74,29.73,194.19,71.33,Europe,Actual
+2024,Q1,Galaxy A15 5G,Budget,Yes,,"$7,311,398.00",39.21,47.05,18.42,140.9,55.58,Middle East & Africa,Actual
+2022,Q3,Galaxy Z Flip3 5G,Premium Foldable,Yes,2558,4018858.45,38.88,35.99,14.03,111.43,50.6,middle east & africa,Actual
+2024,Q2,Galaxy S23 5G,Flagship,Yes,9147,7174051.41,37.65,75.9,41.2,235.22,78.01,ASIA-PACIFIC,Actual
+2021,q2,Galaxy S20,Flagship,No,5560,4560561.45,28.01,43.76,17.78,145.22,62.79,North America,Actual
+2025,Q2,Galaxy A15 5G,Budget,Yes,19517,4571756.57,39.51,66,29.19,191.16,67.61,Latin America,Actual
+2022,q3,Galaxy A52 5G,Mid,Yes,4789,"$2,063,291.53",37.29,39.45,17.21,126.86,,Latin America,Actual
+2026,Q1,Galaxy Z Fold6 5G,Premium Foldable,Yes,503,802949.24,,70.37,32.12,216.27,70.42,Latin America,Actual
+2021,Q2,Galaxy S20,Flagship,no,4320,3783609.8,35.26,41.36,20.24,141.23,59.65,asia-pacific,Actual
+2022,Q3,Galaxy A73 5G,Mid,Yes,22687,9341556.17,39.83,36.45,13.46,110.19,50.27,middle east & africa,Actual
+2025,Q2,Galaxy S25 5G,Flagship,Yes,24901,20664030.79,32.08,78.19,38.29,239.94,80.87,Europe,Actual
+2020,Q2,Galaxy S20,Flagship,No,17969,14941832.83,38.47,16.54,5.56,60.95,38.94,MIDDLE EAST & AFRICA,Actual
+2022,Q4,Galaxy Z Fold3 5G,Premium Foldable,Yes,3610,5751081.83,36.92,58.04,29.35,187.58,68.95,Asia-Pacific,Actual
+2025,q2,Galaxy S25 5G,Flagship,Yes,29034,23838114.27,28.75,87.78,43.2,266.96,84.39,North America,Actual
+2025,Q2,Galaxy S24 5G,Flagship,yes,5363,4688737.49,38.79,55.64,22.56,175.79,61.5,Middle East & Africa,Actual
+2025,Q3,Galaxy Z Fold6 5G,Premium Foldable,Yes,6497,10993495.68,38.11,90.69,49.09,282.58,87.55,Asia-Pacific,Actual
+2022,Q1,Galaxy A52 5G,Mid,Yes,18263,7812226.28,29.16,53.07,23,168.09,66.5,North America,Actual
+2022,Q4,Galaxy Z Flip3 5G,Premium Foldable,Yes,2587,4550552.62,30.35,50.57,23.89,169.73,63.85,europe,Actual
+2022,Q3,Galaxy A52 5G,Mid,Yes,4348,"$1,858,250.03",38.88,35.92,14.31,114.26,49.6,middle east & africa,Actual
+2021,Q1,Galaxy S20,Flagship,no,9223,8687497.18,39.49,23.03,8.65,74.92,41.65,Middle East & Africa,Actual
+2026,Q1,Galaxy S25 5G,Flagship,Yes,14160,12865563.02,39.4,96.1,51.72,291.74,88.79,Asia-Pacific,Actual
+2023,Q4,Galaxy Z Flip5 5G,Premium Foldable,Yes,7029,,30.89,61.79,30.09,195.06,70.49,europe,Actual
+2021,Q1,Galaxy A32 5G,Budget,Yes,32150,7030226.69,36,37.47,18.13,128.04,57.67,Asia-Pacific,Actual
+2024,Q3,Galaxy A15 5G,Budget,Yes,1043480,11451093.29,38.08,79.03,,250.08,82.15,Asia-Pacific,Actual
+2025,Q1,Galaxy Z Fold6 5G,Premium Foldable,yes,3166,5214875.55,39,,28.87,185.91,67.59,Latin America,Actual
+2023,Q2,Galaxy S22 5G,Flagship,Yes,6785,5854078.07,38.97,41.66,15.23,130.22,,Middle East & Africa,Actual
+2019,Q4,Galaxy Note10,Premium,no,13874,13080271.35,34.55,24.49,11.38,81.79,51.39,ASIA-PACIFIC,Actual
+2022,Q2,Galaxy Z Flip3 5G,Premium Foldable,Yes,8392,13775312.6,28.4,55.39,23.84,178.47,,North America,Actual
+2023,Q4,Galaxy Z Flip5 5G,Premium Foldable,yes,3285,5396924.04,39.25,43.77,17.36,134.01,55.27,Middle East & Africa,Actual
+2022,Q2,Galaxy S21,Flagship,No,3251,2740259.21,39.04,32.97,13.22,108.95,47.91,MIDDLE EAST & AFRICA,Actual
+2022,q1,Galaxy A52 5G,Mid,Yes,18940,8643890.52,30.14,43.74,19.08,141.62,58.43,Europe,Actual
+2019,Q2,Galaxy S10,Mid,no,29079,11537586.59,36.58,9.93,2.31,48.93,36.63,LATIN AMERICA,Actual
+2024,Q3,Galaxy A14 5G,Budget,Yes,5118,1105690.51,31.29,69.64,,213.74,75.01,Europe,Actual
+2020,q3,Galaxy Z Fold2 5G,,Yes,6312,9874664.44,34.96,34.18,16.11,108.42,54.68,Asia-Pacific,Actual
+2024,q1,Galaxy S23 5G,Flagship,Yes,17662,14125543.92,31.66,,32.06,206.08,72.53,europe,Actual
+2022,q2,Galaxy S22 5G,Flagship,Yes,22569,18430920.11,30.54,47.97,20.81,149.96,61.28,Europe,Actual
+2019,Q2,Galaxy S10,Mid,No,28717,12622754.99,28.04,14.99,4.77,60.47,43.11,europe,Actual
+2026,Q1,Galaxy Z Fold6 5G,Premium Foldable,Yes,838,1401994.46,30.41,85.74,41.54,268.61,83.98,europe,Actual
+2022,Q2,Galaxy Z Fold3 5G,Premium Foldable,yes,3827,"$6,096,527.20",39.58,32.7,12.56,107.38,47.86,Middle East & Africa,Actual
+2021,Q4,Galaxy Z Fold3 5G,Premium Foldable,yes,8542,12842560.39,28.51,48.06,21.38,158.78,66.61,North America,Actual
+2021,Q3,Galaxy Z Fold2 5G,Premium Foldable,yes,1528,2518158.79,38.48,30.68,12.54,107.72,46.89,Latin America,Actual
+2024,Q3,Galaxy A15 5G,Budget,Yes,23615,4760740.72,28.25,78.27,,239.89,80.24,NORTH AMERICA,Actual
+2022,Q4,Galaxy Z Fold3 5G,Premium Foldable,Yes,1250,2119103.65,39.97,43.99,18.29,126.03,,Latin America,Actual
+2020,Q4,Galaxy Z Fold2 5G,Premium Foldable,Yes,4128,6667829.53,38.78,21.11,7.04,72.04,,Middle East & Africa,Actual
+2026,Q1,Galaxy A16 5G,Budget,Yes,37085,8465007.29,38.4,73.84,32.24,,71.58,Latin America,Actual
+2020,Q1,Galaxy Note10,Premium,No,13202,12408048.36,38.06,13.83,3.76,52.66,37.03,Middle East & Africa,Actual
+2021,Q1,Galaxy A52 5G,Mid,Yes,20375,8498689.22,33.66,39.01,18.91,122.51,57.15,Asia-Pacific,Actual
+2020,q4,Galaxy Note20,Premium,no,18977,19446953.47,29.09,29.89,13.19,,50.83,EUROPE,Actual
+2026,Q3,Galaxy S26 5G,Flagship,yes,7501,6919261.17,38.59,79.12,34.23,215.78,74.32,Latin America,Forecast
+2020,Q3,Galaxy Note10,Premium,No,9039,8854472.18,30.34,25.69,11.43,100.02,50.4,Europe,Actual
+2022,Q3,Galaxy A73 5G,Mid,Yes,27135,11600959.42,36.69,55.1,29.55,177.65,,Asia-Pacific,Actual
+2021,Q2,Galaxy A52 5G,Mid,Yes,22393,8660115.32,29.91,37.68,14.69,,55.44,Europe,Actual
+2022,Q3,Galaxy S22 5G,Flagship,Yes,28036,24639818.99,29.79,46.04,22.66,155.31,63.35,Europe,Actual
+2020,q3,Galaxy Note10,Premium,No,7156,6965408.25,35.05,32.81,14.85,113.85,56.48,ASIA-PACIFIC,Actual
+2021,Q4,Galaxy A52 5G,Mid,Yes,33056,13026664.64,37.54,33.05,14.18,103.58,47.62,Latin America,Actual
+2026,q1,Galaxy S26 5G,Flagship,Yes,14072,12029439.54,39.02,94.24,52.44,292.58,88.9,asia-pacific,Actual
+2021,Q4,Galaxy S21,Flagship,No,15018,13529029.71,38.1,29.32,,97.24,45.18,Middle East & Africa,Actual
+2022,Q1,Galaxy S22 5G,Flagship,Yes,9724,8299286.3,37.28,35.36,15.1,113.8,50.59,Latin America,Actual
+2024,Q1,Galaxy Z Flip5 5G,Premium Foldable,Yes,3560,5295850.31,37.64,52.54,23.81,157.32,,latin america,Actual
+2021,Q4,Galaxy Z Fold3 5G,Premium Foldable,Yes,2957,4918086.85,37.56,31.25,13.51,109.71,48.18,Latin America,Actual
+2025,q1,Galaxy A15 5G,Budget,Yes,15594,3592928.8,28.23,84.38,41.75,266.11,81.38,north america,Actual
+2024,Q4,Galaxy A14 5G,Budget,Yes,2111,455281.84,37.72,96.79,44.05,259.08,81.65,Asia-Pacific,Actual
+2020,Q2,Galaxy S10,Mid,No,5614,2256826.27,35.3,29.52,15.13,101.71,54.45,asia-pacific,Actual
+2020,Q1,Galaxy Note10,Premium,No,23335,22005249.76,29.78,22.39,8.19,85.23,47.1,EUROPE,Actual
+2022,q1,Galaxy Note20,Premium,No,632,594837.66,38.58,33.77,12.18,101.93,45.21,Middle East & Africa,Actual
+2024,Q3,Galaxy A15 5G,Budget,Yes,54017,,38.27,58.93,26.96,170.21,64.8,Latin America,Actual
+2020,Q3,Galaxy Note10,Premium,No,6429,6128168.63,39.31,19,6.47,72.65,38.45,Middle East & Africa,Actual
+2021,Q1,Galaxy Note20,,No,10616,9869318.65,37.93,26.49,10,90.99,44.12,Latin America,Actual
+2023,q1,Galaxy A14 5G,Budget,Yes,32669,7393360.22,36.84,63.02,33.56,195.71,71.12,Asia-Pacific,Actual
+2024,Q4,Galaxy S24 5G,,Yes,,27689905.92,30.11,83.16,40.62,254.73,82.14,North America,Actual
+2021,Q3,Galaxy Note20,Premium,No,11332,11009523.91,27.55,46.92,20.25,150.96,64.33,North America,Actual
+2022,Q3,Galaxy A32 5G,Budget,Yes,9217,1973464.68,39.18,34.23,12.3,111.64,,Middle East & Africa,Actual
+2025,Q1,Galaxy S24 5G,Flagship,yes,17746,15038543.21,30.49,71.24,36.29,234.72,78.39,Europe,Actual
+2021,Q2,Galaxy Note20,Premium,no,9439,9357147.04,38.09,27.44,11.29,99.74,46.08,Latin America,Actual
+2022,Q4,Galaxy S22 5G,Flagship,Yes,30468,25442757.22,29.71,61.73,28.09,,71.25,North America,Actual
+2023,Q2,Galaxy Z Flip3 5G,Premium Foldable,Yes,427,683501.21,29.42,64.72,31.67,207.39,,North America,Actual
+2024,q2,Galaxy S24 5G,Flagship,Yes,25715,21404092.08,30.69,66.85,32.58,207.65,74.27,europe,Actual
+2023,Q4,Galaxy S23 5G,Flagship,yes,17896,14992523.39,40.24,44.03,17.97,138.51,56.3,Middle East & Africa,Actual
+2024,Q4,Galaxy Z Flip5 5G,Premium Foldable,Yes,3436,"$5,791,105.24",28.82,79.81,,257,81.81,North America,Actual
+2024,q1,Galaxy A15 5G,Budget,Yes,18840,4250204,30.53,64.24,31.91,205.56,71.54,EUROPE,Actual
+2021,Q1,Galaxy S21,Flagship,No,11138,,38.94,24.27,8.45,84.02,40.39,middle east & africa,Actual
+2024,q3,Galaxy A15 5G,Budget,Yes,60655,14007600.26,39.58,52.47,20.14,154.36,56.66,MIDDLE EAST & AFRICA,Actual
+2022,q2,Galaxy A73 5G,Mid,Yes,17351,"$7,338,890.01",28.65,45.2,20.97,156.67,60.97,Europe,Actual
+2025,Q4,Galaxy S25 5G,Flagship,yes,26914,22435750.29,29.75,92.03,46.76,289.12,89.55,North America,Actual
+2020,Q2,Galaxy Note10,Premium,No,10448,9548857.64,39.76,15.53,4.23,60.7,37.16,Middle East & Africa,Actual
+2024,Q4,Galaxy A15 5G,Budget,Yes,30574,,31.65,72.42,34.88,228.47,77.32,Europe,Actual
+2022,Q4,Galaxy S22 5G,Flagship,Yes,17745,14717250.54,40.24,39.86,15.3,120.53,50,Middle East & Africa,Actual
+2021,Q4,Galaxy Note20,Premium,No,2146,"$2,132,308.60",36.86,33.18,13.71,102.69,48.31,Latin America,Actual
+2023,Q4,Galaxy S23 5G,Flagship,yes,23008,19601783.33,37.13,69.04,38.16,225.06,74.69,asia-pacific,Actual
+2024,Q4,Galaxy S24 5G,Flagship,Yes,17542,16145461.22,40.19,54.67,22.78,158.86,,Middle East & Africa,Actual
+2024,Q2,Galaxy S23 5G,Flagship,Yes,8818,8105593.02,32.18,67.45,33.14,209.42,73.26,Europe,Actual
+2025,Q2,Galaxy S24 5G,Flagship,Yes,,6387036.82,38.48,87.14,47.07,275.46,84.75,Asia-Pacific,Actual
+2020,Q1,Galaxy S10,Mid,No,13031,5548736.71,38.21,13.5,4.55,54.55,35.91,MIDDLE EAST & AFRICA,Actual
+2021,Q4,Galaxy Z Flip3 5G,Premium Foldable,Yes,3140,5342182.76,37.58,33.12,13.8,110.36,48.85,Latin America,Actual
+2025,Q3,Galaxy Z Fold6 5G,Premium Foldable,yes,2563,4479358.11,39.44,68.29,30.08,196.24,69.16,Latin America,Actual
+2025,Q3,Galaxy A15 5G,Budget,Yes,7399,1613299.44,40.73,60.52,24.05,181.17,62.01,Middle East & Africa,Actual
+2019,Q4,Galaxy S10,Mid,No,25692,10217493.15,36.65,14.22,3.87,56.49,39,Latin America,Actual
+2025,q3,Galaxy A15 5G,Budget,Yes,6096,1369330.43,37.44,90.74,49.18,282.66,85.75,asia-pacific,Actual
+2022,q3,Galaxy Z Flip3 5G,Premium Foldable,Yes,5271,8002193.64,29.07,50.24,22.34,159.2,61.58,europe,Actual
+2021,q1,Galaxy A52 5G,Mid,Yes,17797,7505550.79,38.46,21.97,7.3,78.75,40.19,Middle East & Africa,Actual
+2021,Q4,Galaxy A32 5G,Budget,Yes,996520,11591272.05,35.74,44.96,23.21,151.3,63.76,ASIA-PACIFIC,Actual
+2021,Q2,Galaxy Z Fold2 5G,Premium Foldable,Yes,7350,12205856.49,30.8,36.19,14.92,123.34,55.44,Europe,Actual
+2023,Q4,Galaxy A73 5G,Mid,yes,4311,1746624.31,30.38,62.94,29.52,199.25,71.54,Europe,Actual
+2023,q4,Galaxy S23 5G,Flagship,Yes,24087,21861513.41,31.29,61.14,30.03,200.14,69.63,Europe,Actual
+2025,Q2,Galaxy A16 5G,,Yes,31371,7214940.54,39.83,57.71,24.12,174.11,61.43,Middle East & Africa,Actual
+2021,Q3,Galaxy A32 5G,Budget,Yes,32919,7234442.71,29.86,38.44,17.9,127.59,57.91,Europe,Actual
+2025,q4,Galaxy Z Fold6 5G,Premium Foldable,yes,3241,4982667.06,29.07,93.47,46.73,288.87,88.09,North America,Actual
+2025,Q4,Galaxy A15 5G,Budget,Yes,2591,563434.29,,,25.27,183.2,64.98,Middle East & Africa,Actual
+2021,Q2,Galaxy A32 5G,Budget,Yes,44013,9839319.39,38.85,30.55,11.48,90.64,46.21,Latin America,Actual
+2024,q3,Galaxy Z Fold6 5G,,Yes,1838,3308758.18,38.58,59.57,25.57,169.75,63.02,LATIN AMERICA,Actual
+2022,Q2,Galaxy A73 5G,Mid,Yes,14562,6256001.47,27.9,55.45,23.53,167.29,68.01,North America,Actual
+2023,Q3,Galaxy S23 5G,Flagship,Yes,31225,29077822.59,29.55,69.54,31.58,212.75,75.16,NORTH AMERICA,Actual
+2026,Q4,Galaxy S26 5G,Flagship,yes,778,675463.13,39.75,79.4,,218.85,75.34,Latin America,Forecast
+2023,Q4,Galaxy A14 5G,Budget,Yes,25006,5195562.07,29.43,70.01,34.81,222.94,77.98,North America,Actual
+2021,Q4,Galaxy S21,Flagship,No,13562,11753529.95,36.8,33.95,12.05,104.27,50.06,LATIN AMERICA,Actual
+2026,Q1,Galaxy Z Fold6 5G,Premium Foldable,Yes,1377,2274251.76,29.65,,48.22,294.05,90,NORTH AMERICA,Actual
+2022,Q4,Galaxy A52 5G,Mid,Yes,1118,485037.77,28.02,75.13,28,190.64,69.11,north america,Actual
+2021,Q1,Galaxy Note10,Premium,No,1110,,27.38,41.86,17.17,133.34,61.09,North America,Actual
+2026,Q4,Galaxy A16 5G,Budget,Yes,,227065.13,30.23,99,53.45,316.38,91.65,NORTH AMERICA,Forecast
+2020,Q3,Galaxy Z Fold2 5G,Premium Foldable,Yes,5030,8533118.16,27.49,35.15,14.75,120.78,57.02,NORTH AMERICA,Actual
+2021,Q1,Galaxy Z Fold2 5G,Premium Foldable,yes,8686,14574464.83,30.3,30.15,13.31,117.31,54.24,Europe,Actual
+2025,Q4,Galaxy A16 5G,Budget,Yes,23656,5050458.24,29.83,91.8,47.18,284.09,89.53,NORTH AMERICA,Actual
+2026,Q3,Galaxy S26 5G,Flagship,Yes,12315,10351616.45,31.96,89.28,44.68,277.45,86.37,Europe,Forecast
+2025,Q4,Galaxy Z Fold6 5G,Premium Foldable,Yes,3234,5322791.73,36.42,93.55,50.91,294.28,87.71,Asia-Pacific,Actual
+2019,Q4,Galaxy S10,Mid,No,22135,9284375.42,34.72,,10.06,86.27,49.97,Asia-Pacific,Actual
+2026,Q1,Galaxy A16 5G,Budget,Yes,,,29.67,94.49,48.54,290.78,92.14,North America,Actual
+2025,q3,Galaxy S24 5G,Flagship,Yes,3351,,38.31,89.09,49.27,278.09,85.61,Asia-Pacific,Actual
+2025,Q3,Galaxy A16 5G,Budget,Yes,51427,10831839.08,38.23,90.25,49.4,283.24,86.39,asia-pacific,Actual
+2023,Q3,Galaxy A73 5G,Mid,Yes,10204,4232424.29,40.6,42.92,17.53,136.33,,Middle East & Africa,Actual
+2023,Q4,Galaxy S22 5G,Flagship,yes,1398,1152183.09,29.79,69.9,34.05,218.71,76.82,North America,Actual
+2025,Q3,Galaxy Z Fold6 5G,Premium Foldable,Yes,2687,4415612.45,40.77,60.73,24.42,179.55,64.21,Middle East & Africa,Actual
+2023,Q3,Galaxy A14 5G,Budget,Yes,28183,5658469.96,28.76,69.2,,217.66,74.67,North America,Actual
+2021,Q3,Galaxy S20,,No,1123,971352.72,34.96,42.17,22.15,144.86,60.31,Asia-Pacific,Actual
+2024,Q4,Galaxy Z Fold6 5G,Premium Foldable,Yes,9111,,29.63,79.49,,254.47,82.19,North America,Actual
+2022,Q3,Galaxy A73 5G,Mid,Yes,24145,,-27.96,58.71,26.29,187.55,70.29,NORTH AMERICA,Actual
+2020,q2,Galaxy S10,Mid,no,5066,2537596.69,39.08,14.85,5.81,64.05,37.06,Middle East & Africa,Actual
+2021,Q2,Galaxy S21,Flagship,no,27869,23313885.55,27.36,43.42,18.77,145.27,,NORTH AMERICA,Actual
+2021,Q4,Galaxy A32 5G,Budget,Yes,25236,,30.15,39.31,18.94,138.81,55.58,Europe,Actual
+2023,q3,Galaxy S22 5G,Flagship,Yes,2817,2365311.46,40.19,,18.14,131.23,51.9,MIDDLE EAST & AFRICA,Actual
+2023,Q1,Galaxy Z Fold3 5G,Premium Foldable,Yes,638,1006997.41,40.05,42.11,16.52,117.36,49.61,Middle East & Africa,Actual
+2026,q3,Galaxy A16 5G,Budget,Yes,8761,1979488.09,40.81,68.21,27.87,195.47,67.74,middle east & africa,Forecast
+2022,Q1,Galaxy Z Fold2 5G,Premium Foldable,Yes,300,"$520,471.60",38.76,30.27,12.04,98.06,46.6,Middle East & Africa,Actual
+2023,Q1,Galaxy Z Flip3 5G,Premium Foldable,Yes,1228,2024975.27,27.8,62.97,30.51,197.62,73.32,North America,Actual
+2021,q4,Galaxy A52 5G,Mid,Yes,33056,13026664.64,37.54,33.05,14.18,103.58,47.62,LATIN AMERICA,Actual
+2024,Q1,Galaxy A73 5G,Mid,Yes,1262,541780.44,30.75,63.89,31.9,199.81,71.96,Europe,Actual
+2024,Q4,Galaxy Z Flip5 5G,Premium Foldable,Yes,1208,2093803.96,39.64,59.21,25.95,175.79,65.49,LATIN AMERICA,Actual
+2023,Q1,Galaxy S22 5G,Flagship,Yes,17621,16292512.58,29.08,53.24,25.63,171.55,66.24,Europe,Actual
+2025,Q1,Galaxy S25 5G,Flagship,Yes,14386,11941659.13,38.36,83.18,44.65,265.86,,Asia-Pacific,Actual
+2024,Q2,Galaxy A14 5G,Budget,yes,17958,3904146.96,38.18,57.22,24.96,164.1,60.76,Latin America,Actual
+2022,Q3,Galaxy A32 5G,Budget,Yes,3692,757577.07,28.52,58.14,26.12,183.76,69.34,North America,Actual
+2023,Q2,Galaxy A73 5G,Mid,Yes,22127,8587350.02,36.66,65.89,33.55,200.31,70.91,asia-pacific,Actual
+2024,Q2,Galaxy S24 5G,Flagship,Yes,18738,,40.01,48.88,20.17,154.89,57.41,Middle East & Africa,Actual
+2024,q3,Galaxy A14 5G,Budget,Yes,8786,1926668.11,39.89,52.61,20.11,158.62,59.43,middle east & africa,Actual
+2022,Q2,Galaxy S21,Flagship,no,3393,2724964.6,38.68,37.46,14.62,114.87,51.06,latin america,Actual
+2026,Q3,Galaxy S25 5G,Flagship,yes,2467,"$2,118,008.11",40.69,69.35,28.37,199.34,66.82,Middle East & Africa,Forecast
+2021,Q1,Galaxy Z Fold2 5G,Premium Foldable,Yes,3459,5464832.04,37.39,27.16,10.45,88.55,47.67,Latin America,Actual
+2020,Q3,Galaxy S20,Flagship,No,16909,13651041.81,38.43,21.17,7.29,75.15,42.38,Latin America,Actual
+2021,Q4,Galaxy Z Fold2 5G,Premium Foldable,Yes,1811,3127947.37,27.89,49.25,20.93,155.67,63.99,North America,Actual
+2026,Q3,Galaxy S25 5G,Flagship,Yes,2428,2229686.01,40.03,76.6,34.38,222.23,72.66,Latin America,Forecast
+2021,Q4,Galaxy Note20,Premium,No,4066,3977567.88,27.27,47.73,22.43,165.32,66.42,North America,Actual
+2024,Q4,Galaxy A14 5G,,Yes,1076,251815.52,29.41,83.58,42.29,251.45,,North America,Actual
+2021,Q3,Galaxy S21,Flagship,no,18904,16550394.74,-39.19,27.08,9.91,87.18,42.02,MIDDLE EAST & AFRICA,Actual
+2025,Q3,Galaxy A16 5G,Budget,Yes,28817,6648365.6,30.92,79.93,39.41,249.72,78.93,europe,Actual
+2026,Q1,Galaxy S26 5G,Flagship,Yes,17963,14895320.89,29.84,94.49,49.62,289.51,89.01,North America,Actual
+2021,Q3,Galaxy Z Fold2 5G,Premium Foldable,Yes,3603,6494547.58,29.85,37.67,16.86,129.84,,EUROPE,Actual
+2023,Q2,Galaxy Z Fold3 5G,Premium Foldable,Yes,454,781253.29,28.14,66.21,30.6,204.78,72.9,North America,Actual
+2022,Q4,Galaxy Z Flip3 5G,Premium Foldable,Yes,3298,5606179.55,36.68,60.28,30.5,186.56,69.36,Asia-Pacific,Actual
+2021,q3,Galaxy A52 5G,Mid,Yes,28763,12253889.6,28.85,46.88,20.14,152.12,64.02,North America,Actual
+2023,Q1,Galaxy Z Fold3 5G,Premium Foldable,Yes,1420,2235375.88,28.96,65.67,29.04,199.42,71.27,North America,Actual
+2021,q3,Galaxy S20,Flagship,No,761,"$674,038.51",37.39,33.16,12.58,95.71,47.96,Latin America,Actual
+2026,Q3,Galaxy S25 5G,Flagship,yes,3721,2834785.54,39.1,99,56.5,312.56,92.83,Asia-Pacific,Forecast
+2022,Q2,Galaxy A52 5G,Mid,Yes,9332,4132223.72,28.02,54.97,24.95,169.49,70.84,North America,Actual
+2022,Q3,Galaxy S22 5G,Flagship,Yes,20577,17782418.05,39.71,36.13,13.58,111.27,47.78,MIDDLE EAST & AFRICA,Actual
+2020,Q3,Galaxy Note10,Premium,No,11147,10529003.16,26.81,38.4,,,59.58,North America,Actual
+2020,Q1,Galaxy Note10,Premium,No,23335,22005249.76,29.78,22.39,8.19,85.23,47.1,Europe,Actual
+2023,Q3,Galaxy Z Flip5 5G,Premium Foldable,yes,3822,6576844.75,30.43,59.5,27.48,193.21,69.5,EUROPE,Actual
+2022,q2,Galaxy A73 5G,Mid,yes,17404,6967401.9,35.7,53.25,27.08,168.75,63.71,asia-pacific,Actual
+2021,Q2,Galaxy Z Fold2 5G,Premium Foldable,Yes,2881,5200974.29,37.79,29.57,10.93,94.67,47.18,Latin America,Actual
+2024,Q3,Galaxy Z Fold6 5G,Premium Foldable,Yes,4512,7222791.82,31.68,68.52,,216.31,75.85,Europe,Actual
+2024,Q4,Galaxy Z Flip5 5G,Premium Foldable,Yes,1586,2609125.82,39.56,52.5,22.03,161.24,59.51,Middle East & Africa,Actual
+2022,Q3,Galaxy A52 5G,Mid,Yes,4586,1907115.13,36.21,55.94,29.13,180.94,67.92,ASIA-PACIFIC,Actual
+2022,Q1,Galaxy S22 5G,Flagship,Yes,12341,10171640.25,36.66,49.25,25.91,,64.16,Asia-Pacific,Actual
+2021,Q3,Galaxy S20,Flagship,no,812,716441.91,38.51,26.46,8.55,88.64,42.11,Middle East & Africa,Actual
+2023,Q1,Galaxy Z Fold3 5G,Premium Foldable,yes,1542,2597742.32,36.67,64.98,32.75,195.06,70.97,Asia-Pacific,Actual
+2023,Q3,Galaxy S23 5G,Flagship,Yes,24170,19674593.52,36.25,68.11,35.77,215.09,75.17,asia-pacific,Actual
+2024,Q1,Galaxy A14 5G,Budget,Yes,19501,4519399.12,31.04,,31.74,202.25,71.3,Europe,Actual
+2022,Q4,Galaxy A52 5G,Mid,Yes,1394,579805.93,31.06,49.07,23.44,165.19,63.74,Europe,Actual
+2026,Q2,Galaxy S25 5G,Flagship,Yes,9326,8217845.34,37.88,99,54.22,304.3,,asia-pacific,Actual
+2024,Q4,Galaxy Z Flip5 5G,Premium Foldable,Yes,3744,"$6,357,544.63",38,79.06,44.61,255.93,81.64,ASIA-PACIFIC,Actual
+2025,Q2,Galaxy Z Fold6 5G,Premium Foldable,Yes,3553,5720898.26,39.83,57.26,22.93,170.11,62.67,Middle East & Africa,Actual
+2023,Q3,Galaxy S22 5G,Flagship,Yes,3417,2863949.86,31.9,59.78,,191.11,69.48,europe,Actual
+2022,q1,Galaxy Z Fold3 5G,Premium Foldable,Yes,10213,16657320.69,35.34,48.65,25.42,161.85,64.54,Asia-Pacific,Actual
+2026,Q3,Galaxy A16 5G,Budget,yes,9005,1901351.3,39.32,75.98,34.34,217.06,,LATIN AMERICA,Forecast
+2023,Q2,Galaxy Z Fold3 5G,Premium Foldable,yes,440,729110.44,37.04,61.14,34.45,205.48,72.2,ASIA-PACIFIC,Actual
+2020,q1,Galaxy S10,Mid,No,14805,6807822.42,37.79,18.59,6.15,66.89,39.38,Latin America,Actual
+2022,Q2,Galaxy Z Fold3 5G,Premium Foldable,Yes,10431,18217649.44,36.24,53.36,26.3,,66.14,Asia-Pacific,Actual
+2021,Q3,Galaxy Note20,Premium,No,5389,5539868.94,39.86,25.98,9.62,83.54,43.01,Middle East & Africa,Actual
+2024,Q2,Galaxy S24 5G,Flagship,Yes,15556,13526899.38,,59.68,24.16,167.18,62.2,Latin America,Actual
+2026,Q4,Galaxy A16 5G,Budget,Yes,2589,554212.98,,71.14,29,206.63,69.81,middle east & africa,Forecast
+2021,Q3,Galaxy Z Fold3 5G,Premium Foldable,Yes,2441,3594004.42,38.9,26.21,10.3,91.26,44.7,MIDDLE EAST & AFRICA,Actual
+2022,q3,Galaxy Z Flip3 5G,Premium Foldable,Yes,7738,11741393.32,36.83,55.51,28.3,179.46,67.08,Asia-Pacific,Actual
+2025,Q4,Galaxy A16 5G,Budget,Yes,42583,,38.45,92.76,51.52,290.6,,Asia-Pacific,Actual
+2021,Q1,Galaxy S20,Flagship,No,7508,6390972.19,37.54,26.58,10.52,85.55,46.61,latin america,Actual
+2022,Q3,Galaxy Z Fold3 5G,Premium Foldable,yes,,3916775.43,39.54,39.26,17.33,124.91,51.82,Latin America,Actual
+2025,Q1,Galaxy Z Flip5 5G,Premium Foldable,Yes,1032,1735081.1,31.44,74.87,36.39,231,,Europe,Actual
+2026,Q4,Galaxy S26 5G,Flagship,Yes,,1155265.78,30.25,99,53.83,320,93.52,NORTH AMERICA,Forecast
+2022,q3,Galaxy A32 5G,Budget,Yes,8168,1755215.07,36.48,55.57,28.09,179.97,66.5,Asia-Pacific,Actual
+2023,Q4,Galaxy Z Flip5 5G,Premium Foldable,yes,9666,16170078.12,29.65,85.76,,216.09,75.91,North America,Actual
+2022,Q4,Galaxy Z Flip3 5G,Premium Foldable,Yes,1271,1890569.84,39.05,41.78,17.59,133.02,52.63,Latin America,Actual
+2025,q4,Galaxy S24 5G,Flagship,Yes,1672,1456231.62,29.35,93.74,47.3,281.37,87.83,North America,Actual
+2021,Q3,Galaxy A52 5G,Mid,Yes,29524,12320386.23,29.63,38.43,16.98,130.33,55.86,Europe,Actual
+2023,Q1,Galaxy A73 5G,Mid,Yes,27909,11479370.35,38.43,,17.96,135.53,56.13,Latin America,Actual
+2021,Q4,Galaxy Z Fold2 5G,Premium Foldable,yes,634,989554.98,37.74,32.85,13.38,107.33,50.01,Latin America,Actual
+2024,Q1,Galaxy A15 5G,Budget,yes,29162,6223672,37.12,72.37,37.79,226.76,75.64,Asia-Pacific,Actual
+2025,Q3,Galaxy A16 5G,Budget,Yes,24656,5374376.71,29.91,89.56,45.68,277.97,85.53,North America,Actual
+2024,Q4,Galaxy A15 5G,Budget,Yes,56195,12904499.59,40.28,54.15,21.47,161.15,60.45,Middle East & Africa,Actual
+2026,Q1,Galaxy S25 5G,Flagship,Yes,11513,11309204.74,39.65,72.26,32.27,206.03,71.97,Latin America,Actual
+2021,q2,Galaxy Z Fold2 5G,Premium Foldable,yes,3500,6090947.8,39.62,26.81,9.02,81.53,42.29,MIDDLE EAST & AFRICA,Actual
+2022,q2,Galaxy S21,Flagship,No,4827,4213380.09,29.91,46.91,22.12,153.31,61.56,Europe,Actual
+2019,Q1,Galaxy S10,Mid,no,17090,7312634.26,36.86,8.08,1.57,38.37,33.58,Latin America,Actual
+2021,q2,Galaxy A52 5G,Mid,Yes,24491,10345379.18,34.57,40.73,21.1,137.46,58.65,ASIA-PACIFIC,Actual
+2021,Q3,Galaxy Z Fold3 5G,Premium Foldable,Yes,5755,10290778.08,27.63,46.33,20.47,151.32,62.9,north america,Actual
+2025,Q1,Galaxy Z Flip5 5G,Premium Foldable,Yes,503,847718.66,39.66,62.48,28.45,182.76,63.81,LATIN AMERICA,Actual
+2023,Q2,Galaxy A73 5G,Mid,Yes,402660,8527930.89,37.97,62.64,20.47,142.18,56.12,latin america,Actual
+2026,Q2,Galaxy A16 5G,Budget,Yes,12955,3034039.53,32.61,86.42,42.8,270.86,,Europe,Actual
+2022,Q3,Galaxy S22 5G,Flagship,Yes,28036,24639818.99,29.79,46.04,22.66,155.31,63.35,Europe,Actual
+2024,Q4,Galaxy S23 5G,Flagship,Yes,1480,1244006.33,29.42,81.98,41.21,246.4,82.64,North America,Actual
+2024,Q4,Galaxy A14 5G,Budget,Yes,2718,570563.84,38.5,61.3,27.44,177.33,65.83,Latin America,Actual
+2025,Q2,Galaxy A16 5G,Budget,yes,29004,6914756.73,37.71,,47.42,268.29,84.96,Asia-Pacific,Actual
+2021,Q3,Galaxy A52 5G,Mid,Yes,33976,13491924.62,35.52,44.09,22.1,143.05,60.78,Asia-Pacific,Actual
+2022,Q2,Galaxy Z Flip3 5G,Premium Foldable,Yes,9831,16262422.85,35.74,52.82,26.22,166.78,67.35,Asia-Pacific,Actual
+2022,q1,Galaxy S21,Flagship,no,15383,12679612.19,27.38,50.46,22.8,165.37,68.27,north america,Actual
+2020,Q3,Galaxy Note20,Premium,No,9316,"$9,515,468.78",35.43,32.91,15.2,110.86,53.63,Asia-Pacific,Actual
+2020,Q4,Galaxy S20,Flagship,No,23142,19870281.89,30.55,29.52,12.47,108.91,51.67,Europe,Actual
+2023,Q1,Galaxy A14 5G,Budget,Yes,38029,8439705.79,39.45,38.19,15.49,128.69,52.9,Middle East & Africa,Actual
+2020,q2,Galaxy S20,Flagship,no,20661,16923356.3,35.22,28.83,13.87,105.42,53.63,asia-pacific,Actual
+2021,Q1,Galaxy Z Fold2 5G,Premium Foldable,Yes,4572,7935149.69,39.22,21.77,8.49,77.57,41.67,Middle East & Africa,Actual
+2024,q3,Galaxy Z Flip5 5G,Premium Foldable,Yes,5351,8215426.1,30.98,68.33,33.88,224.96,75.32,Europe,Actual
+2024,Q1,Galaxy A14 5G,Budget,Yes,32709,7558345.57,38.96,56.76,24.19,163.78,59.52,Latin America,Actual
+2024,q3,Galaxy S23 5G,Flagship,Yes,3703,3488281.11,30.19,67.97,34.1,217.11,74.72,Europe,Actual
+2025,Q2,Galaxy Z Flip5 5G,Premium Foldable,Yes,439,792817.04,37.63,87.39,47.61,275.85,84.76,Asia-Pacific,Actual
+2020,Q3,Galaxy Z Fold2 5G,Premium Foldable,Yes,2636,4183414.03,38.6,19.5,6,69.63,37.53,Middle East & Africa,Actual
+2026,Q4,Galaxy S26 5G,Flagship,Yes,1009,"$876,126.46",40.36,70.64,28.67,208.56,68.79,Middle East & Africa,Forecast
+2025,Q3,Galaxy S24 5G,Flagship,Yes,3368,2520415.39,31.63,80.27,39.59,248.55,82.86,europe,Actual
+2022,Q1,Galaxy A52 5G,Mid,Yes,19490,7931693.29,39.3,36.37,14.37,106.6,51.1,Latin America,Actual
+2023,Q2,Galaxy S22 5G,Flagship,Yes,11120,,28.59,64.04,31.05,205.15,73.31,North America,Actual
+2021,Q1,Galaxy Note20,Premium,No,15921,15413787.73,39.62,23.82,8.01,77.95,41.25,MIDDLE EAST & AFRICA,Actual
+2021,Q4,Galaxy S21,Flagship,no,26990,24307260.58,27.92,49.23,21.6,158.48,65.57,North America,Actual
+2026,q2,Galaxy A16 5G,Budget,Yes,19357,3989662.22,,73.26,33.87,212.77,73.4,Latin America,Actual
+2021,Q3,Galaxy S21,Flagship,No,28418,22570910.11,30.28,37.97,17.33,134.17,57.82,Europe,Actual
+2020,Q2,Galaxy Note10,Premium,no,12968,12308196.28,34.99,,13.49,102.02,53.86,Asia-Pacific,Actual
+2019,Q3,Galaxy Note10,Premium,No,6079,6110916.44,38.14,,4.56,52.39,37.16,latin america,Actual
+2022,Q3,Galaxy A73 5G,Mid,Yes,27292,10952987.63,38.05,40.46,17.42,126.96,54.78,Latin America,Actual
+2026,Q3,Galaxy S25 5G,Flagship,Yes,4607,3862827.21,29.99,99,52.21,312.19,91.81,North America,Forecast
+2022,Q3,Galaxy S21,Flagship,No,731,614856.17,38.57,40.66,16.82,126.02,54.49,Latin America,Actual
+2022,Q2,Galaxy S22 5G,Flagship,yes,22672,19717506.34,35.56,54.38,26.81,169.17,66.5,Asia-Pacific,Actual
+2023,Q3,Galaxy S23 5G,Flagship,yes,18737,15342621.22,40.16,47.4,21.76,147.48,59.46,LATIN AMERICA,Actual
+2024,Q1,Galaxy S23 5G,Flagship,Yes,,13678671.06,38.05,70.01,38.28,231.01,78.28,asia-pacific,Actual
+2024,Q2,Galaxy A14 5G,Budget,Yes,12165,2549457.74,31.64,64.95,32.43,206.57,73.85,Europe,Actual
+2020,Q4,Galaxy Z Fold2 5G,Premium Foldable,Yes,10073,15239689.44,34.04,33.35,16.36,120.28,56.25,Asia-Pacific,Actual
+2022,Q4,Galaxy A32 5G,Budget,yes,2552,563406.5,37.57,41.22,17.94,135.13,55.45,Latin America,Actual
+2022,Q1,Galaxy Z Flip3 5G,Premium Foldable,Yes,7981,14757194.4,30.64,42.58,18.26,142.02,59.77,Europe,Actual
+2024,Q3,Galaxy Z Fold6 5G,Premium Foldable,Yes,5884,9220450.92,38.36,79.81,42.35,244.1,81.07,Asia-Pacific,Actual
+2026,Q4,Galaxy S26 5G,Flagship,yes,1099,947860.4,38.94,99,56.52,320,95.69,asia-pacific,Forecast
+2019,Q3,Galaxy S10,Mid,no,29582,12102479.14,27.02,,7.41,85.34,50.81,North America,Actual
+2024,Q4,Galaxy S23 5G,Flagship,Yes,1167,1020208.69,36.85,82.31,43.86,262.31,83.29,Asia-Pacific,Actual
+2023,Q3,Galaxy S23 5G,Flagship,yes,30438,25888469.31,30.03,59.03,28.31,186.24,70.01,Europe,Actual
+2024,Q3,Galaxy Z Fold6 5G,Premium Foldable,Yes,2641,4316631.15,39.64,53.2,20.8,153.05,58.61,Middle East & Africa,Actual
+2022,Q3,Galaxy A52 5G,Mid,Yes,3900,"$1,653,948.89",28.31,57.57,,183.78,70.73,north america,Actual
+2021,Q1,Galaxy A52 5G,Mid,Yes,17792,7458801.87,38.66,25.65,9.51,85.77,45.59,Latin America,Actual
+2024,Q3,Galaxy Z Flip5 5G,Premium Foldable,Yes,6111,9974448.81,29.55,78.53,38.73,244.64,80.6,North America,Actual
+2025,Q1,Galaxy S24 5G,Flagship,Yes,21171,18275765.11,29.6,85.87,43.38,263.86,,NORTH AMERICA,Actual
+2026,q2,Galaxy A16 5G,Budget,Yes,9424,2116556.1,29.46,96.35,49.93,305.76,92.62,north america,Actual
+2021,Q2,Galaxy A32 5G,Budget,Yes,49412,9309473.57,38.72,24.34,8.78,86.04,41.21,Middle East & Africa,Actual
+2023,Q1,Galaxy A73 5G,Mid,yes,30246,13511475.68,36.62,62.92,32.32,197.63,69.75,ASIA-PACIFIC,Actual
+2023,Q2,Galaxy Z Fold3 5G,Premium Foldable,yes,300,493427.77,-40.26,43.02,16.18,124.54,51.77,Middle East & Africa,Actual
+2024,Q1,Galaxy S24 5G,Flagship,Yes,9787,8608519.34,37.76,52.82,23.15,159.76,,Latin America,Actual
+2021,Q1,Galaxy Note10,Premium,No,687,681420.11,38.84,21.89,7.55,77.06,40.18,MIDDLE EAST & AFRICA,Actual
+2020,Q1,Galaxy S10,Mid,no,10909,4634986.77,26.61,31.43,10.61,102.75,55.9,north america,Actual
+2020,Q4,Galaxy Z Fold2 5G,Premium Foldable,Yes,5980,9473851.73,29.35,31.2,13.66,109.09,51.37,Europe,Actual
+2024,Q2,Galaxy Z Flip5 5G,Premium Foldable,yes,6712,10854656.36,31.39,66.36,31.55,215.61,72.97,Europe,Actual
+2025,q4,Galaxy Z Fold6 5G,Premium Foldable,yes,3241,4982667.06,29.07,93.47,46.73,288.87,88.09,North America,Actual
+2026,Q3,Galaxy S26 5G,Flagship,Yes,14969,12941113.22,30.06,99,51.97,308.16,92.69,North America,Forecast
+2021,Q1,Galaxy S20,Flagship,No,12981,10740973.68,36.36,37.58,19.31,127.95,,Asia-Pacific,Actual
+2021,Q4,Galaxy A32 5G,Budget,Yes,,12349790.9,38.25,35.77,13.49,103.82,49.32,Latin America,Actual
+2019,Q4,Galaxy Note10,Premium,No,20507,18674140.47,29.51,18.97,7.69,78.42,47.4,Europe,Actual
+2024,Q2,Galaxy A14 5G,Budget,yes,7894,1840426.04,28.99,,37.01,240.2,80.09,North America,Actual
+2024,Q1,Galaxy S24 5G,Flagship,Yes,16622,14144687.23,30.18,64.71,30.71,,69.3,europe,Actual
+2024,Q2,Galaxy S24 5G,Flagship,Yes,28086,"$23,846,481.15",28.41,73.29,37.91,240.87,78.59,North America,Actual
+2023,Q4,Galaxy Z Flip5 5G,Premium Foldable,yes,3285,5396924.04,39.25,43.77,17.36,134.01,55.27,MIDDLE EAST & AFRICA,Actual
+2022,Q1,Galaxy S22 5G,Flagship,Yes,12872,11165364.84,39.35,,11.85,103.37,47.1,Middle East & Africa,Actual
+2022,Q3,Galaxy S21,Flagship,no,1195,1075347.8,36.41,55.3,29.24,180.47,69.01,ASIA-PACIFIC,Actual
+2023,q3,Galaxy S23 5G,Flagship,Yes,18737,15342621.22,40.16,47.4,21.76,147.48,59.46,latin america,Actual
+2019,q2,Galaxy S10,Mid,No,25889,11060194.61,27.03,22.34,5.32,75.84,49.92,North America,Actual
+2023,Q1,Galaxy A14 5G,Budget,Yes,35645,7694354.37,37.53,44.65,20.33,127.21,55.24,Latin America,Actual
+2026,q2,Galaxy S26 5G,Flagship,Yes,16954,12987129.52,39.01,73.78,33.79,211.87,73.58,Latin America,Actual
+2025,Q4,Galaxy A15 5G,Budget,Yes,2108,488671.63,37.77,92.8,50.36,290.55,88.54,asia-pacific,Actual
+2021,Q2,Galaxy A52 5G,Mid,Yes,25249,10081148.79,39.35,24.58,8.67,78.04,41.91,Middle East & Africa,Actual
+2022,Q3,Galaxy A52 5G,Mid,Yes,4261,1702675.18,,47.93,22.14,162.84,64.12,europe,Actual
+2026,Q4,Galaxy S25 5G,Flagship,Yes,1201,1003193.41,-31.67,90.42,47.42,283.32,87.79,europe,Forecast
+2023,Q1,Galaxy A14 5G,Budget,Yes,35645,7694354.37,37.53,44.65,20.33,127.21,55.24,Latin America,Actual
+2023,Q2,Galaxy S23 5G,Flagship,yes,21574,18991024.63,37.52,62.86,35,207.18,73.09,Asia-Pacific,Actual
+2023,q1,Galaxy Z Flip3 5G,Premium Foldable,Yes,1502,2366927.17,36.62,62.1,33.17,191.31,72.58,Asia-Pacific,Actual
+2023,Q2,Galaxy A73 5G,Mid,yes,19047,8285574.63,38.95,41.45,15.95,128.97,53.01,Middle East & Africa,Actual
+2021,Q4,Galaxy Z Flip3 5G,Premium Foldable,yes,3426,5884072.42,38.31,30.35,10.26,97.51,45.12,Middle East & Africa,Actual
+2023,Q3,Galaxy A73 5G,Mid,yes,9165,3617928.29,28.63,67.66,32.47,211.43,76.93,North America,Actual
+2025,Q2,Galaxy Z Fold6 5G,Premium Foldable,Yes,3034,5374307.34,39.42,66.83,28.86,190.75,68.36,Latin America,Actual
+2023,Q3,Galaxy A73 5G,Mid,Yes,12360,5243716.46,39.49,49.42,20.54,150.08,58.63,Latin America,Actual
+2023,Q2,Galaxy Z Flip3 5G,Premium Foldable,Yes,417,664740.08,36.07,65.12,34.18,206.5,71.05,ASIA-PACIFIC,Actual
+2023,Q3,Galaxy S22 5G,Flagship,Yes,2733,2315848.08,38.95,49.34,22.32,147.84,56.99,Latin America,Actual
+2021,Q4,Galaxy A52 5G,Mid,Yes,29418,12856459.51,35.36,48.57,23.86,154.37,62.35,asia-pacific,Actual
+2025,Q1,Galaxy Z Flip5 5G,Premium Foldable,Yes,630,,39.99,54.87,23.91,164.5,61.32,Middle East & Africa,Actual
+2025,Q3,Galaxy Z Fold6 5G,Premium Foldable,Yes,6321,10731055.69,30.36,90.35,44.73,275.02,85.93,North America,Actual
+2022,Q2,Galaxy A52 5G,Mid,Yes,240380,4819374.07,38.27,37.86,14.74,117.85,53.03,latin america,Actual
+2026,q3,Galaxy A16 5G,Budget,Yes,3741,851674.38,29.1,99,52.05,309.49,93.32,North America,Forecast
+2024,Q3,Galaxy Z Flip5 5G,Premium Foldable,Yes,2371,"$3,959,683.55",38.85,57.28,26.42,169.78,62.12,latin america,Actual
+2026,Q1,Galaxy S25 5G,Flagship,yes,20776,17529620.68,29.87,96.07,49.33,290.41,86.98,north america,Actual
+2025,q2,Galaxy A16 5G,Budget,yes,,3897963.74,31.91,76.18,38.09,242.46,79.23,Europe,Actual
+2022,Q1,Galaxy A32 5G,Budget,Yes,16765,3565084.21,27.75,51.89,22.34,166.34,67.95,north america,Actual
+2022,Q4,Galaxy A32 5G,Budget,Yes,2485,539605.29,36.35,58.9,30.24,189.63,69.19,Asia-Pacific,Actual
+2021,Q4,Galaxy Note20,Premium,No,3396,3180924.3,30.61,41.51,18.36,137.81,58.78,Europe,Actual
+2023,q3,Galaxy A14 5G,Budget,Yes,28349,"$6,393,555.44",31.06,59.37,28.97,191.27,68.2,Europe,Actual
+2021,Q3,Galaxy Z Fold3 5G,Premium Foldable,Yes,4833,7857238.76,-30,38.8,17.42,128.84,55.91,Europe,Actual
+2023,q1,Galaxy A73 5G,Mid,Yes,24457,9691470.76,29.04,63.55,29.53,195.12,70.75,North America,Actual
+2024,Q1,Galaxy Z Flip5 5G,Premium Foldable,Yes,,16210163.1,28.47,74.22,35.75,231.76,79.3,NORTH AMERICA,Actual
+2021,Q3,Galaxy Note20,Premium,No,9791,"$9,163,061.40",29.85,39.16,17.36,,58.19,europe,Actual
+2020,Q4,Galaxy Note20,Premium,No,13791,14005509.89,38.61,20.49,6.35,75.46,41.28,MIDDLE EAST & AFRICA,Actual
+2021,Q4,Galaxy A32 5G,Budget,Yes,22095,4659758.33,27.49,49.77,21.71,160.08,65.83,North America,Actual
+2021,Q3,Galaxy Z Fold2 5G,Premium Foldable,yes,1836,2921425.25,39.02,26.83,9.98,88.36,43.43,Middle East & Africa,Actual
+2021,Q3,Galaxy A32 5G,Budget,Yes,23620,4981559.95,28.18,,19.88,149.7,65.23,north america,Actual
+2025,q2,Galaxy S24 5G,Flagship,Yes,9028,7811727.27,31.29,77.33,37.65,239.96,78.99,Europe,Actual
+2024,Q1,Galaxy S23 5G,Flagship,Yes,11197,9049998.74,38.87,56.5,23.75,158.92,59.99,latin america,Actual
+2021,Q3,Galaxy Z Flip3 5G,Premium Foldable,Yes,2516,4206481.26,39.06,27.23,10.23,89.59,44.85,Middle East & Africa,Actual
+2025,Q3,Galaxy S24 5G,Flagship,Yes,4810,3708405.08,27.89,89.17,45.28,277.23,85.27,North America,Actual
+2026,Q2,Galaxy S25 5G,Flagship,Yes,7473,6473745.17,40.93,67.76,26.69,201.06,69.19,middle east & africa,Actual
+2020,q3,Galaxy S10,Mid,No,,551526.9,38.14,,6.7,67.66,38.41,Middle East & Africa,Actual
+2021,Q2,Galaxy A32 5G,Budget,Yes,27956,6485127.62,31.01,,15.02,121.82,56.08,Europe,Actual
+2020,Q3,Galaxy Z Fold2 5G,Premium Foldable,Yes,4297,7185927.62,29.21,,11.43,97.41,50.41,europe,Actual
+2021,Q3,Galaxy A32 5G,Budget,Yes,56318,11771462.22,35.58,46.13,21.64,143.63,62.66,asia-pacific,Actual
+2021,Q1,Galaxy A32 5G,Budget,yes,37900,8841767.88,39.17,25.72,11.5,92.63,45.58,Latin America,Actual
+2025,Q4,Galaxy S25 5G,Flagship,Yes,17892,,40.62,61.91,25.97,180.68,64.16,MIDDLE EAST & AFRICA,Actual
+2023,Q1,Galaxy S22 5G,Flagship,Yes,12427,10696658.59,38.76,40.35,15.94,,51.83,Middle East & Africa,Actual
+2022,Q3,Galaxy A73 5G,Mid,Yes,22687,9341556.17,39.83,36.45,13.46,110.19,50.27,Middle East & Africa,Actual
+2023,Q2,Galaxy Z Fold3 5G,Premium Foldable,yes,421,656028.61,30.56,56.25,26.77,181.6,66.05,Europe,Actual
+2019,Q3,Galaxy S10,Mid,No,30858,13023268,28.71,16.6,5.48,70.99,45.92,EUROPE,Actual
+2025,Q2,Galaxy S25 5G,Flagship,yes,18157,15899378.54,40.18,57.22,22.83,167.43,61.99,Middle East & Africa,Actual
+2022,q1,Galaxy Z Fold3 5G,Premium Foldable,Yes,3268,5615904.16,38.07,34.94,15.5,117.02,50.33,Latin America,Actual
+2022,Q1,Galaxy S21,Flagship,no,7355,6881109.69,38.74,37.47,14.98,109.74,50.63,latin america,Actual
+2022,Q1,Galaxy A32 5G,Budget,Yes,40627,8463159.52,40.32,29.92,11.75,105.24,46.42,Middle East & Africa,Actual
+2022,Q4,Galaxy A73 5G,Mid,Yes,30309,12784014.88,37,57.94,30.69,186.93,69.64,Asia-Pacific,Actual
+2025,Q3,Galaxy A16 5G,Budget,Yes,50737,11170901.05,39.74,61.26,23.29,174.1,65,middle east & africa,Actual
+2025,Q4,Galaxy S24 5G,Flagship,Yes,764,674061.45,38.66,71.81,31.8,199.34,70.01,LATIN AMERICA,Actual
+2025,Q4,Galaxy A15 5G,Budget,Yes,1061,232800.19,30,95.39,46.37,289.43,88.98,NORTH AMERICA,Actual
+2021,Q4,Galaxy Z Flip3 5G,Premium Foldable,Yes,6653,10307434.52,29.83,40.6,17.02,133.17,59.1,Europe,Actual
+2020,Q4,Galaxy Note10,Premium,no,2006,1816143.55,37.54,,9.6,78.09,44.01,LATIN AMERICA,Actual
+2025,Q4,Galaxy S24 5G,Flagship,Yes,1246,1113931.91,31.67,83.49,40.15,258.13,82.71,Europe,Actual
+2019,Q3,Galaxy S10,Mid,No,33446,14230676.35,37.74,11.76,2.82,50.82,37.27,Latin America,Actual
+2023,Q3,Galaxy A73 5G,Mid,Yes,9983,4044130.66,35.65,68.59,36.32,214.28,73.46,Asia-Pacific,Actual
+2019,q4,Galaxy S10,Mid,No,24200,11277189.55,29.75,20.75,6.36,81.71,45.59,Europe,Actual
+2026,Q1,Galaxy Z Fold6 5G,Premium Foldable,Yes,1463,2271158.08,37.72,97,52,299.15,90.47,asia-pacific,Actual
+2022,Q2,Galaxy Z Fold3 5G,Premium Foldable,Yes,3553,5483658.73,37.96,38.89,16.85,113.18,51.46,LATIN AMERICA,Actual
+2022,Q3,Galaxy S21,Flagship,No,1306,1012368.86,30.41,48.77,24.16,160.72,64.7,Europe,Actual
+2021,Q3,Galaxy Z Fold2 5G,Premium Foldable,Yes,4051,6959259.78,34.58,,21.39,143.72,60.84,asia-pacific,Actual
+2022,Q2,Galaxy Z Flip3 5G,Premium Foldable,Yes,6646,10627952.12,29.31,45.59,21.34,152.56,63.16,EUROPE,Actual
+2022,Q1,Galaxy Z Fold3 5G,Premium Foldable,Yes,8851,"$14,129,497.65",27.65,53.47,22.64,160.46,67.84,north america,Actual
+2022,q3,Galaxy S22 5G,Flagship,Yes,23481,20805279.09,35.53,54.53,29.08,176.15,68,Asia-Pacific,Actual
+2022,Q1,Galaxy Z Fold3 5G,Premium Foldable,Yes,4205,7291289.48,39.57,29.82,11.13,105.61,47.22,Middle East & Africa,Actual
+2024,Q1,Galaxy S23 5G,Flagship,Yes,21191,17088539.18,28.43,72.62,35.44,231.02,79.14,North America,Actual
+2025,Q1,Galaxy Z Fold6 5G,Premium Foldable,Yes,9910,17036435.08,28.96,86.12,42.08,257.37,84.03,North America,Actual
+2024,Q3,Galaxy Z Flip5 5G,Premium Foldable,Yes,6111,9974448.81,29.55,78.53,38.73,244.64,80.6,North America,Actual
+2025,Q2,Galaxy S24 5G,Flagship,Yes,6054,5476291.43,40.41,64.64,29.24,189.81,67.08,Latin America,Actual
+2020,Q3,Galaxy S10,Mid,No,1380,558433.98,29.32,28.91,10.97,,51.06,Europe,Actual
+2026,Q1,Galaxy S26 5G,Flagship,yes,15999,14102097.88,32.75,83.31,42.16,261.71,82.87,Europe,Actual
+2024,Q4,Galaxy Z Fold6 5G,Premium Foldable,yes,6314,10285958.86,32.09,71.54,35.99,232.41,77.44,EUROPE,Actual
+2022,q1,Galaxy Note20,Premium,No,1084,965753.48,30.23,43.25,18.96,143.01,59.3,europe,Actual
+2025,Q3,Galaxy S25 5G,Flagship,yes,34853,29859049.84,-28.91,90.52,46.4,276.45,85.58,North America,Actual
+2025,Q3,Galaxy S25 5G,Flagship,yes,30399,27988622.11,30.84,79.85,40.21,248.87,82.06,EUROPE,Actual
+2023,Q4,Galaxy S22 5G,Flagship,Yes,826,663404.03,38.09,51.42,22.08,154.58,60.88,Latin America,Actual
+2026,Q2,Galaxy Z Fold6 5G,Premium Foldable,Yes,473,778210.29,37.88,99,54.74,300.35,89.45,Asia-Pacific,Actual
+2025,Q4,Galaxy A16 5G,Budget,Yes,57443,12317753.62,38.85,70.28,31.7,209.15,70.87,Latin America,Actual
+2022,Q2,Galaxy S21,Flagship,No,4013,3168556.64,35.45,,27.7,172.66,66.99,Asia-Pacific,Actual
+2021,Q3,Galaxy Z Flip3 5G,Premium Foldable,yes,4612,7923741.64,29.51,39.35,16.8,129.97,57,EUROPE,Actual
+2024,Q3,Galaxy S24 5G,Flagship,Yes,19038,16246868.58,,60.61,25.57,175.93,61.69,LATIN AMERICA,Actual
+2025,q1,Galaxy S25 5G,Flagship,yes,10353,8766666.37,40.24,56.23,22.19,164.52,60.32,Middle East & Africa,Actual
+2024,Q1,Galaxy A14 5G,Budget,Yes,33248,"$7,010,290.79",37.02,74.57,38.24,230.58,77.32,Asia-Pacific,Actual
+2026,Q2,Galaxy A16 5G,Budget,Yes,18446,3974425.53,38.06,98.45,53.81,302.05,90.93,Asia-Pacific,Actual
+2025,Q2,Galaxy S25 5G,Flagship,yes,26347,23917936.38,36.99,87.73,47.19,272.94,84.96,Asia-Pacific,Actual
+2026,Q4,Galaxy S25 5G,Flagship,Yes,1024,876315.44,39.02,99,58.59,320,95.64,Asia-Pacific,Forecast
+2023,Q3,Galaxy S22 5G,Flagship,Yes,2817,2365311.46,40.19,,18.14,131.23,51.9,Middle East & Africa,Actual
+2023,Q1,Galaxy A73 5G,Mid,Yes,25199,10624581.06,32.05,55.42,25.27,175.22,66.6,Europe,Actual
+2024,Q4,Galaxy S23 5G,Flagship,Yes,930,834029.79,40.32,52.17,22.53,162.26,60.66,middle east & africa,Actual
+2026,Q3,Galaxy S25 5G,Flagship,Yes,3694,3091986.88,31.27,88.65,44.92,280.06,87.71,Europe,Forecast
+2026,Q2,Galaxy S26 5G,Flagship,Yes,19782,16665388.83,40.27,65.49,27.66,190.93,66.83,Middle East & Africa,Actual
+2021,q2,Galaxy S20,Flagship,No,2754,2423809.58,38.85,26.96,11.1,95.32,44.5,LATIN AMERICA,Actual
+2020,Q4,Galaxy Note10,Premium,no,3214,2905989.96,36.36,37.41,17.29,122.41,55.95,Asia-Pacific,Actual
+2020,q2,Galaxy S10,Mid,No,4378,1760907.48,26.86,34.08,12.28,112.14,56.78,NORTH AMERICA,Actual
+2022,Q1,Galaxy Z Fold2 5G,,Yes,494,762916.1,35.61,51.06,24.47,157.77,63.5,Asia-Pacific,Actual
+2023,Q3,Galaxy Z Flip5 5G,Premium Foldable,Yes,4937,7418454.81,30.18,68.38,33.82,216.99,75.09,NORTH AMERICA,Actual
+2024,Q4,Galaxy S24 5G,Flagship,Yes,16026,14274456.66,38.69,58.63,,174.88,64.45,Latin America,Actual
+2025,Q2,Galaxy S24 5G,Flagship,Yes,5363,4688737.49,38.79,55.64,22.56,175.79,61.5,Middle East & Africa,Actual
+2024,Q3,Galaxy A14 5G,Budget,Yes,6640,1479692.61,37.22,78.58,41.91,,79.21,ASIA-PACIFIC,Actual
+2023,Q1,Galaxy Z Fold3 5G,Premium Foldable,Yes,449,719929.36,37.52,44.54,19.36,143.28,55.49,latin america,Actual
+2022,Q2,Galaxy Z Flip3 5G,,Yes,3983,6725194.2,39.85,35.2,11.95,104.07,46.58,middle east & africa,Actual
+2025,Q3,Galaxy S24 5G,Flagship,Yes,2902,2273923.16,40.51,60.61,24.03,182.07,61.63,Middle East & Africa,Actual
+2021,Q1,Galaxy A52 5G,Mid,yes,17550,7387069.68,29.65,31.79,14.27,114.47,56.17,Europe,Actual
+2024,Q1,Galaxy Z Flip5 5G,Premium Foldable,Yes,4470,"$6,909,184.60",40.19,48.97,18.49,146.26,55.01,Middle East & Africa,Actual
+2024,Q3,Galaxy S23 5G,Flagship,Yes,5080,4708173.76,29.31,79.88,38.48,245.77,80.93,NORTH AMERICA,Actual
+2023,q4,Galaxy A73 5G,Mid,Yes,3704,,29.63,68.96,34.86,216.55,76.74,NORTH AMERICA,Actual
+2025,Q4,Galaxy A15 5G,Budget,Yes,1413,300949.98,31.37,,40.27,259,83.45,Europe,Actual
+2024,Q2,Galaxy S23 5G,Flagship,Yes,11059,9636462.45,30.05,77.39,36.78,233.97,80.8,NORTH AMERICA,Actual
+2020,Q1,Galaxy S10,Mid,No,13312,5318565.79,29.58,21.54,7.89,86.42,49.87,Europe,Actual
+2020,Q4,Galaxy Note10,Premium,No,3571,3457596.14,30.6,30.29,11.78,103.36,,Europe,Actual
+2020,Q4,Galaxy Note20,Premium,No,10369,10381829.97,36.82,22.34,,,44.32,Latin America,Actual
+2024,Q3,Galaxy S23 5G,Flagship,Yes,2341,1997624.65,39.47,58.86,25.36,175.32,64.63,latin america,Actual
+2025,q4,Galaxy A16 5G,Budget,Yes,32327,6994317.44,,81.69,40.29,256.49,83.53,Europe,Actual
+2021,q2,Galaxy A52 5G,Mid,Yes,22393,8660115.32,29.91,37.68,14.69,,55.44,europe,Actual
+2020,Q2,Galaxy Note10,Premium,no,16124,15336572.1,29.91,24.52,10.06,92.54,49.72,EUROPE,Actual
+2022,Q3,Galaxy A32 5G,Budget,Yes,4699,1051903.72,30.48,50.73,22.91,157.97,62,europe,Actual
+2022,Q1,Galaxy Note20,Premium,No,502,483552.62,37.54,34.74,15.45,111.12,51.49,Latin America,Actual
+2019,Q3,Galaxy Note10,Premium,No,9244,9184824,34.12,20.23,8.64,82.3,47.55,asia-pacific,Actual
+2021,Q1,Galaxy S21,Flagship,No,10849,8302373.39,37.66,25.48,10.5,83.33,45.63,Latin America,Actual
+2025,Q4,Galaxy Z Fold6 5G,Premium Foldable,Yes,1401,2395089.41,40.19,62.06,26.07,179.01,64.69,Middle East & Africa,Actual
+2020,Q4,Galaxy S20,Flagship,No,20840,17970116.67,35.09,,17,120.65,55.08,Asia-Pacific,Actual
+2022,Q2,Galaxy A52 5G,Mid,yes,10093,4344336.89,35.53,49.66,28.28,173.8,,Asia-Pacific,Actual
+2019,Q4,Galaxy Note10,Premium,No,13211,13369667.32,38.6,12.06,4.2,54.8,35.38,Middle East & Africa,Actual
+2022,Q1,Galaxy Z Flip3 5G,Premium Foldable,Yes,12026,18949353.64,36.15,48.72,24.69,165.38,63.33,Asia-Pacific,Actual
+2020,Q4,Galaxy Z Fold2 5G,Premium Foldable,yes,8600,"$14,903,964.75",27.66,37.45,14.68,126.14,59.15,north america,Actual
+2023,q2,Galaxy Z Fold3 5G,Premium Foldable,Yes,300,493685.26,39.24,48.3,20.42,147.28,57.38,Latin America,Actual
+2021,Q1,Galaxy A32 5G,Budget,Yes,20598,4406521.09,29.93,33.92,13.28,109.72,52.58,Europe,Actual
+2021,Q4,Galaxy A52 5G,Mid,Yes,29474,13242944.08,29.85,39.27,,136.58,58.29,Europe,Actual
+2022,Q3,Galaxy Z Flip3 5G,Premium Foldable,Yes,6110,10773518.59,,60.23,26.19,181.43,69.61,North America,Actual
+2023,q4,Galaxy A73 5G,Mid,Yes,3792,1623615.15,39.98,43.66,17.92,138.65,53.64,Middle East & Africa,Actual
+2023,Q3,Galaxy A14 5G,Budget,yes,57909,14057234.27,36.94,48.24,20.6,146.25,60.03,latin america,Actual
+2023,Q2,Galaxy A14 5G,Budget,yes,46345,10154668.55,35.92,63.81,33.77,203.14,72.33,Asia-Pacific,Actual
+2020,Q3,Galaxy S10,Mid,No,1244,527350.93,37.61,21.85,8.48,82.43,42.15,Latin America,Actual
+2019,Q2,Galaxy S10,Mid,No,27462,11161998.15,37.37,9.08,2.5,40.28,34.56,Middle East & Africa,Actual
+2026,q2,Galaxy Z Fold6 5G,Premium Foldable,Yes,300,474069.59,40.11,73.65,33.31,213.16,73.33,Latin America,Actual
+2021,q3,Galaxy Note20,Premium,No,7023,6772806.92,36.26,60.42,22.98,141.57,61.64,Asia-Pacific,Actual
+2022,Q4,Galaxy A52 5G,Mid,Yes,1381,575828.81,37.04,58.47,30.05,187.01,68.12,Asia-Pacific,Actual
+2021,Q4,Galaxy Z Flip3 5G,Premium Foldable,yes,9849,17255258.75,35.41,43.97,24.26,157.77,62.47,Asia-Pacific,Actual
+2024,Q2,Galaxy A15 5G,Budget,yes,22182,4917736.76,29.4,77.16,36.92,,78.99,north america,Actual
+2024,Q4,Galaxy A15 5G,Budget,Yes,47441,10528964.84,38.07,78.85,43.63,256.39,83.84,asia-pacific,Actual
+2022,q2,Galaxy A52 5G,Mid,Yes,10477,4319019.44,30.36,46.17,20.99,153.31,61.11,europe,Actual
+2025,Q4,Galaxy A16 5G,Budget,Yes,58516,13105496.58,39.81,62.77,25.19,180.26,64.51,middle east & africa,Actual
+2025,Q3,Galaxy S24 5G,Flagship,yes,2774,2407381.19,39.59,67.79,30.41,191.88,69.98,Latin America,Actual
+2024,q3,Galaxy S23 5G,Flagship,yes,2823,2636210.68,40.5,52.37,20.76,153.59,56.82,MIDDLE EAST & AFRICA,Actual
+2023,Q2,Galaxy A14 5G,Budget,Yes,18354,,28.73,64.63,31.79,202.15,,NORTH AMERICA,Actual
+2021,Q2,Galaxy S21,Flagship,No,24981,21375629.38,30.63,35.57,15.72,123.68,57.82,EUROPE,Actual
+2026,Q3,Galaxy S26 5G,Flagship,Yes,7889,6637433.04,40.04,70.17,27.83,198.11,69.4,MIDDLE EAST & AFRICA,Forecast
+2026,Q1,Galaxy Z Fold6 5G,Premium Foldable,Yes,610,"$998,945.36",39.27,64.6,26.13,187.8,65.33,Middle East & Africa,Actual
+2019,Q3,Galaxy Note10,Premium,no,12849,12477425.2,28.47,26.64,7.96,84.55,51.28,North America,Actual
+2021,Q2,Galaxy Note20,Premium,no,15994,15890447.88,28.34,,18.45,141.76,63.33,North America,Actual
+2019,Q1,Galaxy S10,Mid,No,15227,6864006.11,27.97,,2.46,55.94,40.99,Europe,Actual
+2023,Q4,Galaxy A14 5G,Budget,Yes,50113,9817680.99,38.9,51.85,22.54,150.1,59.59,Latin America,Actual
+2023,Q2,Galaxy A14 5G,Budget,Yes,26673,5716893.38,31.53,55.84,26.76,181.42,64.9,Europe,Actual
+2022,Q2,Galaxy Z Flip3 5G,,Yes,3295,5572185.35,37.81,37.52,15.13,119.67,53.18,latin america,Actual
+2022,Q4,Galaxy A52 5G,Mid,Yes,1337,547736.33,38.56,33.88,15.24,122.9,50.18,middle east & africa,Actual
+2025,q1,Galaxy Z Flip5 5G,Premium Foldable,Yes,1421,2457228.93,38.95,84.87,45.64,259.17,83.05,Asia-Pacific,Actual
+2022,Q2,Galaxy A73 5G,Mid,Yes,17288,6710153.12,39,33.64,12.36,105.23,47.55,Middle East & Africa,Actual
+2022,Q4,Galaxy A73 5G,Mid,Yes,27845,12584300.79,26.71,60.28,28.47,193.62,69.37,NORTH AMERICA,Actual
+2020,Q3,Galaxy Note20,Premium,No,13284,,28.13,35.93,12.37,118.63,58.43,north america,Actual
+2021,Q3,Galaxy A32 5G,Budget,Yes,58998,13314393.2,37.35,28.09,12.33,102.21,48.88,Latin America,Actual
+2021,Q2,Galaxy S21,Flagship,No,14160,12341709.18,37.63,29.55,10.6,91.64,47.66,latin america,Actual
+2026,Q1,Galaxy S26 5G,Flagship,yes,,7669949.51,40.78,69.7,31.95,206.33,72.01,Latin America,Actual
+2025,Q3,Galaxy Z Fold6 5G,Premium Foldable,yes,4928,7883868.91,31.95,79.45,39.97,248.55,82.41,Europe,Actual
+2024,Q1,Galaxy A14 5G,Budget,yes,17065,3524744.26,28.62,73.02,36.8,236.37,76.93,North America,Actual
+2025,q2,Galaxy A16 5G,Budget,Yes,12684,2780764.46,29.15,85.6,43.74,265.86,85.82,North America,Actual
+2024,Q1,Galaxy A15 5G,Budget,Yes,14656,3381199.54,28.42,73.92,35.09,236.28,78.36,North America,Actual
+2026,Q1,Galaxy A16 5G,Budget,Yes,23005,5584474.94,32.37,86.97,42.05,261.83,,EUROPE,Actual
+2020,Q3,Galaxy S20,Flagship,No,27512,25084584.33,30.24,26.98,11.18,106.9,52.41,Europe,Actual
+2019,Q1,Galaxy S10,Mid,No,15466,5874313.36,27.46,19.44,3.72,68.61,50.54,NORTH AMERICA,Actual
+2020,q2,Galaxy S20,Flagship,No,16204,14242729.09,37.52,19.83,7.63,66.76,40.22,Latin America,Actual
+2026,Q4,Galaxy S26 5G,Flagship,Yes,1304,1217014.18,32,94.56,46.11,287.44,88.32,Europe,Forecast
+2026,Q2,Galaxy Z Fold6 5G,Premium Foldable,Yes,438,774275.68,29.06,97.45,49.96,297.21,90.34,North America,Actual
+2021,Q4,Galaxy Note20,Premium,No,2420,2562343.85,36.37,46.07,23.51,156.45,,Asia-Pacific,Actual
+2021,Q2,Galaxy S21,Flagship,No,19660,16779372.52,38.15,22.32,9.1,91.98,43.19,middle east & africa,Actual
+2025,Q4,Galaxy Z Fold6 5G,Premium Foldable,Yes,2942,4785103.35,32.12,82.82,41.05,257.5,83,Europe,Actual
+2022,q1,Galaxy S22 5G,Flagship,Yes,17547,15400820.9,29.83,42.98,20.34,138.38,59.4,Europe,Actual
+2022,Q1,Galaxy A52 5G,Mid,Yes,19066,8838153.66,38.98,,11.16,103.24,44.42,Middle East & Africa,Actual
+2025,Q3,Galaxy S25 5G,Flagship,yes,21867,18159668.9,39.57,60.43,25.32,171.43,64.3,Middle East & Africa,Actual
+2019,Q1,Galaxy S10,Mid,No,18283,8285187.71,34.3,14.83,4.86,64.57,45.65,Asia-Pacific,Actual
+2025,Q2,Galaxy Z Flip5 5G,Premium Foldable,Yes,368,668383.75,29.53,88.42,44.19,271.09,84.39,North America,Actual
+2024,Q1,Galaxy Z Flip5 5G,Premium Foldable,yes,10245,17171640.01,37.11,72.61,39.28,226.48,75.96,Asia-Pacific,Actual
+2023,Q3,Galaxy A14 5G,Budget,Yes,49290,11018913.55,37.59,66.45,35.3,213.15,73.85,Asia-Pacific,Actual
+2026,Q2,Galaxy S25 5G,Flagship,yes,6387,5627378.29,38.7,74.17,32.66,214.04,,Latin America,Actual
+2022,Q3,Galaxy S22 5G,Flagship,Yes,18773,14731889.94,37.94,39.8,17.09,125.01,53.93,LATIN AMERICA,Actual
+2023,Q4,Galaxy S22 5G,Flagship,yes,1165,915157.24,36.86,72.38,37.2,228.16,77.03,ASIA-PACIFIC,Actual
+2025,Q1,Galaxy Z Flip5 5G,Premium Foldable,yes,1417,2426994.88,29.68,83.38,43.32,264.01,83.77,NORTH AMERICA,Actual
+2020,Q1,Galaxy S10,Mid,No,14766,5818158.9,34.78,28.17,11.96,94.55,49.79,ASIA-PACIFIC,Actual
+2021,Q1,Galaxy S21,Flagship,No,18301,"$15,998,400.77",27.75,44.7,17.81,138.92,60.4,North America,Actual
+2021,Q4,Galaxy Z Fold3 5G,Premium Foldable,yes,9910,16855948.64,36.42,46.33,23.46,155.58,61.74,ASIA-PACIFIC,Actual
+2022,Q2,Galaxy S22 5G,Flagship,Yes,17982,15707513.95,39.79,32.51,13.23,103.22,48.45,Middle East & Africa,Actual
+2024,Q2,Galaxy Z Flip5 5G,Premium Foldable,Yes,9333,15606799.55,36.28,75.44,39.99,237.31,78.48,Asia-Pacific,Actual
+2022,Q1,Galaxy Note20,Premium,no,1063,1037282.48,28.53,52.67,22.94,166.38,68.16,North America,Actual
+2024,Q2,Galaxy A14 5G,Budget,Yes,19961,4491940.84,,50.61,20.12,149.48,57.47,Middle East & Africa,Actual
+2023,Q4,Galaxy A14 5G,Budget,Yes,26343,5786105.95,30.88,60.76,31.11,198.54,68.93,EUROPE,Actual
+2021,Q1,Galaxy Note20,Premium,No,22374,21205434.45,29.58,31.46,13.92,118.48,52.71,Europe,Actual
+2024,q2,Galaxy A15 5G,Budget,Yes,44097,10067436.22,38.32,57.38,25.01,164.79,64,latin america,Actual
+2022,Q2,Galaxy A73 5G,Mid,Yes,15876,7242926.96,36.76,38.82,18.16,119.52,52.12,Latin America,Actual
+2025,Q4,Galaxy S24 5G,Flagship,Yes,821,730279.44,40.25,62.63,24.1,184.37,64.89,Middle East & Africa,Actual
+2024,Q3,Galaxy A15 5G,Budget,Yes,33572,7499361.68,31.44,70.06,34.15,219.03,75.23,EUROPE,Actual
+2024,Q3,Galaxy S24 5G,Flagship,yes,29761,25113568.53,29.38,,38.78,247.72,,north america,Actual
+2025,Q3,Galaxy A15 5G,Budget,Yes,3036,652603.3,29.25,91.26,45.03,279.19,86.4,North America,Actual
+2022,Q4,Galaxy Z Flip3 5G,Premium Foldable,yes,3297,6011179.58,29.03,59.96,27.74,190.8,70.53,North America,Actual
+2021,Q2,Galaxy A52 5G,Mid,Yes,28481,12926290.77,37.88,29.31,11.11,96.69,45.12,Latin America,Actual
+2025,Q1,Galaxy Z Fold6 5G,Premium Foldable,Yes,6329,10867864,30.99,70.9,35.39,231.34,78.52,Europe,Actual
+2024,Q1,Galaxy S23 5G,Flagship,Yes,13077,11728954.67,40.47,50.78,18.07,142.29,56.2,Middle East & Africa,Actual
+2021,Q4,Galaxy Z Fold3 5G,Premium Foldable,Yes,6614,11749986.19,30.35,39.36,19.07,132.93,57.15,Europe,Actual
+2023,Q4,Galaxy Z Flip5 5G,Premium Foldable,Yes,2968,4705718.62,37.93,53.26,23,152.34,60.36,LATIN AMERICA,Actual
+2023,Q3,Galaxy A14 5G,Budget,Yes,57460,13965898.84,38.52,42.54,17.14,139.57,55.1,Middle East & Africa,Actual
+2023,Q2,Galaxy S22 5G,Flagship,Yes,5853,4872315.76,37.9,45.54,20.56,142.54,56.64,latin america,Actual
+2022,q4,Galaxy A73 5G,Mid,Yes,33770,13778923.92,37.83,41.87,17.84,133.67,53.44,Latin America,Actual
+2025,Q4,Galaxy S24 5G,Flagship,Yes,971,862163.4,37.61,95.02,50.85,293.86,87.85,Asia-Pacific,Actual
+2025,q1,Galaxy Z Fold6 5G,Premium Foldable,Yes,11456,18271826.25,37.57,86.67,46.01,266.32,82.51,Asia-Pacific,Actual
+2024,Q3,Galaxy S23 5G,Flagship,Yes,4033,3337912.91,36.83,76.78,41.97,242.93,78.41,Asia-Pacific,Actual
+2022,Q4,Galaxy A73 5G,Mid,yes,27640,11130219,29.93,53.1,24.68,166.79,65.43,Europe,Actual
+2020,Q3,Galaxy S20,Flagship,No,22076,18563829.25,38.08,18.56,5.8,72.65,39.43,Middle East & Africa,Actual
+2024,Q3,Galaxy Z Fold6 5G,Premium Foldable,yes,5884,9220450.92,38.36,79.81,42.35,244.1,81.07,Asia-Pacific,Actual
+2026,Q1,Galaxy Z Fold6 5G,Premium Foldable,Yes,1377,"$2,274,251.76",29.65,,48.22,294.05,90,North America,Actual
+2026,Q1,Galaxy S25 5G,Flagship,Yes,12244,10788742.27,41,63.78,25.12,187.64,65.18,middle east & africa,Actual
+2024,Q4,Galaxy Z Fold6 5G,Premium Foldable,Yes,3793,,39.76,54.37,20,164.94,59.29,Middle East & Africa,Actual
+2021,Q2,Galaxy S21,Flagship,No,27869,23313885.55,27.36,43.42,18.77,145.27,,North America,Actual
+2021,q2,Galaxy A52 5G,Mid,Yes,21780,9639744.15,27.8,45.11,18.21,139.74,62.81,North America,Actual
+2025,Q3,Galaxy A15 5G,Budget,Yes,7747,1726975.08,38.27,65.9,30.33,195.36,69.21,Latin America,Actual
+2022,Q4,Galaxy A32 5G,Budget,Yes,2804,,40.05,36.39,14.8,120.43,50.24,MIDDLE EAST & AFRICA,Actual
+2025,q1,Galaxy Z Fold6 5G,Premium Foldable,Yes,4577,7817670.75,39.19,56.12,22.63,168.88,60.55,middle east & africa,Actual
