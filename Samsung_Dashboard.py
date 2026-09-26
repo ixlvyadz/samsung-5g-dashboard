@@ -234,6 +234,39 @@ SAMSUNG_THEME_CSS = """
         padding-top: 1.5rem;
     }
     
+    /* SAMSUNG OFFICIAL SIDEBAR LOGO */
+    .samsung-sidebar-logo-container {
+        padding: 0.25rem 0 0.65rem 0;
+        display: flex;
+        align-items: center;
+    }
+    
+    .samsung-sidebar-logo {
+        width: 112px;
+        height: auto;
+        max-width: 100%;
+        display: block;
+        object-fit: contain;
+        transition: opacity 0.2s ease, filter 0.2s ease;
+    }
+    
+    .samsung-sidebar-logo:hover {
+        opacity: 0.85;
+    }
+    
+    /* Dark Mode Filter: Inverts black logo to clean white in dark themes */
+    @media (prefers-color-scheme: dark) {
+        .samsung-sidebar-logo {
+            filter: invert(1) brightness(1.2) !important;
+        }
+    }
+    
+    [data-theme="dark"] .samsung-sidebar-logo,
+    .stApp[data-theme="dark"] .samsung-sidebar-logo,
+    section[data-testid="stSidebar"][data-theme="dark"] .samsung-sidebar-logo {
+        filter: invert(1) brightness(1.2) !important;
+    }
+    
     /* Accordion Menu Style for Sidebar Expanders with Chevron Indicator */
     .stSidebar [data-testid="stExpander"],
     [data-testid="stExpander"] {
@@ -1284,6 +1317,32 @@ PLOTLY_LAYOUT_DEFAULTS = dict(
 )
 
 # ==============================================================================
+# LOGO ASSET CONFIGURATION & DARK-MODE RESOLUTION
+# ==============================================================================
+LOGO_PATH = r"C:\Users\Baberose\Downloads\Samsung_lettermark\Black\Samsung_Orig_Wordmark_BLACK_RGB.png"
+
+@st.cache_data(show_spinner=False)
+def get_samsung_logo_b64(path_to_check):
+    """
+    Loads and base64-encodes the official Samsung lettermark logo image.
+    Resolves between local Downloads directory, repository assets folder, or relative path.
+    """
+    import base64
+    script_dir = os.path.dirname(os.path.abspath(__file__)) if "__file__" in globals() else os.getcwd()
+    candidates = [
+        path_to_check,
+        os.path.join(script_dir, "assets", os.path.basename(path_to_check)),
+        os.path.join(script_dir, "assets", "samsung_logo_black.png"),
+        os.path.join(script_dir, os.path.basename(path_to_check)),
+        os.path.join(script_dir, "samsung_logo_black.png"),
+    ]
+    for p in candidates:
+        if p and os.path.exists(p):
+            with open(p, "rb") as img_file:
+                return base64.b64encode(img_file.read()).decode("utf-8")
+    return None
+
+# ==============================================================================
 # 2. DATA PREPARATION PIPELINE (PANDAS & NUMPY)
 # ==============================================================================
 def resolve_dataset_path():
@@ -1602,12 +1661,22 @@ except Exception as e:
 
 # --- SIDEBAR: REDESIGNED IN SAMSUNG OFFICIAL MENU STYLE ---
 with st.sidebar:
-    st.markdown("""
-    <div style="padding: 0.35rem 0 0.5rem 0;">
-        <span style="font-family: 'Outfit', -apple-system, sans-serif; font-size: 1.6rem; font-weight: 900; letter-spacing: 0.12em; color: #1428A0; display: inline-block;">SAMSUNG</span>
-    </div>
-    """, unsafe_allow_html=True)
-    st.markdown("<div style='height: 12px;'></div>", unsafe_allow_html=True)
+    logo_b64 = get_samsung_logo_b64(LOGO_PATH)
+    if logo_b64:
+        st.markdown(f"""
+        <div class="samsung-sidebar-logo-container">
+            <a href="#decoding-demand-samsung-5g-sales-market-adoption" title="Samsung Electronics - Reset / Back to Top" style="display: inline-block; text-decoration: none;">
+                <img src="data:image/png;base64,{logo_b64}" class="samsung-sidebar-logo" alt="Samsung" />
+            </a>
+        </div>
+        """, unsafe_allow_html=True)
+    else:
+        st.markdown("""
+        <div style="padding: 0.35rem 0 0.5rem 0;">
+            <span style="font-family: 'Outfit', -apple-system, sans-serif; font-size: 1.6rem; font-weight: 900; letter-spacing: 0.12em; color: #1428A0; display: inline-block;">SAMSUNG</span>
+        </div>
+        """, unsafe_allow_html=True)
+    st.markdown("<div style='height: 8px;'></div>", unsafe_allow_html=True)
     st.markdown("<div style='font-size: 1.15rem; font-weight: 800; color: #000000; letter-spacing: -0.02em;'>Filters</div>", unsafe_allow_html=True)
     st.caption("Customize dataset cohort across all analytical views.")
     
