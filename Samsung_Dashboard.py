@@ -1891,9 +1891,9 @@ st.markdown(f"""
 # ==============================================================================
 # 6. EXECUTIVE KPI SUMMARY COMPONENT (WITH DIRECTIONAL TREND INDICATORS)
 # ==============================================================================
-# Scope headline KPI calculations strictly to Actual confirmed data (excluding Forecast projections)
-# so the executive scorecard reflects only real, confirmed sales while preserving filtered_df globally.
-kpi_df = filtered_df[filtered_df['Data Type'] == 'Actual'] if (filtered_df['Data Type'] == 'Actual').any() else filtered_df
+# Fixed Headline Executive KPIs: Derived strictly from df_clean (Actual confirmed data, All Products, All Regions, All Years)
+# Completely decoupled and fixed against all active sidebar filters, preserving portfolio-wide headline totals.
+kpi_df = df_clean[df_clean['Data Type'] == 'Actual'].copy()
 
 total_units = kpi_df['Units Sold'].sum()
 total_revenue = kpi_df['Revenue ($)'].sum()
