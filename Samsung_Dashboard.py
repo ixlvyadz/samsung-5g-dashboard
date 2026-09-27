@@ -1376,23 +1376,28 @@ PLOTLY_LAYOUT_DEFAULTS = dict(
 # ==============================================================================
 # LOGO ASSET CONFIGURATION & DARK-MODE RESOLUTION
 # ==============================================================================
-LOGO_PATH = r"C:\Users\Baberose\Downloads\Samsung_lettermark\Black\Samsung_Orig_Wordmark_BLACK_RGB.png"
+LOGO_PATH = os.path.join("assets", "samsung_logo_black.png")
 
 @st.cache_data(show_spinner=False)
-def get_samsung_logo_b64(path_to_check):
+def get_samsung_logo_b64(path_to_check=None):
     """
     Loads and base64-encodes the official Samsung lettermark logo image.
-    Resolves between local Downloads directory, repository assets folder, or relative path.
+    Resolves relative to script directory or current working directory within repository assets.
     """
     import base64
     script_dir = os.path.dirname(os.path.abspath(__file__)) if "__file__" in globals() else os.getcwd()
     candidates = [
-        path_to_check,
-        os.path.join(script_dir, "assets", os.path.basename(path_to_check)),
         os.path.join(script_dir, "assets", "samsung_logo_black.png"),
-        os.path.join(script_dir, os.path.basename(path_to_check)),
+        os.path.join(os.getcwd(), "assets", "samsung_logo_black.png"),
         os.path.join(script_dir, "samsung_logo_black.png"),
+        os.path.join(os.getcwd(), "samsung_logo_black.png"),
     ]
+    if path_to_check:
+        if os.path.isabs(path_to_check):
+            candidates.insert(0, path_to_check)
+        else:
+            candidates.insert(0, os.path.join(script_dir, path_to_check))
+            candidates.insert(1, os.path.join(os.getcwd(), path_to_check))
     for p in candidates:
         if p and os.path.exists(p):
             with open(p, "rb") as img_file:
@@ -2713,8 +2718,6 @@ def resolve_model_images_dir():
         os.path.join(os.getcwd(), "assets", "models"),
         os.path.join(script_dir, "samsung_model_images"),
         os.path.join(os.getcwd(), "samsung_model_images"),
-        r"C:\Users\Baberose\assets\models",
-        r"C:\Users\Baberose\Downloads\samsung_model_images",
     ]
     for p in candidate_paths:
         if p and os.path.isdir(p):
