@@ -17,6 +17,9 @@ import plotly.express as px
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 import streamlit as st
+import io
+import base64
+from PIL import Image
 from scipy import stats
 import statsmodels.api as sm
 from statsmodels.tsa.holtwinters import ExponentialSmoothing
@@ -1183,6 +1186,64 @@ SAMSUNG_THEME_CSS = """
             height: 38px !important;
             padding: 0 12px !important;
             font-size: 0.8rem !important;
+        }
+    }
+
+    /* Model Deep-Dive Showcase Card Layout & Responsiveness */
+    .model-card-container {
+        background: #FFFFFF;
+        border: 1px solid #E2E8F0;
+        border-radius: 16px;
+        padding: 1.4rem 1.6rem;
+        margin-bottom: 1.5rem;
+        box-shadow: 0 4px 16px -2px rgba(20, 40, 160, 0.05);
+    }
+    .model-card-main-layout {
+        display: flex;
+        gap: 1.5rem;
+        align-items: center;
+    }
+    .model-image-container {
+        width: 130px;
+        min-width: 130px;
+        height: 130px;
+        background: #F8FAFC;
+        border: 1px solid #E2E8F0;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 6px;
+        box-sizing: border-box;
+    }
+    .model-image-container img {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+        filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.06));
+    }
+    .model-metrics-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1rem;
+        margin-top: 1rem;
+        padding-top: 0.9rem;
+        border-top: 1px solid #F1F5F9;
+    }
+    @media (max-width: 768px) {
+        .model-card-main-layout {
+            flex-direction: column !important;
+            align-items: center !important;
+            text-align: center;
+        }
+        .model-image-container {
+            width: 110px !important;
+            min-width: 110px !important;
+            height: 110px !important;
+            margin: 0 auto 0.5rem auto !important;
+        }
+        .model-metrics-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
         }
     }
 </style>
@@ -2617,6 +2678,95 @@ with tab_5g_comp:
     st.caption("Note: Blended ASP is volume-weighted (Total Revenue ÷ Total Units Sold), reflecting real-world portfolio revenue realization.")
 
 
+MODEL_IMAGE_MAP = {
+    "Galaxy A14 5G": "a14.webp",
+    "Galaxy A15 5G": "a15.avif",
+    "Galaxy A16 5G": "a16.avif",
+    "Galaxy A32 5G": "a32.jpg",
+    "Galaxy A52 5G": "a52.jpg",
+    "Galaxy A73 5G": "a73.jpg",
+    "Galaxy Note10": "note10.jpg",
+    "Galaxy Note20": "note20.avif",
+    "Galaxy S10": "s10.jpg",
+    "Galaxy S20": "s20.png",
+    "Galaxy S21": "s21.webp",
+    "Galaxy S22 5G": "s22.avif",
+    "Galaxy S23 5G": "s23.avif",
+    "Galaxy S24 5G": "s24.webp",
+    "Galaxy S25 5G": "s25.avif",
+    "Galaxy S26 5G": None,  # 2026 Forecast Prototype (Clean SVG Placeholder)
+    "Galaxy Z Flip3 5G": "zflip3.avif",
+    "Galaxy Z Flip5 5G": "zflip5.webp",
+    "Galaxy Z Fold2 5G": "zfold2.avif",
+    "Galaxy Z Fold3 5G": "zfold3.avif",
+    "Galaxy Z Fold6 5G": "zfold6.webp",
+}
+
+def resolve_model_images_dir():
+    """
+    Locates the assets/models directory using relative paths for both
+    local execution and Streamlit Community Cloud deployments.
+    """
+    script_dir = os.path.dirname(os.path.abspath(__file__)) if "__file__" in globals() else os.getcwd()
+    candidate_paths = [
+        os.path.join(script_dir, "assets", "models"),
+        os.path.join(os.getcwd(), "assets", "models"),
+        os.path.join(script_dir, "samsung_model_images"),
+        os.path.join(os.getcwd(), "samsung_model_images"),
+        r"C:\Users\Baberose\assets\models",
+        r"C:\Users\Baberose\Downloads\samsung_model_images",
+    ]
+    for p in candidate_paths:
+        if p and os.path.isdir(p):
+            return p
+    return None
+
+@st.cache_data(show_spinner=False)
+def get_model_showcase_html(model_name: str) -> str:
+    """
+    Renders an optimized, high-fidelity device showcase component for the Model Deep-Dive card.
+    Encodes local image files to base64 PNG data URIs for 100% self-contained, CORS-free rendering.
+    If the model is unreleased (Galaxy S26 5G) or image is unavailable, renders a clean prototype placeholder badge.
+    """
+    filename = MODEL_IMAGE_MAP.get(model_name)
+    assets_dir = resolve_model_images_dir()
+    
+    # 1. Unreleased / Forecast Prototype Placeholder
+    if not filename or not assets_dir:
+        return """<div class="model-image-container">
+    <div style="width: 44px; height: 66px; border: 2px dashed #94A3B8; border-radius: 8px; background: #F1F5F9; display: flex; flex-direction: column; align-items: center; justify-content: center; margin-bottom: 6px; position: relative;">
+        <div style="width: 14px; height: 3px; background: #CBD5E1; border-radius: 2px; position: absolute; top: 4px;"></div>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1428A0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+        </svg>
+        <div style="width: 18px; height: 3px; background: #CBD5E1; border-radius: 2px; position: absolute; bottom: 4px;"></div>
+    </div>
+    <div style="font-size: 0.68rem; font-weight: 800; color: #1E40AF; letter-spacing: 0.04em; line-height: 1.1;">2026 FORECAST</div>
+    <div style="font-size: 0.60rem; font-weight: 700; color: #64748B; letter-spacing: 0.02em; line-height: 1.1;">PROTOTYPE</div>
+</div>"""
+        
+    img_path = os.path.join(assets_dir, filename)
+    if not os.path.isfile(img_path):
+        return """<div class="model-image-container">
+    <div style="font-size: 0.72rem; font-weight: 700; color: #94A3B8; text-align: center;">DEVICE PREVIEW<br/>UNAVAILABLE</div>
+</div>"""
+
+    try:
+        with Image.open(img_path) as im:
+            im = im.convert("RGBA")
+            im.thumbnail((320, 320))
+            buf = io.BytesIO()
+            im.save(buf, format="PNG", optimize=True)
+            b64_data = base64.b64encode(buf.getvalue()).decode()
+            return f"""<div class="model-image-container">
+    <img src="data:image/png;base64,{b64_data}" alt="{model_name}" />
+</div>"""
+    except Exception as e:
+        return """<div class="model-image-container">
+    <span style="font-size: 0.75rem; color: #94A3B8;">Preview Error</span>
+</div>"""
+
+
 # ==============================================================================
 # TAB 3: PRODUCT PORTFOLIO & TIERS (RESEARCH OBJECTIVE 2)
 # ==============================================================================
@@ -2661,12 +2811,19 @@ with tab_products:
     model_row = prod_summary[prod_summary['Product Model'] == selected_drill_model].iloc[0]
     model_df_filtered = filtered_df[filtered_df['Product Model'] == selected_drill_model]
     
-    model_card_html = f"""<div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 16px; padding: 1.4rem 1.6rem; margin-bottom: 1.5rem; box-shadow: 0 4px 16px -2px rgba(20, 40, 160, 0.05);">
-<div style="display: flex; justify-content: space-between; align-items: center;">
+    model_img_html = get_model_showcase_html(selected_drill_model)
+    badge_label = "5G ENABLED" if model_row['5G Capability'] == 'Yes' else "NON-5G LEGACY"
+    badge_color = "#1428A0" if model_row['5G Capability'] == 'Yes' else "#64748B"
+    
+    model_card_html = f"""<div class="model-card-container">
+<div class="model-card-main-layout">
+{model_img_html}
+<div style="flex: 1; min-width: 0;">
+<div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
 <div>
 <span class="status-pill status-strong" style="margin-bottom: 0.4rem;">{model_row['Price Tier']}</span>
-<span style="margin-left: 0.5rem; font-size: 0.75rem; font-weight: 700; color: {'#1428A0' if model_row['5G Capability'] == 'Yes' else '#64748B'};">
-{('5G ENABLED' if model_row['5G Capability'] == 'Yes' else 'NON-5G LEGACY')}
+<span style="margin-left: 0.5rem; font-size: 0.75rem; font-weight: 700; color: {badge_color};">
+{badge_label}
 </span>
 <h3 style="margin: 0.25rem 0; font-size: 1.45rem; color: #0F172A; font-weight: 800;">{selected_drill_model}</h3>
 </div>
@@ -2675,7 +2832,7 @@ with tab_products:
 <div style="font-size: 0.8rem; color: #64748B;">Total Units Sold</div>
 </div>
 </div>
-<div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: 1rem; padding-top: 0.9rem; border-top: 1px solid #F1F5F9;">
+<div class="model-metrics-grid">
 <div>
 <span style="font-size: 0.75rem; color: #64748B; font-weight: 600; text-transform: uppercase;">Gross Revenue</span>
 <div style="font-size: 1.1rem; font-weight: 800; color: #0F172A;">{fmt_rev(model_row['Total_Revenue'])}</div>
@@ -2691,6 +2848,8 @@ with tab_products:
 <div>
 <span style="font-size: 0.75rem; color: #64748B; font-weight: 600; text-transform: uppercase;">Active Lifecycle</span>
 <div style="font-size: 1.1rem; font-weight: 800; color: #0F172A;">{model_row['Quarters_Count']} Quarters</div>
+</div>
+</div>
 </div>
 </div>
 </div>"""
