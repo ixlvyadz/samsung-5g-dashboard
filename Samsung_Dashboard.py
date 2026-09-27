@@ -2733,7 +2733,7 @@ def get_model_showcase_html(model_name: str) -> str:
     
     # 1. Unreleased / Forecast Prototype Placeholder
     if not filename or not assets_dir:
-        return """<div class="model-image-container">
+        return """<div class="model-image-container" style="flex-direction: column !important; justify-content: center !important;">
     <div style="width: 44px; height: 66px; border: 2px dashed #94A3B8; border-radius: 8px; background: #F1F5F9; display: flex; flex-direction: column; align-items: center; justify-content: center; margin-bottom: 6px; position: relative;">
         <div style="width: 14px; height: 3px; background: #CBD5E1; border-radius: 2px; position: absolute; top: 4px;"></div>
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1428A0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -2741,13 +2741,13 @@ def get_model_showcase_html(model_name: str) -> str:
         </svg>
         <div style="width: 18px; height: 3px; background: #CBD5E1; border-radius: 2px; position: absolute; bottom: 4px;"></div>
     </div>
-    <div style="font-size: 0.68rem; font-weight: 800; color: #1E40AF; letter-spacing: 0.04em; line-height: 1.1;">2026 FORECAST</div>
-    <div style="font-size: 0.60rem; font-weight: 700; color: #64748B; letter-spacing: 0.02em; line-height: 1.1;">PROTOTYPE</div>
+    <div style="font-size: 0.68rem; font-weight: 800; color: #1E40AF; letter-spacing: 0.04em; line-height: 1.1; text-align: center;">2026 FORECAST</div>
+    <div style="font-size: 0.60rem; font-weight: 700; color: #64748B; letter-spacing: 0.02em; line-height: 1.1; text-align: center;">PROTOTYPE</div>
 </div>"""
         
     img_path = os.path.join(assets_dir, filename)
     if not os.path.isfile(img_path):
-        return """<div class="model-image-container">
+        return """<div class="model-image-container" style="flex-direction: column !important; justify-content: center !important;">
     <div style="font-size: 0.72rem; font-weight: 700; color: #94A3B8; text-align: center;">DEVICE PREVIEW<br/>UNAVAILABLE</div>
 </div>"""
 
