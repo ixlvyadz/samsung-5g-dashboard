@@ -2846,12 +2846,6 @@ with tab_products:
             options=prod_summary['Product Model'].tolist(),
             index=0
         )
-    with col_prod_ctrl2:
-        sort_by_metric = st.selectbox(
-            "Sort Ranking Visualizations By:",
-            options=["Units Sold", "Total Revenue", "Derived ASP", "Avg Market Share"],
-            index=0
-        )
         
     model_row = prod_summary[prod_summary['Product Model'] == selected_drill_model].iloc[0]
     model_df_filtered = filtered_df[filtered_df['Product Model'] == selected_drill_model]
@@ -2974,6 +2968,16 @@ with tab_products:
         st.plotly_chart(fig_m_time, use_container_width=True, config=PLOTLY_CONFIG)
         
     st.markdown("#### Portfolio Ranking & Tier Breakdown")
+    
+    col_sort_ctrl, col_sort_space = st.columns([1, 2])
+    with col_sort_ctrl:
+        sort_by_metric = st.selectbox(
+            "Sort Ranking Visualizations By:",
+            options=["Units Sold", "Total Revenue", "Derived ASP", "Avg Market Share"],
+            index=0,
+            key="tab3_sort_by_metric"
+        )
+        
     metric_map = {
         "Units Sold": "Units_Sold",
         "Total Revenue": "Total_Revenue",
