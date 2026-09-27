@@ -2699,7 +2699,7 @@ MODEL_IMAGE_MAP = {
     "Galaxy S23 5G": "s23.avif",
     "Galaxy S24 5G": "s24.webp",
     "Galaxy S25 5G": "s25.avif",
-    "Galaxy S26 5G": "s26_prototype.svg",  # 2026 Forecast Prototype (Clean SVG Vector)
+    "Galaxy S26 5G": "s26.webp",
     "Galaxy Z Flip3 5G": "zflip3.avif",
     "Galaxy Z Flip5 5G": "zflip5.webp",
     "Galaxy Z Fold2 5G": "zfold2.avif",
@@ -2745,7 +2745,7 @@ def get_model_showcase_html(model_name: str) -> str:
     <div style="font-size: 0.72rem; font-weight: 700; color: #94A3B8; text-align: center;">DEVICE PREVIEW<br/>UNAVAILABLE</div>
 </div>"""
 
-    # Vector SVG handler (e.g. S26 Forecast Prototype)
+    # Vector SVG fallback handler
     if filename.endswith(".svg"):
         try:
             with open(img_path, "r", encoding="utf-8") as f:
