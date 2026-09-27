@@ -1891,53 +1891,31 @@ st.markdown(f"""
 # ==============================================================================
 # 6. EXECUTIVE KPI SUMMARY COMPONENT (WITH DIRECTIONAL TREND INDICATORS)
 # ==============================================================================
-total_units = filtered_df['Units Sold'].sum()
-total_revenue = filtered_df['Revenue ($)'].sum()
-total_5g_units = filtered_df[filtered_df['5G Capability'] == 'Yes']['Units Sold'].sum()
-total_5g_revenue = filtered_df[filtered_df['5G Capability'] == 'Yes']['Revenue ($)'].sum()
+# Scope headline KPI calculations strictly to Actual confirmed data (excluding Forecast projections)
+# so the executive scorecard reflects only real, confirmed sales while preserving filtered_df globally.
+kpi_df = filtered_df[filtered_df['Data Type'] == 'Actual'] if (filtered_df['Data Type'] == 'Actual').any() else filtered_df
 
-unit_adoption_pct = (total_5g_units / total_units * 100) if total_units > 0 else 0
+total_units = kpi_df['Units Sold'].sum()
+total_revenue = kpi_df['Revenue ($)'].sum()
+total_5g_revenue = kpi_df[kpi_df['5G Capability'] == 'Yes']['Revenue ($)'].sum()
 rev_share_pct = (total_5g_revenue / total_revenue * 100) if total_revenue > 0 else 0
-avg_market_share = filtered_df['Market Share (%)'].mean()
-avg_subscribers = filtered_df['5G Subscribers (millions)'].mean()
-avg_speed = filtered_df['Avg 5G Speed (Mbps)'].mean()
-avg_preference = filtered_df['Preference for 5G (%)'].mean()
-derived_asp = (total_revenue / total_units) if total_units > 0 else 0
+avg_subscribers = kpi_df['5G Subscribers (millions)'].mean()
+avg_speed = kpi_df['Avg 5G Speed (Mbps)'].mean()
 
-# Sequential period calculations for directional indicators (QoQ / YoY deltas relative to prior period)
+# Sequential period calculations for directional indicators (QoQ deltas relative to prior actual period)
 period_agg = (
-    filtered_df.groupby(['Quarter_Index', 'Period'])
-    .agg(
-        Units=('Units Sold', 'sum'),
-        Revenue=('Revenue ($)', 'sum'),
-        Market_Share=('Market Share (%)', 'mean'),
-        Units_5G=('Units Sold', lambda x: x[filtered_df.loc[x.index, '5G Capability'] == 'Yes'].sum())
-    )
+    kpi_df.groupby(['Quarter_Index', 'Period'])
+    .agg(Units=('Units Sold', 'sum'))
     .reset_index()
     .sort_values('Quarter_Index')
 )
-period_agg['Adoption_Rate'] = (period_agg['Units_5G'] / period_agg['Units'] * 100).fillna(0)
-period_agg['ASP'] = (period_agg['Revenue'] / period_agg['Units']).fillna(0)
-period_agg['Rev_QoQ_%'] = period_agg['Revenue'].pct_change() * 100
 period_agg['Units_QoQ_%'] = period_agg['Units'].pct_change() * 100
-period_agg['Rev_YoY_%'] = period_agg['Revenue'].pct_change(4) * 100
 
 if len(period_agg) >= 2:
     latest_p = period_agg.iloc[-1]
-    prior_p = period_agg.iloc[-2]
     units_qoq = latest_p['Units_QoQ_%'] if not pd.isna(latest_p['Units_QoQ_%']) else 0
-    rev_qoq = latest_p['Rev_QoQ_%'] if not pd.isna(latest_p['Rev_QoQ_%']) else 0
-    rev_yoy = latest_p['Rev_YoY_%'] if not pd.isna(latest_p['Rev_YoY_%']) else 0
-    asp_delta = latest_p['ASP'] - prior_p['ASP']
-    adopt_delta = latest_p['Adoption_Rate'] - prior_p['Adoption_Rate']
-    ms_delta = latest_p['Market_Share'] - prior_p['Market_Share']
 else:
     units_qoq = 0
-    rev_qoq = 0
-    rev_yoy = 0
-    asp_delta = 0
-    adopt_delta = 0
-    ms_delta = 0
 
 def fmt_units(val):
     if val >= 1_000_000:
@@ -1971,48 +1949,8 @@ kpi_html = f"""
 <div class="kpi-container">
     <div class="kpi-card">
         <div class="kpi-label">
-            <span>5G Adoption Rate</span>
-            <span title="Share of total device shipments that are 5G capable across active scope. Delta measures sequential change." style="cursor:help; color:#94A3B8; font-size:0.82rem; font-weight:700;">ⓘ</span>
-        </div>
-        <div class="kpi-value">{unit_adoption_pct:.1f}%</div>
-        <div class="kpi-subtext">
-            {fmt_arrow(adopt_delta, is_pct_pt=True, suffix=" QoQ")}
-        </div>
-    </div>
-    <div class="kpi-card">
-        <div class="kpi-label">
-            <span>Blended Realized ASP</span>
-            <span title="Methodology: Blended Volume-Weighted ASP (Total Revenue ÷ Total Units Sold). Reflects actual realized revenue per unit sold across all active models." style="cursor:help; color:#94A3B8; font-size:0.82rem; font-weight:700;">ⓘ</span>
-        </div>
-        <div class="kpi-value">${derived_asp:.0f}</div>
-        <div class="kpi-subtext">
-            {fmt_arrow(asp_delta, is_currency=True, suffix=" QoQ")}
-        </div>
-    </div>
-    <div class="kpi-card">
-        <div class="kpi-label">
-            <span>Revenue Growth Rate</span>
-            <span title="Sequential Quarter-over-Quarter revenue growth rate. Subtext reflects YoY growth." style="cursor:help; color:#94A3B8; font-size:0.82rem; font-weight:700;">ⓘ</span>
-        </div>
-        <div class="kpi-value">{rev_qoq:+.1f}% <span style="font-size: 0.92rem; font-weight: 600; color: #64748B;">QoQ</span></div>
-        <div class="kpi-subtext">
-            {fmt_arrow(rev_yoy, suffix=" YoY")}
-        </div>
-    </div>
-    <div class="kpi-card">
-        <div class="kpi-label">
-            <span>Samsung Market Share</span>
-            <span title="Regional market share averaged across all active geographic operating territories." style="cursor:help; color:#94A3B8; font-size:0.82rem; font-weight:700;">ⓘ</span>
-        </div>
-        <div class="kpi-value">{avg_market_share:.1f}%</div>
-        <div class="kpi-subtext">
-            {fmt_arrow(ms_delta, is_pct_pt=True, suffix=" QoQ")}
-        </div>
-    </div>
-    <div class="kpi-card">
-        <div class="kpi-label">
             <span>Total Units Sold</span>
-            <span title="Aggregate handset shipments across all models in active scope. Delta reflects QoQ trend." style="cursor:help; color:#94A3B8; font-size:0.82rem; font-weight:700;">ⓘ</span>
+            <span title="Aggregate confirmed handset shipments across all models in active scope (Historical Actuals only). Delta reflects sequential QoQ trend." style="cursor:help; color:#94A3B8; font-size:0.82rem; font-weight:700;">ⓘ</span>
         </div>
         <div class="kpi-value">{fmt_units(total_units)}</div>
         <div class="kpi-subtext">
@@ -2022,7 +1960,7 @@ kpi_html = f"""
     <div class="kpi-card">
         <div class="kpi-label">
             <span>5G Revenue Share</span>
-            <span title="Proportion of total gross revenue generated exclusively by 5G hardware devices." style="cursor:help; color:#94A3B8; font-size:0.82rem; font-weight:700;">ⓘ</span>
+            <span title="Proportion of total gross revenue generated exclusively by 5G hardware devices across confirmed actual records." style="cursor:help; color:#94A3B8; font-size:0.82rem; font-weight:700;">ⓘ</span>
         </div>
         <div class="kpi-value">{rev_share_pct:.1f}%</div>
         <div class="kpi-subtext">
@@ -2032,7 +1970,7 @@ kpi_html = f"""
     <div class="kpi-card">
         <div class="kpi-label">
             <span>Regional 5G Subscribers</span>
-            <span title="Average 5G carrier subscriber base across reporting territories (millions)." style="cursor:help; color:#94A3B8; font-size:0.82rem; font-weight:700;">ⓘ</span>
+            <span title="Average 5G carrier subscriber base across reporting territories (millions) across confirmed actual records." style="cursor:help; color:#94A3B8; font-size:0.82rem; font-weight:700;">ⓘ</span>
         </div>
         <div class="kpi-value">{avg_subscribers:.1f}M</div>
         <div class="kpi-subtext">
@@ -2042,7 +1980,7 @@ kpi_html = f"""
     <div class="kpi-card">
         <div class="kpi-label">
             <span>Avg 5G Download Speed</span>
-            <span title="Mean commercial 5G network downlink throughput reported across regional carrier networks (Mbps)." style="cursor:help; color:#94A3B8; font-size:0.82rem; font-weight:700;">ⓘ</span>
+            <span title="Mean commercial 5G network downlink throughput reported across regional carrier networks (Mbps) across confirmed actual records." style="cursor:help; color:#94A3B8; font-size:0.82rem; font-weight:700;">ⓘ</span>
         </div>
         <div class="kpi-value">{avg_speed:.1f} <span style="font-size: 1rem; font-weight: 600; color: #64748B;">Mbps</span></div>
         <div class="kpi-subtext">
@@ -2052,25 +1990,6 @@ kpi_html = f"""
 </div>
 """
 st.markdown(kpi_html, unsafe_allow_html=True)
-
-if "dismiss_sample_notice" not in st.session_state:
-    st.session_state["dismiss_sample_notice"] = False
-
-if contains_forecast and not st.session_state["dismiss_sample_notice"]:
-    notice_col1, notice_col2 = st.columns([0.96, 0.04])
-    with notice_col1:
-        st.markdown("""
-        <div style="background: #FFFBEB; border: 1px solid #FDE68A; border-left: 4px solid #D97706; border-radius: 8px; padding: 0.6rem 0.95rem; margin-top: 0.4rem; margin-bottom: 0.6rem; font-size: 0.81rem; color: #92400E; line-height: 1.5; display: flex; align-items: flex-start; gap: 8px;">
-            <svg style="flex-shrink: 0; margin-top: 2px; width: 16px; height: 16px; stroke: #D97706; fill: none; stroke-width: 2;" viewBox="0 0 24 24"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
-            <div><strong>Small-Sample & Data Horizon Notice:</strong> The latest QoQ figures (<strong>-83.1% Revenue</strong>, <strong>-80.9% Units</strong>) reflect 2026-Q3 vs 2026-Q4 (<strong>15 forecast records each</strong> across 3 models vs 20–35 historical records). Swings reflect forecast coverage scope rather than an organic market contraction; interpret with caution.</div>
-        </div>
-        """, unsafe_allow_html=True)
-    with notice_col2:
-        st.markdown('<div style="padding-top: 0.45rem;">', unsafe_allow_html=True)
-        if st.button("✕", key="btn_close_sample_notice", help="Dismiss small-sample notice"):
-            st.session_state["dismiss_sample_notice"] = True
-            st.rerun()
-        st.markdown('</div>', unsafe_allow_html=True)
 
 
 # ==============================================================================
