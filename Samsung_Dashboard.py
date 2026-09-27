@@ -2182,22 +2182,28 @@ with tab_5g_comp:
     comp_df['Rev_Share_%'] = (comp_df['Total_Revenue'] / comp_df['Total_Revenue'].sum() * 100).round(1)
     comp_df['Derived_ASP'] = (comp_df['Total_Revenue'] / comp_df['Units_Sold']).round(2)
     
+    t2_5g_row = comp_df[comp_df['5G Capability'] == 'Yes']
+    t2_non5g_row = comp_df[comp_df['5G Capability'] == 'No']
+    t2_5g_units = t2_5g_row['Units_Sold'].values[0] if len(t2_5g_row) > 0 else 0
+    t2_5g_share = t2_5g_row['Unit_Share_%'].values[0] if len(t2_5g_row) > 0 else 0
+    t2_non5g_units = t2_non5g_row['Units_Sold'].values[0] if len(t2_non5g_row) > 0 else 0
+    t2_non5g_share = t2_non5g_row['Unit_Share_%'].values[0] if len(t2_non5g_row) > 0 else 0
+    
     c1, c2, c3, c4 = st.columns(4)
     with c1:
         st.metric(
             label="5G Units Sold",
-            value=fmt_units(total_5g_units),
+            value=fmt_units(t2_5g_units),
             help="Total volume of 5G handsets sold and percentage share of total portfolio volume."
         )
-        st.caption(f"{unit_adoption_pct:.1f}% share")
+        st.caption(f"{t2_5g_share:.1f}% share")
     with c2:
-        non_5g_units = total_units - total_5g_units
         st.metric(
             label="Non-5G Units Sold",
-            value=fmt_units(non_5g_units),
+            value=fmt_units(t2_non5g_units),
             help="Total volume of legacy non-5G (4G) handsets sold and percentage share of total portfolio volume."
         )
-        st.caption(f"{100-unit_adoption_pct:.1f}% share")
+        st.caption(f"{t2_non5g_share:.1f}% share")
     with c3:
         asp_5g = comp_df[comp_df['5G Capability'] == 'Yes']['Derived_ASP'].values[0] if len(comp_df[comp_df['5G Capability'] == 'Yes']) > 0 else 0
         st.metric(
