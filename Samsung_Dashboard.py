@@ -2161,6 +2161,9 @@ with tab_overview:
             .reset_index()
         )
         rev_5g['5G Capability'] = rev_5g['5G Capability'].map({'Yes': '5G', 'No': 'Non-5G'}).fillna(rev_5g['5G Capability'])
+        total_rev_5g = rev_5g['Revenue ($)'].sum()
+        rev_text_pos = ['inside' if (r / total_rev_5g) >= 0.08 else 'outside' for r in rev_5g['Revenue ($)']]
+        
         fig_donut = px.pie(
             rev_5g,
             values='Revenue ($)',
@@ -2174,10 +2177,17 @@ with tab_overview:
         fig_donut.update_layout(
             PLOTLY_LAYOUT_DEFAULTS,
             height=480,
-            margin=dict(l=20, r=20, t=75, b=65),
+            margin=dict(l=30, r=30, t=75, b=85),
             legend=dict(orientation="h", yanchor="top", y=-0.12, xanchor="center", x=0.5, title_text="", font=dict(family='Inter, sans-serif', size=11, color='#334155'))
         )
-        fig_donut.update_traces(domain=dict(x=[0.05, 0.95], y=[0, 1]), textposition='inside', textinfo='percent+label', insidetextfont=dict(family='Inter, sans-serif'))
+        fig_donut.update_traces(
+            domain=dict(x=[0.05, 0.95], y=[0, 1]),
+            textposition=rev_text_pos,
+            textinfo='percent+label',
+            insidetextfont=dict(family='Inter, sans-serif', color='#FFFFFF', size=12),
+            outsidetextfont=dict(family='Inter, sans-serif', color='#0F172A', size=11),
+            marker=dict(line=dict(color='#FFFFFF', width=2))
+        )
         st.plotly_chart(fig_donut, use_container_width=True, config=PLOTLY_CONFIG)
         
     st.markdown("""
@@ -2670,7 +2680,7 @@ with tab_5g_comp:
             height=480,
             margin=dict(l=45, r=30, t=75, b=110),
             title=dict(
-                text="<b>Annual Realized ASP Trend: 5G vs Non-5G Devices ($)</b><br><span style='font-size: 11px; font-weight: normal; color: #64748B;'>Methodology: Aggregate Volume-Weighted ASP (Annual Revenue ÷ Annual Units Sold)</span>",
+                text="<b>Annual Realized ASP Trend: 5G vs Non-5G Devices ($)</b><br><span style='font-size: 11px; font-weight: normal; color: #64748B;'>Methodology: Volume-Weighted ASP (Annual Revenue ÷ Units Sold)</span>",
                 font=dict(family='Outfit, Poppins, sans-serif', size=14, color='#0F172A')
             ),
             xaxis=dict(
@@ -2938,7 +2948,7 @@ with tab_products:
         fig_m_time.update_layout(
             PLOTLY_LAYOUT_DEFAULTS,
             height=490,
-            margin=dict(l=45, r=30, t=105, b=85),
+            margin=dict(l=45, r=30, t=75, b=105),
             title=dict(
                 text=f"<b>{selected_drill_model}: Quarterly Sales Lifecycle</b>",
                 font=dict(family='Outfit, Poppins, sans-serif', size=14, color='#0F172A'),
@@ -2953,8 +2963,8 @@ with tab_products:
             ),
             legend=dict(
                 orientation="h",
-                yanchor="bottom",
-                y=1.02,
+                yanchor="top",
+                y=-0.25,
                 xanchor="center",
                 x=0.5,
                 font=dict(family='Inter, sans-serif', size=11, color='#334155')
@@ -2988,7 +2998,7 @@ with tab_products:
             category_orders={'5G Capability': ['5G', 'Non-5G']},
             labels={'Product Model': 'Model', '5G Capability': '5G Capability'}
         )
-        fig_prod_rank.update_layout(PLOTLY_LAYOUT_DEFAULTS, yaxis={'categoryorder':'total ascending'})
+        fig_prod_rank.update_layout(PLOTLY_LAYOUT_DEFAULTS, height=500, yaxis={'categoryorder':'total ascending'})
         if "Revenue" in sort_by_metric or "ASP" in sort_by_metric:
             fig_prod_rank.update_xaxes(tickformat="~$s")
         else:
@@ -3005,21 +3015,45 @@ with tab_products:
             .reset_index()
         )
         tier_agg['ASP'] = (tier_agg['Revenue'] / tier_agg['Units']).round(2)
+        tier_agg = tier_agg.sort_values(by='Units', ascending=False).reset_index(drop=True)
+        tier_total_units = tier_agg['Units'].sum()
+        tier_text_pos = ['inside' if (u / tier_total_units) >= 0.08 else 'outside' for u in tier_agg['Units']]
+        
         fig_tier_donut = px.pie(
             tier_agg,
             values='Units',
             names='Price Tier',
-            hole=0.5,
+            hole=0.52,
             title="<b>Unit Volume Share by Price Tier</b>",
             color='Price Tier',
-            color_discrete_map=PRICE_TIER_COLORS
+            color_discrete_map=PRICE_TIER_COLORS,
+            category_orders={'Price Tier': tier_agg['Price Tier'].tolist()}
         )
         fig_tier_donut.update_layout(
             PLOTLY_LAYOUT_DEFAULTS,
-            margin=dict(l=20, r=20, t=75, b=65),
-            legend=dict(orientation="h", yanchor="top", y=-0.12, xanchor="center", x=0.5, title_text="")
+            height=500,
+            margin=dict(l=30, r=30, t=65, b=125),
+            legend=dict(
+                orientation="h",
+                yanchor="top",
+                y=-0.12,
+                xanchor="center",
+                x=0.5,
+                title_text="",
+                font=dict(size=11, color='#334155', family='Inter, sans-serif'),
+                itemwidth=35,
+                traceorder="normal"
+            )
         )
-        fig_tier_donut.update_traces(domain=dict(x=[0.05, 0.95], y=[0, 1]), textposition='inside', textinfo='percent')
+        fig_tier_donut.update_traces(
+            domain=dict(x=[0.05, 0.95], y=[0.10, 0.96]),
+            textposition=tier_text_pos,
+            textinfo='percent',
+            textfont=dict(size=12, family='Inter, sans-serif'),
+            outsidetextfont=dict(size=11, color='#0F172A', family='Inter, sans-serif'),
+            insidetextfont=dict(size=12, color='#FFFFFF', family='Inter, sans-serif'),
+            marker=dict(line=dict(color='#FFFFFF', width=2))
+        )
         st.plotly_chart(fig_tier_donut, use_container_width=True, config=PLOTLY_CONFIG)
         
     st.markdown("#### Comprehensive Product Portfolio Matrix")
@@ -3152,7 +3186,7 @@ with tab_trends:
                     x=actual_slice['Period'],
                     y=actual_slice['Plot_Val'],
                     mode='lines+markers',
-                    name='Historical (Actual)',
+                    name='Historical Actuals',
                     line=dict(color=SAMSUNG_BLUE, width=3),
                     marker=dict(size=6, color=SAMSUNG_BLUE)
                 ))
@@ -3162,7 +3196,7 @@ with tab_trends:
                         x=forecast_slice_connected['Period'],
                         y=forecast_slice_connected['Plot_Val'],
                         mode='lines+markers',
-                        name='Projected (2026 Forecast Records)',
+                        name='2026 Forecast Records',
                         line=dict(color=SAMSUNG_COBALT, width=3, dash='dash'),
                         marker=dict(size=8, symbol='diamond', color=SAMSUNG_COBALT)
                     ))
@@ -3173,7 +3207,7 @@ with tab_trends:
                             line=dict(color="#B91C1C", width=1.5, dash="dot")
                         )
                         fig_trend.add_annotation(
-                            x=trans_period, y=1, yref="paper", text="Forecast Horizon",
+                            x=trans_period, y=0.99, yref="paper", text="Forecast Horizon",
                             showarrow=False, xanchor="right", yanchor="top", font=dict(color="#B91C1C", size=10)
                         )
                         
@@ -3243,7 +3277,7 @@ with tab_trends:
                     x="2023-Q4", line_width=1.5, line_dash="dash", line_color="#D97706"
                 )
                 fig_trend.add_annotation(
-                    x="2023-Q4", y=0.98, yref="paper",
+                    x="2023-Q4", y=0.88, yref="paper",
                     text="2023 Shift: Budget/Mid Deceleration vs Flagship Stability",
                     showarrow=False, xanchor="left", yanchor="top",
                     font=dict(size=10, color="#B45309", family='Inter, sans-serif'),
@@ -3253,7 +3287,7 @@ with tab_trends:
             fig_trend.update_layout(
                 PLOTLY_LAYOUT_DEFAULTS,
                 height=520,
-                margin=dict(l=50, r=30, t=115, b=90),
+                margin=dict(l=50, r=30, t=75, b=110),
                 title=dict(
                     text=f"<b>Longitudinal Quarterly Trajectory: {trend_metric} ({metric_mode})</b>",
                     font=dict(family='Outfit, Poppins, sans-serif', size=14, color='#0F172A'),
@@ -3269,8 +3303,8 @@ with tab_trends:
                 ),
                 legend=dict(
                     orientation="h",
-                    yanchor="bottom",
-                    y=1.02,
+                    yanchor="top",
+                    y=-0.28,
                     xanchor="center",
                     x=0.5,
                     font=dict(family='Inter, sans-serif', size=11, color='#334155')
@@ -3335,7 +3369,7 @@ with tab_trends:
             fig_ytrend.update_layout(
                 PLOTLY_LAYOUT_DEFAULTS,
                 height=490,
-                margin=dict(l=50, r=30, t=105, b=85),
+                margin=dict(l=50, r=30, t=75, b=110),
                 yaxis_title=y_axis_label,
                 title=dict(
                     text=f"<b>Annual Trajectory: {trend_metric} ({metric_mode})</b>" if trend_disagg == "Global Aggregate" else (f"<b>Annual Trajectory by Geographic Region: {trend_metric}</b>" if trend_disagg == "Disaggregate by Geographic Region" else f"<b>Annual Trajectory by Portfolio Price Tier: {trend_metric}</b>"),
@@ -3348,8 +3382,8 @@ with tab_trends:
                 xaxis=dict(title=dict(text="Calendar Year", font=dict(family='Inter, sans-serif', size=12, color='#334155'), standoff=15)),
                 legend=dict(
                     orientation="h",
-                    yanchor="bottom",
-                    y=1.02,
+                    yanchor="top",
+                    y=-0.28,
                     xanchor="center",
                     x=0.5,
                     font=dict(family='Inter, sans-serif', size=11, color='#334155')
@@ -3648,7 +3682,7 @@ with tab_forecast:
         fig_fc.update_layout(
             PLOTLY_LAYOUT_DEFAULTS,
             height=530,
-            margin=dict(l=50, r=30, t=115, b=90),
+            margin=dict(l=50, r=30, t=75, b=110),
             title=dict(
                 text=f"<b>Statistical Forecast Trajectory: {fc_target_metric.replace('_', ' ')} ({scope_label})</b>",
                 font=dict(family='Outfit, Poppins, sans-serif', size=14, color='#0F172A'),
@@ -3664,8 +3698,8 @@ with tab_forecast:
             ),
             legend=dict(
                 orientation="h",
-                yanchor="bottom",
-                y=1.02,
+                yanchor="top",
+                y=-0.28,
                 xanchor="center",
                 x=0.5,
                 font=dict(family='Inter, sans-serif', size=11, color='#334155')
@@ -3820,7 +3854,7 @@ with tab_market_cond:
         fig_scatter.update_layout(
             PLOTLY_LAYOUT_DEFAULTS,
             height=540,
-            margin=dict(l=50, r=30, t=110, b=85),
+            margin=dict(l=50, r=30, t=75, b=110),
             title=dict(
                 text=f"<b>Samsung 5G Sales Volume vs {scatter_metric}</b>",
                 font=dict(family='Outfit, Poppins, sans-serif', size=14, color='#0F172A'),
@@ -3834,8 +3868,8 @@ with tab_market_cond:
             ),
             legend=dict(
                 orientation="h",
-                yanchor="bottom",
-                y=1.02,
+                yanchor="top",
+                y=-0.28,
                 xanchor="center",
                 x=0.5,
                 font=dict(family='Inter, sans-serif', size=11, color='#334155')
@@ -3968,9 +4002,11 @@ with tab_underperforming:
             category_orders={'Classification': ['Strong Performance', 'Needs Attention', 'High Priority']}
         )
         fig_class.update_traces(
-            textposition='inside',
+            textposition='auto',
             textinfo='percent',
-            insidetextfont=dict(size=12, color='#FFFFFF', family='Outfit, Poppins, sans-serif')
+            insidetextfont=dict(size=12, color='#FFFFFF', family='Outfit, Poppins, sans-serif'),
+            outsidetextfont=dict(size=11, color='#0F172A', family='Inter, sans-serif'),
+            marker=dict(line=dict(color='#FFFFFF', width=2))
         )
         fig_class.update_layout(
             PLOTLY_LAYOUT_DEFAULTS,
@@ -4030,7 +4066,7 @@ with tab_underperforming:
         fig_reg_risk.update_layout(
             PLOTLY_LAYOUT_DEFAULTS,
             height=460,
-            margin=dict(l=35, r=25, t=95, b=85),
+            margin=dict(l=35, r=25, t=75, b=110),
             title=dict(
                 text="<b>Regional Market Share vs Strategic Risk Profile</b>",
                 font=dict(family='Outfit, Poppins, sans-serif', size=14, color='#0F172A'),
@@ -4044,8 +4080,8 @@ with tab_underperforming:
             ),
             legend=dict(
                 orientation="h",
-                yanchor="bottom",
-                y=1.02,
+                yanchor="top",
+                y=-0.28,
                 xanchor="center",
                 x=0.5,
                 title_text="",
