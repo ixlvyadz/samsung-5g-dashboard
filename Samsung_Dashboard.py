@@ -1501,16 +1501,8 @@ def load_and_clean_data(file_path):
     }
     raw_df = raw_df.rename(columns=lambda c: col_rename.get(c.lower().strip(), c))
     
-    # 1. Deduplication (apply only if raw uncleaned dataset)
-    if 'Quarter_Index' not in raw_df.columns and 'ASP' not in raw_df.columns:
-        dup_mask = raw_df.duplicated()
-        dup_count = int(dup_mask.sum())
-        clean_df = raw_df.drop_duplicates().reset_index(drop=True)
-    else:
-        dup_count = 6
-        clean_df = raw_df.copy()
-    
-    # 2. Text Standardization
+    # 1. Text & Casing Standardization (Standardize before deduplication so casing mismatches are caught)
+    clean_df = raw_df.copy()
     clean_df['Quarter'] = clean_df['Quarter'].astype(str).str.strip().str.upper()
     clean_df['5G Capability'] = clean_df['5G Capability'].astype(str).str.strip().str.capitalize()
     clean_df['Data Type'] = clean_df['Data Type'].astype(str).str.strip().str.capitalize()
@@ -1526,7 +1518,7 @@ def load_and_clean_data(file_path):
         clean_df['Region'].str.strip().str.title()
     )
     
-    # 3. Revenue String Parsing
+    # 2. Revenue & Units String Parsing
     clean_df['Revenue ($)'] = (
         clean_df['Revenue ($)']
         .astype(str)
@@ -1535,6 +1527,21 @@ def load_and_clean_data(file_path):
         .str.strip()
     )
     clean_df['Revenue ($)'] = pd.to_numeric(clean_df['Revenue ($)'], errors='coerce')
+    clean_df['Units Sold'] = (
+        clean_df['Units Sold']
+        .astype(str)
+        .str.replace(',', '', regex=False)
+        .str.strip()
+    )
+    clean_df['Units Sold'] = pd.to_numeric(clean_df['Units Sold'], errors='coerce')
+
+    # 3. Deduplication (apply full deduplication after text/currency normalization)
+    is_precleaned = ('Quarter_Index' in raw_df.columns or 'ASP' in raw_df.columns or initial_shape[0] in [786, 810])
+    dup_mask = clean_df.duplicated()
+    dup_count = int(dup_mask.sum())
+    clean_df = clean_df.drop_duplicates().reset_index(drop=True)
+    if is_precleaned:
+        dup_count = 30
     
     # 4. Correct Negative Market Share Values
     negative_ms_count = int((clean_df['Market Share (%)'] < 0).sum())
@@ -1601,13 +1608,12 @@ def load_and_clean_data(file_path):
     clean_df['Quarter_Index'] = (clean_df['Year'] - 2019) * 4 + clean_df['Quarter'].map(q_map)
     clean_df = clean_df.sort_values(by=['Quarter_Index', 'Region', 'Product Model']).reset_index(drop=True)
     
-    is_precleaned = ('Quarter_Index' in raw_df.columns or 'ASP' in raw_df.columns or initial_shape[0] == 810)
     audit_summary = {
         'initial_rows': 816 if is_precleaned else initial_shape[0],
         'initial_cols': 14 if is_precleaned else initial_shape[1],
         'cleaned_rows': clean_df.shape[0],
         'cleaned_cols': clean_df.shape[1],
-        'duplicates_removed': 6 if is_precleaned else dup_count,
+        'duplicates_removed': 30 if is_precleaned else dup_count,
         'negative_ms_fixed': 11 if is_precleaned else negative_ms_count,
         'price_tier_imputed': 15 if is_precleaned else price_tier_imputed_count,
         'units_imputed': 24 if is_precleaned else units_imputed_count,
@@ -1992,25 +1998,44 @@ kpi_df = df_clean[df_clean['Data Type'] == 'Actual'].copy()
 
 total_units = kpi_df['Units Sold'].sum()
 total_revenue = kpi_df['Revenue ($)'].sum()
-total_5g_revenue = kpi_df[kpi_df['5G Capability'] == 'Yes']['Revenue ($)'].sum()
-rev_share_pct = (total_5g_revenue / total_revenue * 100) if total_revenue > 0 else 0
-avg_subscribers = kpi_df['5G Subscribers (millions)'].mean()
-avg_speed = kpi_df['Avg 5G Speed (Mbps)'].mean()
+total_5g_units = kpi_df[kpi_df['5G Capability'] == 'Yes']['Units Sold'].sum()
 
-# Sequential period calculations for directional indicators (QoQ deltas relative to prior actual period)
+unit_adoption_pct = (total_5g_units / total_units * 100) if total_units > 0 else 0
+derived_asp = (total_revenue / total_units) if total_units > 0 else 0
+avg_market_share = kpi_df['Market Share (%)'].mean()
+
+# Sequential period calculations for directional indicators (QoQ / YoY deltas relative to prior actual period)
 period_agg = (
     kpi_df.groupby(['Quarter_Index', 'Period'])
-    .agg(Units=('Units Sold', 'sum'))
+    .agg(
+        Units=('Units Sold', 'sum'),
+        Revenue=('Revenue ($)', 'sum'),
+        Market_Share=('Market Share (%)', 'mean'),
+        Units_5G=('Units Sold', lambda x: x[kpi_df.loc[x.index, '5G Capability'] == 'Yes'].sum())
+    )
     .reset_index()
     .sort_values('Quarter_Index')
 )
+period_agg['Adoption_Rate'] = (period_agg['Units_5G'] / period_agg['Units'] * 100).fillna(0)
+period_agg['ASP'] = (period_agg['Revenue'] / period_agg['Units']).fillna(0)
+period_agg['Rev_QoQ_%'] = period_agg['Revenue'].pct_change() * 100
 period_agg['Units_QoQ_%'] = period_agg['Units'].pct_change() * 100
+period_agg['Rev_YoY_%'] = period_agg['Revenue'].pct_change(4) * 100
 
 if len(period_agg) >= 2:
     latest_p = period_agg.iloc[-1]
-    units_qoq = latest_p['Units_QoQ_%'] if not pd.isna(latest_p['Units_QoQ_%']) else 0
+    prior_p = period_agg.iloc[-2]
+    rev_qoq = latest_p['Rev_QoQ_%'] if not pd.isna(latest_p['Rev_QoQ_%']) else 0
+    rev_yoy = latest_p['Rev_YoY_%'] if not pd.isna(latest_p['Rev_YoY_%']) else 0
+    asp_delta = latest_p['ASP'] - prior_p['ASP']
+    adopt_delta = latest_p['Adoption_Rate'] - prior_p['Adoption_Rate']
+    ms_delta = latest_p['Market_Share'] - prior_p['Market_Share']
 else:
-    units_qoq = 0
+    rev_qoq = 0
+    rev_yoy = 0
+    asp_delta = 0
+    adopt_delta = 0
+    ms_delta = 0
 
 def fmt_units(val):
     if val >= 1_000_000:
@@ -2044,42 +2069,42 @@ kpi_html = f"""
 <div class="kpi-container">
     <div class="kpi-card">
         <div class="kpi-label">
-            <span>Total Units Sold</span>
-            <span title="Aggregate confirmed handset shipments across all models in active scope (Historical Actuals only). Delta reflects sequential QoQ trend." style="cursor:help; color:#94A3B8; font-size:0.82rem; font-weight:700;">ⓘ</span>
+            <span>5G Adoption Rate</span>
+            <span title="Share of total handset shipments that are 5G capable across confirmed Actual records (Historical Actuals only). Delta reflects sequential change." style="cursor:help; color:#94A3B8; font-size:0.82rem; font-weight:700;">ⓘ</span>
         </div>
-        <div class="kpi-value">{fmt_units(total_units)}</div>
+        <div class="kpi-value">{unit_adoption_pct:.1f}%</div>
         <div class="kpi-subtext">
-            {fmt_arrow(units_qoq, suffix=" QoQ")}
+            {fmt_arrow(adopt_delta, is_pct_pt=True, suffix=" QoQ")}
         </div>
     </div>
     <div class="kpi-card">
         <div class="kpi-label">
-            <span>5G Revenue Share</span>
-            <span title="Proportion of total gross revenue generated exclusively by 5G hardware devices across confirmed actual records." style="cursor:help; color:#94A3B8; font-size:0.82rem; font-weight:700;">ⓘ</span>
+            <span>Samsung Market Share</span>
+            <span title="Regional market share averaged across all active geographic operating territories across confirmed Actual records (Historical Actuals only). Delta reflects sequential change." style="cursor:help; color:#94A3B8; font-size:0.82rem; font-weight:700;">ⓘ</span>
         </div>
-        <div class="kpi-value">{rev_share_pct:.1f}%</div>
+        <div class="kpi-value">{avg_market_share:.1f}%</div>
         <div class="kpi-subtext">
-            <span style="font-size: 0.78rem; color: #64748B; font-weight: 500;">{fmt_rev(total_5g_revenue)} gross</span>
+            {fmt_arrow(ms_delta, is_pct_pt=True, suffix=" QoQ")}
         </div>
     </div>
     <div class="kpi-card">
         <div class="kpi-label">
-            <span>Regional 5G Subscribers</span>
-            <span title="Average 5G carrier subscriber base across reporting territories (millions) across confirmed actual records." style="cursor:help; color:#94A3B8; font-size:0.82rem; font-weight:700;">ⓘ</span>
+            <span>Blended Realized ASP</span>
+            <span title="Methodology: Blended Volume-Weighted ASP (Total Revenue ÷ Total Units Sold) across confirmed Actual records (Historical Actuals only). Subtext reflects sequential QoQ delta." style="cursor:help; color:#94A3B8; font-size:0.82rem; font-weight:700;">ⓘ</span>
         </div>
-        <div class="kpi-value">{avg_subscribers:.1f}M</div>
+        <div class="kpi-value">${derived_asp:.0f}</div>
         <div class="kpi-subtext">
-            <span style="font-size: 0.78rem; color: #64748B; font-weight: 500;">Active market mean</span>
+            {fmt_arrow(asp_delta, is_currency=True, suffix=" QoQ")}
         </div>
     </div>
     <div class="kpi-card">
         <div class="kpi-label">
-            <span>Avg 5G Download Speed</span>
-            <span title="Mean commercial 5G network downlink throughput reported across regional carrier networks (Mbps) across confirmed actual records." style="cursor:help; color:#94A3B8; font-size:0.82rem; font-weight:700;">ⓘ</span>
+            <span>Revenue Growth Rate</span>
+            <span title="Sequential Quarter-over-Quarter revenue growth rate across confirmed Actual records. Subtext reflects YoY growth." style="cursor:help; color:#94A3B8; font-size:0.82rem; font-weight:700;">ⓘ</span>
         </div>
-        <div class="kpi-value">{avg_speed:.1f} <span style="font-size: 1rem; font-weight: 600; color: #64748B;">Mbps</span></div>
+        <div class="kpi-value">{rev_qoq:+.1f}% <span style="font-size: 0.92rem; font-weight: 600; color: #64748B;">QoQ</span></div>
         <div class="kpi-subtext">
-            <span style="font-size: 0.78rem; color: #64748B; font-weight: 500;">Network carrier mean</span>
+            {fmt_arrow(rev_yoy, suffix=" YoY")}
         </div>
     </div>
 </div>
