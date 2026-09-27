@@ -234,18 +234,47 @@ SAMSUNG_THEME_CSS = """
     section[data-testid="stSidebar"] {
         background-color: #FFFFFF !important;
         border-right: 1px solid #E2E8F0 !important;
-        padding-top: 1.5rem;
+        padding-top: 0 !important;
+    }
+    
+    /* Streamlit sidebar header tightening to eliminate large blank gap */
+    [data-testid="stSidebarHeader"] {
+        height: auto !important;
+        min-height: 0 !important;
+        padding-top: 0.35rem !important;
+        padding-bottom: 0.2rem !important;
+        margin-bottom: 0 !important;
+    }
+    
+    [data-testid="stSidebarCollapseButton"] {
+        overflow: hidden !important;
+        width: 32px !important;
+        height: 32px !important;
+    }
+    
+    [data-testid="stSidebarCollapseButton"] button {
+        overflow: hidden !important;
+        width: 28px !important;
+        height: 28px !important;
+    }
+    
+    [data-testid="stSidebarCollapseButton"] span[data-testid="stIconMaterial"] {
+        max-width: 24px !important;
+        max-height: 24px !important;
+        overflow: hidden !important;
+        display: inline-block !important;
     }
     
     /* SAMSUNG OFFICIAL SIDEBAR LOGO */
     .samsung-sidebar-logo-container {
-        padding: 0.85rem 0 1.25rem 0;
+        padding: 0.2rem 0 0.95rem 0;
         display: flex;
         align-items: center;
+        justify-content: flex-start;
     }
     
     .samsung-sidebar-logo {
-        width: 170px;
+        width: 220px;
         height: auto;
         max-width: 100%;
         display: block;
