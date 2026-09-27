@@ -2839,13 +2839,11 @@ with tab_products:
     prod_summary['5G_Adoption_Rate'] = prod_summary['5G Capability'].map({'Yes': 100.0, 'No': 0.0})
     prod_summary = prod_summary.sort_values(by='Units_Sold', ascending=False).reset_index(drop=True)
     
-    col_prod_ctrl1, col_prod_ctrl2 = st.columns([2, 1])
-    with col_prod_ctrl1:
-        selected_drill_model = st.selectbox(
-            "Select a Samsung Mobile Model to Inspect Deep Dive Analytics:",
-            options=prod_summary['Product Model'].tolist(),
-            index=0
-        )
+    selected_drill_model = st.selectbox(
+        "Select a Samsung Mobile Model to Inspect Deep Dive Analytics:",
+        options=prod_summary['Product Model'].tolist(),
+        index=0
+    )
         
     model_row = prod_summary[prod_summary['Product Model'] == selected_drill_model].iloc[0]
     model_df_filtered = filtered_df[filtered_df['Product Model'] == selected_drill_model]
@@ -2969,14 +2967,12 @@ with tab_products:
         
     st.markdown("#### Portfolio Ranking & Tier Breakdown")
     
-    col_sort_ctrl, col_sort_space = st.columns([1, 2])
-    with col_sort_ctrl:
-        sort_by_metric = st.selectbox(
-            "Sort Ranking Visualizations By:",
-            options=["Units Sold", "Total Revenue", "Derived ASP", "Avg Market Share"],
-            index=0,
-            key="tab3_sort_by_metric"
-        )
+    sort_by_metric = st.selectbox(
+        "Sort Ranking Visualizations By:",
+        options=["Units Sold", "Total Revenue", "Derived ASP", "Avg Market Share"],
+        index=0,
+        key="tab3_sort_by_metric"
+    )
         
     metric_map = {
         "Units Sold": "Units_Sold",
