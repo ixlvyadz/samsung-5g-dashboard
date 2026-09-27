@@ -2694,7 +2694,7 @@ MODEL_IMAGE_MAP = {
     "Galaxy S23 5G": "s23.avif",
     "Galaxy S24 5G": "s24.webp",
     "Galaxy S25 5G": "s25.avif",
-    "Galaxy S26 5G": None,  # 2026 Forecast Prototype (Clean SVG Placeholder)
+    "Galaxy S26 5G": "s26_prototype.svg",  # 2026 Forecast Prototype (Clean SVG Vector)
     "Galaxy Z Flip3 5G": "zflip3.avif",
     "Galaxy Z Flip5 5G": "zflip5.webp",
     "Galaxy Z Fold2 5G": "zfold2.avif",
@@ -2725,24 +2725,15 @@ def resolve_model_images_dir():
 def get_model_showcase_html(model_name: str) -> str:
     """
     Renders an optimized, high-fidelity device showcase component for the Model Deep-Dive card.
-    Encodes local image files to base64 PNG data URIs for 100% self-contained, CORS-free rendering.
-    If the model is unreleased (Galaxy S26 5G) or image is unavailable, renders a clean prototype placeholder badge.
+    Encodes local image files to base64 data URIs for 100% self-contained, CORS-free rendering.
+    Supports SVG vector badges as well as AVIF/WEBP/JPEG/PNG handset assets.
     """
     filename = MODEL_IMAGE_MAP.get(model_name)
     assets_dir = resolve_model_images_dir()
     
-    # 1. Unreleased / Forecast Prototype Placeholder
     if not filename or not assets_dir:
         return """<div class="model-image-container" style="flex-direction: column !important; justify-content: center !important;">
-    <div style="width: 44px; height: 66px; border: 2px dashed #94A3B8; border-radius: 8px; background: #F1F5F9; display: flex; flex-direction: column; align-items: center; justify-content: center; margin-bottom: 6px; position: relative;">
-        <div style="width: 14px; height: 3px; background: #CBD5E1; border-radius: 2px; position: absolute; top: 4px;"></div>
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1428A0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-        </svg>
-        <div style="width: 18px; height: 3px; background: #CBD5E1; border-radius: 2px; position: absolute; bottom: 4px;"></div>
-    </div>
-    <div style="font-size: 0.68rem; font-weight: 800; color: #1E40AF; letter-spacing: 0.04em; line-height: 1.1; text-align: center;">2026 FORECAST</div>
-    <div style="font-size: 0.60rem; font-weight: 700; color: #64748B; letter-spacing: 0.02em; line-height: 1.1; text-align: center;">PROTOTYPE</div>
+    <div style="font-size: 0.72rem; font-weight: 700; color: #94A3B8; text-align: center;">PREVIEW<br/>UNAVAILABLE</div>
 </div>"""
         
     img_path = os.path.join(assets_dir, filename)
@@ -2750,6 +2741,18 @@ def get_model_showcase_html(model_name: str) -> str:
         return """<div class="model-image-container" style="flex-direction: column !important; justify-content: center !important;">
     <div style="font-size: 0.72rem; font-weight: 700; color: #94A3B8; text-align: center;">DEVICE PREVIEW<br/>UNAVAILABLE</div>
 </div>"""
+
+    # Vector SVG handler (e.g. S26 Forecast Prototype)
+    if filename.endswith(".svg"):
+        try:
+            with open(img_path, "r", encoding="utf-8") as f:
+                svg_text = f.read()
+            b64_data = base64.b64encode(svg_text.encode("utf-8")).decode("utf-8")
+            return f"""<div class="model-image-container">
+    <img src="data:image/svg+xml;base64,{b64_data}" alt="{model_name}" />
+</div>"""
+        except Exception:
+            pass
 
     try:
         with Image.open(img_path) as im:
