@@ -1818,16 +1818,14 @@ with st.sidebar:
     st.markdown("<div style='height: 1px; background-color: #E2E8F0; margin: 1.2rem 0;'></div>", unsafe_allow_html=True)
     
     # Collapsible 1: Calendar Years
-    all_years = sorted(df_clean['Year'].unique())
-    init_years = st.session_state.get("filter_years", all_years)
-    with st.expander(f"Calendar Years ({len(init_years)} of {len(all_years)})", expanded=False):
-        selected_years = st.multiselect(
-            "Select Years",
-            options=all_years,
-            default=all_years,
-            key="filter_years",
-            label_visibility="collapsed"
-        )
+    _all_years = sorted(df_clean['Year'].unique())
+    _yr_min, _yr_max = int(min(_all_years)), int(max(_all_years))
+    year_range = st.slider(
+        "Year Range",
+        min_value=_yr_min, max_value=_yr_max,
+        value=st.session_state.get("filter_years", (_yr_min, _yr_max)),
+        key="filter_years"
+    )
         
     st.markdown("<div style='height: 1px; background-color: #E2E8F0; margin: 0.4rem 0 0.8rem 0;'></div>", unsafe_allow_html=True)
     
@@ -1929,10 +1927,7 @@ if selected_data_type == "Actual Historical Only":
 elif selected_data_type == "Forecast Only (2026 Projections)":
     filtered_df = filtered_df[filtered_df['Data Type'] == 'Forecast']
 
-if selected_years:
-    filtered_df = filtered_df[filtered_df['Year'].isin(selected_years)]
-else:
-    filtered_df = filtered_df.iloc[0:0]
+filtered_df = filtered_df[filtered_df['Year'].between(year_range[0], year_range[1])]
 
 if selected_quarters:
     filtered_df = filtered_df[filtered_df['Quarter'].isin(selected_quarters)]
@@ -1973,7 +1968,7 @@ horizon_tag = "Historical Actuals" if (contains_actual and not contains_forecast
     "2026 Projections" if (not contains_actual and contains_forecast) else "Combined (Actual + 2026 Forecast)"
 )
 badge_class = "kpi-badge-forecast" if contains_forecast else "kpi-badge-actual"
-year_span_str = f"{min(selected_years)}–{max(selected_years)}" if selected_years else "N/A"
+year_span_str = f"{year_range[0]}–2026" if "year_range" in dir() else "2019–2026"
 
 st.markdown(f"""
 <div class="samsung-hero-frameless">
@@ -2144,7 +2139,7 @@ tab_overview, tab_5g_comp, tab_products, tab_trends, tab_forecast, tab_market_co
 # ==============================================================================
 with tab_overview:
     st.markdown("""<div class="section-header-box">
-<h2 class="section-title">Executive Strategic Overview</h2>
+<h2 class="section-title">How is Samsung doing overall?</h2>
 <p class="section-desc">Macro-level perspective on Samsung's mobile portfolio volume, revenue distribution, and the historic inflection point from 4G/legacy hardware to comprehensive 5G saturation.</p>
 </div>""", unsafe_allow_html=True)
     
@@ -2235,7 +2230,7 @@ with tab_overview:
 # ==============================================================================
 with tab_5g_comp:
     st.markdown("""<div class="section-header-box">
-<h2 class="section-title">5G vs. Non-5G Performance Analysis</h2>
+<h2 class="section-title">Is 5G growth even across price tiers?</h2>
 <p class="section-desc">Comparative commercial performance and unit economics evaluating volume throughput, revenue contribution, and realized pricing premiums between 5G-enabled devices and legacy 4G portfolios (2019–2026).</p>
 </div>""", unsafe_allow_html=True)
     
@@ -2963,7 +2958,7 @@ def get_model_showcase_html(model_name: str) -> str:
 with tab_products:
     st.markdown("""
     <div class="section-header-box">
-        <h2 class="section-title">Product Portfolio & Price Tier Penetration</h2>
+        <h2 class="section-title">How far has the 5G transition gone, and where?</h2>
         <p class="section-desc">
             Handset portfolio segmentation and lifecycle performance across Samsung device tiers (Budget, Mid, Flagship, Premium, Foldable), analyzing model-level adoption velocity, sales volume, and margin contribution.
         </p>
@@ -3255,7 +3250,7 @@ with tab_products:
 # ==============================================================================
 with tab_trends:
     st.markdown("""<div class="section-header-box">
-<h2 class="section-title">Time Trends & Regional Dynamics (2019–2026)</h2>
+<h2 class="section-title">Is 5G momentum accelerating or stalling?</h2>
 <p class="section-desc">Longitudinal tracking of commercial sales volume, revenue momentum, and market share across calendar quarters and global operating territories, identifying seasonal cycles and regional growth inflection points.</p>
 </div>""", unsafe_allow_html=True)
     
@@ -3697,7 +3692,7 @@ with tab_trends:
 # ==============================================================================
 with tab_forecast:
     st.markdown("""<div class="section-header-box">
-<h2 class="section-title">Time-Series Forecasting Laboratory</h2>
+<h2 class="section-title">What explains regional performance differences?</h2>
 <p class="section-desc">Econometric forecasting and forward projections utilizing Holt-Winters Triple Exponential Smoothing with quarterly seasonality, modeling unit sales, gross revenue, blended ASP, and adoption trajectories.</p>
 </div>""", unsafe_allow_html=True)
     
@@ -4292,7 +4287,7 @@ with tab_market_cond:
 # ==============================================================================
 with tab_underperforming:
     st.markdown("""<div class="section-header-box">
-<h2 class="section-title">Underperforming Portfolio & Regional Risk Analysis</h2>
+<h2 class="section-title">Can I see the actual records?</h2>
 <p class="section-desc">Portfolio risk governance and commercial decision support identifying underperforming device tiers and regional headwinds, paired with actionable channel, pricing, and lifecycle interventions.</p>
 </div>""", unsafe_allow_html=True)
     
