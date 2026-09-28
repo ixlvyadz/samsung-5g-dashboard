@@ -2228,79 +2228,6 @@ with tab_overview:
         )
         st.plotly_chart(fig_donut, use_container_width=True, config=PLOTLY_CONFIG)
         
-    st.markdown("""
-    <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-left: 4px solid #1428A0; border-radius: 12px; padding: 0.9rem 1.25rem; margin-top: 1rem; margin-bottom: 1.25rem;">
-        <div style="font-size: 0.76rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: #1428A0; margin-bottom: 0.4rem;">
-            Strategic BI Takeaways (2019–2026)
-        </div>
-        <ul style="margin: 0.2rem 0 0 1.2rem; padding: 0; font-size: 0.88rem; color: #334155; line-height: 1.6;">
-            <li><strong>2021 Tipping Point:</strong> 5G adoption surged from 5.4% to 67.5% (56.0% revenue share), driven by Galaxy S21 & early A-series 5G. <span title="In 2020, 5G sales accounted for 5.4% of shipments. Rapid carrier network rollouts in 2021 enabled 5G to become the primary revenue engine." style="cursor:help; color:#94A3B8;">ⓘ</span></li>
-            <li><strong>2023+ High-Adoption Plateau (~96–98%):</strong> 5G became the dominant portfolio baseline (~98% volume share), while Samsung strategically maintained a targeted ~2–4% entry-level 4G long-tail (Galaxy A05, A06 4G, A07 4G) to preserve volume leadership in price-sensitive emerging markets (Latin America, Middle East & Africa). <span title="From 2023 onward, 5G reached a sustained high plateau above 96%, with deliberate sub-$150 4G budget offerings sustained in emerging markets." style="cursor:help; color:#94A3B8;">ⓘ</span></li>
-            <li><strong>Budget Tier Migration:</strong> Mass volume shifted to Budget A-series (A14/A15/A16 5G), accounting for >60% of total 5G shipments. <span title="While 5G began in ultra-premium foldable and flagship series, the greatest volume expansion occurred as 5G cascaded down into sub-$250 models." style="cursor:help; color:#94A3B8;">ⓘ</span></li>
-        </ul>
-    </div>
-    """, unsafe_allow_html=True)
-    
-    col_reg1, col_reg2 = st.columns(2)
-    with col_reg1:
-        reg_summary = (
-            filtered_df.groupby('Region')
-            .agg(
-                Units=('Units Sold', 'sum'),
-                Revenue=('Revenue ($)', 'sum'),
-                Adoption_Rate=('5G Capability', lambda s: (s == 'Yes').sum() / len(s) * 100)
-            )
-            .reset_index()
-            .sort_values(by='Units', ascending=False)
-        )
-        fig_reg_bar = px.bar(
-            reg_summary,
-            x='Units',
-            y='Region',
-            orientation='h',
-            title="<b>Total Units Sold by Geographic Region</b>",
-            color='Region',
-            color_discrete_map=REGION_COLORS,
-            labels={'Units': 'Total Units Sold', 'Region': 'Geographic Region'}
-        )
-        fig_reg_bar.update_layout(PLOTLY_LAYOUT_DEFAULTS, showlegend=False)
-        fig_reg_bar.update_xaxes(tickformat="~s")
-        st.plotly_chart(fig_reg_bar, use_container_width=True, config=PLOTLY_CONFIG)
-        
-    with col_reg2:
-        tier_summary = (
-            filtered_df.groupby('Price Tier')
-            .agg(
-                Units=('Units Sold', 'sum'),
-                Revenue=('Revenue ($)', 'sum')
-            )
-            .reset_index()
-            .sort_values(by='Revenue', ascending=False)
-        )
-        tier_summary['Revenue_B'] = (tier_summary['Revenue'] / 1e9).round(2)
-        fig_tier_bar = px.bar(
-            tier_summary,
-            x='Price Tier',
-            y='Revenue_B',
-            title="<b>Total Gross Revenue by Device Price Tier</b>",
-            color='Price Tier',
-            color_discrete_map=PRICE_TIER_COLORS,
-            labels={'Revenue_B': 'Gross Revenue ($ Billions)', 'Price Tier': 'Price Tier'}
-        )
-        fig_tier_bar.update_layout(
-            PLOTLY_LAYOUT_DEFAULTS,
-            showlegend=False,
-            margin=dict(l=45, r=60, t=75, b=95),
-            xaxis=dict(
-                categoryorder='array',
-                categoryarray=['Budget', 'Mid', 'Flagship', 'Premium', 'Premium Foldable'],
-                tickangle=-45,
-                title=dict(standoff=12),
-                automargin=True
-            )
-        )
-        fig_tier_bar.update_yaxes(tickprefix="$", ticksuffix="B")
-        st.plotly_chart(fig_tier_bar, use_container_width=True, config=PLOTLY_CONFIG)
 
 
 # ==============================================================================
@@ -3042,7 +2969,31 @@ with tab_products:
         </p>
     </div>
     """, unsafe_allow_html=True)
-    
+
+    # -- PDF: Stacked area of 5G vs Non-5G units over time --
+    _tab3_actual = filtered_df[filtered_df['Data Type'] == 'Actual']
+    _yearly_5g_area = (
+        _tab3_actual.groupby(['Year', '5G Capability'])['Units Sold']
+        .sum().reset_index()
+    )
+    _yearly_5g_area['5G Capability'] = _yearly_5g_area['5G Capability'].map(
+        {'Yes': '5G Enabled', 'No': 'Non-5G Legacy'}
+    ).fillna(_yearly_5g_area['5G Capability'])
+    _fig_area = px.area(
+        _yearly_5g_area, x='Year', y='Units Sold', color='5G Capability',
+        title='<b>5G vs. Non-5G Unit Volume by Year (Stacked Area)</b>',
+        color_discrete_map={'5G Enabled': SAMSUNG_BLUE, 'Non-5G Legacy': SAMSUNG_GRAY},
+        labels={'Units Sold': 'Units Sold', 'Year': 'Calendar Year'},
+        category_orders={'5G Capability': ['5G Enabled', 'Non-5G Legacy']}
+    )
+    _fig_area.update_layout(
+        PLOTLY_LAYOUT_DEFAULTS, height=360,
+        margin=dict(l=45, r=30, t=75, b=50),
+        legend=dict(orientation='h', yanchor='top', y=-0.15, xanchor='center', x=0.5)
+    )
+    _fig_area.update_yaxes(tickformat='~s')
+    st.plotly_chart(_fig_area, use_container_width=True, config=PLOTLY_CONFIG)
+
     prod_summary = (
         filtered_df.groupby(['Product Model', 'Price Tier', '5G Capability'])
         .agg(
@@ -3955,6 +3906,170 @@ with tab_forecast:
                 use_container_width=True,
                 hide_index=True
             )
+
+
+    # -- PDF: Correlation table pooled and by region --
+    st.markdown("#### Correlation Table: 5G Infrastructure vs. 5G Unit Sales")
+    _actual5g_corr = filtered_df[(filtered_df['Data Type'] == 'Actual') & (filtered_df['5G Capability'] == 'Yes')]
+    _rq_all = _actual5g_corr.groupby(['Region', 'Period']).agg(
+        Sales5G=('Units Sold', 'sum'),
+        Coverage=('Regional 5G Coverage (%)', 'mean'),
+        Subscribers=('5G Subscribers (millions)', 'mean'),
+        Speed=('Avg 5G Speed (Mbps)', 'mean'),
+        Preference=('Preference for 5G (%)', 'mean'),
+    ).reset_index()
+    from scipy import stats as _corr_stats
+    _indicators = ['Coverage', 'Subscribers', 'Speed', 'Preference']
+    _corr_rows = []
+    _row = {'Region': 'All Regions (pooled)'}
+    for _ind in _indicators:
+        _valid = _rq_all[[_ind, 'Sales5G']].dropna()
+        _r, _p = _corr_stats.pearsonr(_valid[_ind], _valid['Sales5G'])
+        _row[_ind] = f"r={_r:+.3f}" + (" ***" if _p < 0.001 else (" **" if _p < 0.01 else (" *" if _p < 0.05 else "")))
+    _corr_rows.append(_row)
+    for _reg in sorted(_actual5g_corr['Region'].unique()):
+        _rq_r = _actual5g_corr[_actual5g_corr['Region'] == _reg].groupby('Period').agg(
+            Sales5G=('Units Sold', 'sum'),
+            Coverage=('Regional 5G Coverage (%)', 'mean'),
+            Subscribers=('5G Subscribers (millions)', 'mean'),
+            Speed=('Avg 5G Speed (Mbps)', 'mean'),
+            Preference=('Preference for 5G (%)', 'mean'),
+        ).reset_index()
+        _row = {'Region': _reg}
+        for _ind in _indicators:
+            _valid = _rq_r[[_ind, 'Sales5G']].dropna()
+            if len(_valid) >= 3:
+                _r, _p = _corr_stats.pearsonr(_valid[_ind], _valid['Sales5G'])
+                _row[_ind] = f"r={_r:+.3f}" + (" ***" if _p < 0.001 else (" **" if _p < 0.01 else (" *" if _p < 0.05 else "")))
+            else:
+                _row[_ind] = "n/a"
+        _corr_rows.append(_row)
+    _corr_df = pd.DataFrame(_corr_rows).set_index('Region')
+    st.dataframe(_corr_df, use_container_width=True)
+    st.caption("Pearson r: each indicator vs 5G unit sales. * p<0.05  ** p<0.01  *** p<0.001. Correlation ≠ causation; shared time trend may inflate coefficients.")
+
+
+# ==============================================================================
+# TAB 7: 5G MARKET CONDITIONS & INFRASTRUCTURE (RESEARCH OBJECTIVE 4)
+# ==============================================================================
+with tab_market_cond:
+    st.markdown("""<div class="section-header-box">
+<h2 class="section-title">Where should Samsung act now?</h2>
+<p class="section-desc">Flagged regions and models based on objective performance criteria, with rule-based suggested actions.</p>
+</div>""", unsafe_allow_html=True)
+
+    # -- PDF: Data dictionary expander --
+    with st.expander("Data Dictionary", expanded=False):
+        st.markdown("""
+| Column | Type | Description |
+|---|---|---|
+| Product Model | text | Samsung device name |
+| Price Tier | text | Budget Legacy 4G / Budget / Mid / Flagship / Premium / Premium Foldable |
+| 5G Capability | text | Yes = 5G device, No = Non-5G/legacy |
+| Year | int | Calendar year (2019–2026) |
+| Quarter | text | Q1–Q4 |
+| Period | text | Year-Quarter label (e.g. 2024-Q2) |
+| Quarter_Index | int | Quarters since 2019-Q1 (0-based) |
+| Region | text | Asia-Pacific, Europe, Latin America, Middle East & Africa, North America |
+| Units Sold | int | Total handset units shipped in period |
+| Revenue ($) | float | Gross revenue in USD |
+| ASP | float | Average Selling Price = Revenue / Units |
+| Market Share (%) | float | Samsung share of regional smartphone market |
+| Regional 5G Coverage (%) | float | % of region with 5G network coverage |
+| 5G Subscribers (millions) | float | Regional 5G subscriber count |
+| Avg 5G Speed (Mbps) | float | Regional average 5G download speed |
+| Preference for 5G (%) | float | Survey: % stating preference for 5G device |
+| Data Type | text | Actual = historical, Forecast = model-generated projection |
+
+**Dataset version:** Samsung_5G_Cleaned_Dataset_v3.csv (1,035 rows; 995 Actual, 40 Forecast)
+**Cleaning steps:** Duplicate Regional 5G Coverage=102.73 row removed; Budget Legacy 4G tier restored; Market Share negatives corrected; missing values imputed by hierarchical median.
+""")
+
+
+    # -- Criteria box --
+    ADOPTION_BENCHMARK = filtered_df[filtered_df['Data Type'] == 'Actual']['5G Capability'].eq('Yes').mean() * 100
+    CONSEC_NEG_THRESHOLD = 2
+    st.markdown(f"""
+<div style="background:#F8FAFC;border:1px solid #E2E8F0;border-left:4px solid #1428A0;border-radius:10px;padding:0.85rem 1.15rem;margin-bottom:1rem;">
+<div style="font-size:0.74rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:#1428A0;margin-bottom:0.4rem;">Action Center Criteria</div>
+<ul style="margin:0 0 0 1.2rem;padding:0;font-size:0.88rem;color:#334155;line-height:1.7;">
+<li><b>Flagged region:</b> 5G adoption below portfolio-wide average ({ADOPTION_BENCHMARK:.1f}%) in the latest Actual quarter</li>
+<li><b>Flagged model:</b> Active in latest Actual period with negative YoY unit growth in &ge;{CONSEC_NEG_THRESHOLD} consecutive quarters</li>
+<li><b>Coverage benchmark:</b> Latest Actual quarter per region</li>
+</ul>
+</div>""", unsafe_allow_html=True)
+
+    # -- Flagged regions --
+    _actual_df = filtered_df[filtered_df['Data Type'] == 'Actual'].copy()
+    _latest_q = _actual_df['Quarter_Index'].max()
+    _latest_period = _actual_df[_actual_df['Quarter_Index'] == _latest_q]['Period'].iloc[0]
+    _latest = _actual_df[_actual_df['Quarter_Index'] == _latest_q]
+    _reg_adopt = _latest.groupby('Region').apply(
+        lambda s: (s['5G Capability'] == 'Yes').sum() / len(s) * 100
+    ).reset_index(name='Adoption_%')
+    _reg_adopt['vs_Benchmark_%'] = ADOPTION_BENCHMARK
+    _reg_adopt['Gap_pts'] = _reg_adopt['Adoption_%'] - ADOPTION_BENCHMARK
+    _flagged_regions = _reg_adopt[_reg_adopt['Adoption_%'] < ADOPTION_BENCHMARK].copy()
+    _flagged_regions['Suggested_Action'] = _flagged_regions['Gap_pts'].apply(
+        lambda g: 'Pricing — entry 5G SKUs' if g < -5 else ('Marketing — awareness campaign' if g < -2 else 'Product — coverage partnership')
+    )
+
+    st.markdown(f"#### Flagged Regions — {_latest_period}")
+    if len(_flagged_regions) == 0:
+        st.info(f"No regions flagged in {_latest_period}. All regions meet or exceed the {ADOPTION_BENCHMARK:.1f}% adoption benchmark.")
+    else:
+        _disp_r = _flagged_regions.rename(columns={
+            'Adoption_%': 'Current Adoption %',
+            'vs_Benchmark_%': 'Benchmark %',
+            'Gap_pts': 'Gap (pts)',
+            'Suggested_Action': 'Suggested Action'
+        })
+        st.dataframe(_disp_r.set_index('Region'), use_container_width=True)
+
+    # -- Flagged models --
+    st.markdown("#### Flagged Models — ≥2 Consecutive Negative YoY Unit Growth Quarters")
+    _model_q = (
+        _actual_df.groupby(['Product Model', 'Year', 'Quarter', 'Period', 'Quarter_Index', 'Price Tier', '5G Capability'])
+        ['Units Sold'].sum().reset_index()
+        .sort_values(['Product Model', 'Quarter_Index'])
+    )
+    _model_q['YoY_Units'] = _model_q.groupby('Product Model')['Units Sold'].shift(4)
+    _model_q['YoY_Growth_%'] = (_model_q['Units Sold'] - _model_q['YoY_Units']) / _model_q['YoY_Units'] * 100
+    _model_q['Neg_YoY'] = _model_q['YoY_Growth_%'] < 0
+
+    # Count consecutive negatives trailing from latest quarter
+    _active_models = _actual_df[_actual_df['Quarter_Index'] == _latest_q]['Product Model'].unique()
+    _flagged_models = []
+    for _m in _active_models:
+        _mq = _model_q[_model_q['Product Model'] == _m].sort_values('Quarter_Index')
+        _recent = _mq[_mq['YoY_Growth_%'].notna()].tail(6)
+        if len(_recent) == 0:
+            continue
+        _consec = 0
+        for _, _row in _recent.iloc[::-1].iterrows():
+            if _row['Neg_YoY']:
+                _consec += 1
+            else:
+                break
+        if _consec >= CONSEC_NEG_THRESHOLD:
+            _last = _recent.iloc[-1]
+            _tier = _actual_df[_actual_df['Product Model'] == _m]['Price Tier'].mode()[0]
+            _5g   = _actual_df[_actual_df['Product Model'] == _m]['5G Capability'].mode()[0]
+            _action = 'Pricing — review ASP vs competition' if _tier in ['Flagship', 'Premium', 'Premium Foldable'] else 'Product — refresh or retire'
+            _flagged_models.append({
+                'Model': _m, 'Tier': _tier, '5G': _5g,
+                'Consec. Neg. YoY Qtrs': _consec,
+                'Last YoY %': f"{_last['YoY_Growth_%']:.1f}%",
+                'Trigger Quarter': _last['Period'],
+                'Suggested Action': _action
+            })
+
+    if _flagged_models:
+        _fm_df = pd.DataFrame(_flagged_models).set_index('Model')
+        st.dataframe(_fm_df, use_container_width=True)
+    else:
+        st.info("No models flagged for consecutive negative YoY growth.")
+
 
 
 # ==============================================================================
