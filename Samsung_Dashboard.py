@@ -2310,8 +2310,15 @@ with tab_5g_comp:
 <p class="section-desc">Comparative commercial performance and unit economics evaluating volume throughput, revenue contribution, and realized pricing premiums between 5G-enabled devices and legacy 4G portfolios (2019–2026).</p>
 </div>""", unsafe_allow_html=True)
     
+    # Scope Alignment: Cross-sectional unit economics, Welch's t-test, and price-tier
+    # Welch's ANOVA are evaluated strictly on confirmed historical records (Actual cohort, N=996)
+    # to maintain statistical validity and prevent synthetic projections from distorting inferential testing.
+    tab2_df = filtered_df[filtered_df['Data Type'] == 'Actual']
+    if len(tab2_df) == 0:
+        tab2_df = filtered_df
+    
     comp_df = (
-        filtered_df.groupby('5G Capability')
+        tab2_df.groupby('5G Capability')
         .agg(
             Units_Sold=('Units Sold', 'sum'),
             Total_Revenue=('Revenue ($)', 'sum'),
@@ -2377,8 +2384,8 @@ with tab_5g_comp:
         """, unsafe_allow_html=True)
     
     # Inferential Group Comparison: Welch's Two-Sample t-Test
-    g5_recs = filtered_df[filtered_df['5G Capability'] == 'Yes']
-    gnon_recs = filtered_df[filtered_df['5G Capability'] == 'No']
+    g5_recs = tab2_df[tab2_df['5G Capability'] == 'Yes']
+    gnon_recs = tab2_df[tab2_df['5G Capability'] == 'No']
     
     if len(g5_recs) >= 2 and len(gnon_recs) >= 2:
         t_u, p_u = stats.ttest_ind(g5_recs['Units Sold'], gnon_recs['Units Sold'], equal_var=False)
@@ -2438,132 +2445,14 @@ with tab_5g_comp:
             )
 
     # --------------------------------------------------------------------------
-    # Price-Tier Comparative Analysis (Per-Record Unit Economics)
     # --------------------------------------------------------------------------
-    st.markdown("#### Price-Tier Comparative Analysis (Per-Record Unit Economics)")
-    st.markdown(
-        """<p style="font-size: 0.85rem; color: #64748B; margin-top: 0.2rem; margin-bottom: 0.8rem; line-height: 1.55;">
-        <strong>Methodological Framing:</strong> Evaluates unweighted per-record unit economics (mean Units Sold, mean Revenue, mean ASP per model-region quarter) across Samsung's five product price tiers, matching the inferential group methodology used in the 5G vs. Non-5G comparison.
-        </p>""",
-        unsafe_allow_html=True
-    )
-    
+    # --------------------------------------------------------------------------
+    # Price-Tier Comparative Analysis & Portfolio Architecture
+    # --------------------------------------------------------------------------
     tier_order = ['Budget', 'Mid', 'Flagship', 'Premium', 'Premium Foldable']
-    active_tiers = [t for t in tier_order if t in filtered_df['Price Tier'].unique()]
+    active_tiers = [t for t in tier_order if t in tab2_df['Price Tier'].unique()]
     
     if len(active_tiers) >= 2:
-        tier_stats_list = []
-        for t in active_tiers:
-            sub = filtered_df[filtered_df['Price Tier'] == t]
-            sub_asp = sub['Revenue ($)'] / sub['Units Sold']
-            tier_stats_list.append({
-                'Price Tier': t,
-                'Records (n)': len(sub),
-                'Mean_Units': sub['Units Sold'].mean(),
-                'SEM_Units': sub['Units Sold'].sem(),
-                'Mean_Revenue': sub['Revenue ($)'].mean(),
-                'SEM_Revenue': sub['Revenue ($)'].sem(),
-                'Mean_ASP': sub_asp.mean(),
-                'SEM_ASP': sub_asp.sem()
-            })
-        tier_comp_df = pd.DataFrame(tier_stats_list)
-        
-        # 3 Side-by-side bar charts across the five price tiers
-        col_pt1, col_pt2, col_pt3 = st.columns(3)
-        
-        # 1. Mean Units Sold per record
-        with col_pt1:
-            max_u = tier_comp_df['Mean_Units'].max()
-            fig_bar_units = go.Figure()
-            fig_bar_units.add_trace(go.Bar(
-                x=tier_comp_df['Price Tier'],
-                y=tier_comp_df['Mean_Units'],
-                marker_color=[PRICE_TIER_COLORS.get(t, SAMSUNG_BLUE) for t in tier_comp_df['Price Tier']],
-                text=[f"{v:,.0f}" for v in tier_comp_df['Mean_Units']],
-                textposition='outside',
-                hovertemplate='<b>%{x} Tier</b><br>Mean Units/Record: %{y:,.0f}<extra></extra>'
-            ))
-            fig_bar_units.update_layout(
-                PLOTLY_LAYOUT_DEFAULTS,
-                height=390,
-                margin=dict(l=45, r=60, t=75, b=95),
-                title=dict(
-                    text="<b>Mean Units Sold per Record</b><br><span style='font-size: 11px; font-weight: normal; color: #64748B;'>Volume distribution across price tiers</span>",
-                    font=dict(family='Outfit, Poppins, sans-serif', size=13, color='#0F172A')
-                ),
-                xaxis=dict(
-                    title=dict(text="Price Tier", font=dict(family='Inter, sans-serif', size=11, color='#334155'), standoff=12),
-                    tickangle=-45,
-                    tickfont=dict(family='Inter, sans-serif', size=11, color='#64748B'),
-                    automargin=True
-                ),
-                yaxis=dict(title="Mean Units Sold", rangemode='tozero', range=[0, max_u * 1.16], automargin=True),
-                showlegend=False
-            )
-            st.plotly_chart(fig_bar_units, use_container_width=True, config=PLOTLY_CONFIG)
-            
-        # 2. Mean Revenue per record
-        with col_pt2:
-            max_r = tier_comp_df['Mean_Revenue'].max()
-            fig_bar_rev = go.Figure()
-            fig_bar_rev.add_trace(go.Bar(
-                x=tier_comp_df['Price Tier'],
-                y=tier_comp_df['Mean_Revenue'],
-                marker_color=[PRICE_TIER_COLORS.get(t, SAMSUNG_BLUE) for t in tier_comp_df['Price Tier']],
-                text=[f"${v/1e6:.2f}M" for v in tier_comp_df['Mean_Revenue']],
-                textposition='outside',
-                hovertemplate='<b>%{x} Tier</b><br>Mean Revenue/Record: $%{y:,.0f}<extra></extra>'
-            ))
-            fig_bar_rev.update_layout(
-                PLOTLY_LAYOUT_DEFAULTS,
-                height=390,
-                margin=dict(l=45, r=60, t=75, b=95),
-                title=dict(
-                    text="<b>Mean Gross Revenue per Record ($)</b><br><span style='font-size: 11px; font-weight: normal; color: #64748B;'>Gross revenue generation across price tiers</span>",
-                    font=dict(family='Outfit, Poppins, sans-serif', size=13, color='#0F172A')
-                ),
-                xaxis=dict(
-                    title=dict(text="Price Tier", font=dict(family='Inter, sans-serif', size=11, color='#334155'), standoff=12),
-                    tickangle=-45,
-                    tickfont=dict(family='Inter, sans-serif', size=11, color='#64748B'),
-                    automargin=True
-                ),
-                yaxis=dict(title="Mean Gross Revenue ($)", rangemode='tozero', range=[0, max_r * 1.16], automargin=True),
-                showlegend=False
-            )
-            st.plotly_chart(fig_bar_rev, use_container_width=True, config=PLOTLY_CONFIG)
-            
-        # 3. Mean ASP per record
-        with col_pt3:
-            max_asp = tier_comp_df['Mean_ASP'].max()
-            fig_bar_asp = go.Figure()
-            fig_bar_asp.add_trace(go.Bar(
-                x=tier_comp_df['Price Tier'],
-                y=tier_comp_df['Mean_ASP'],
-                marker_color=[PRICE_TIER_COLORS.get(t, SAMSUNG_BLUE) for t in tier_comp_df['Price Tier']],
-                text=[f"${v:,.2f}" for v in tier_comp_df['Mean_ASP']],
-                textposition='outside',
-                hovertemplate='<b>%{x} Tier</b><br>Mean ASP/Record: $%{y:,.2f}<extra></extra>'
-            ))
-            fig_bar_asp.update_layout(
-                PLOTLY_LAYOUT_DEFAULTS,
-                height=390,
-                margin=dict(l=45, r=60, t=75, b=95),
-                title=dict(
-                    text="<b>Mean Derived ASP per Record ($)</b><br><span style='font-size: 11px; font-weight: normal; color: #64748B;'>Unweighted ASP escalation across price tiers</span>",
-                    font=dict(family='Outfit, Poppins, sans-serif', size=13, color='#0F172A')
-                ),
-                xaxis=dict(
-                    title=dict(text="Price Tier", font=dict(family='Inter, sans-serif', size=11, color='#334155'), standoff=12),
-                    tickangle=-45,
-                    tickfont=dict(family='Inter, sans-serif', size=11, color='#64748B'),
-                    automargin=True
-                ),
-                yaxis=dict(title="Mean Derived ASP ($)", rangemode='tozero', range=[0, max_asp * 1.16], automargin=True),
-                showlegend=False
-            )
-            st.plotly_chart(fig_bar_asp, use_container_width=True, config=PLOTLY_CONFIG)
-            
         # Statistical Significance Testing: Welch's One-Way ANOVA across Price Tiers
         def calc_welch_anova(groups):
             k = len(groups)
@@ -2583,9 +2472,9 @@ with tab_5g_comp:
             p_val = stats.f.sf(f_stat, df1, df2)
             return f_stat, df1, df2, p_val
 
-        tier_u_groups = [filtered_df[filtered_df['Price Tier'] == t]['Units Sold'].dropna().values for t in active_tiers]
-        tier_r_groups = [filtered_df[filtered_df['Price Tier'] == t]['Revenue ($)'].dropna().values for t in active_tiers]
-        tier_asp_groups = [(filtered_df[filtered_df['Price Tier'] == t]['Revenue ($)'] / filtered_df[filtered_df['Price Tier'] == t]['Units Sold']).dropna().values for t in active_tiers]
+        tier_u_groups = [tab2_df[tab2_df['Price Tier'] == t]['Units Sold'].dropna().values for t in active_tiers]
+        tier_r_groups = [tab2_df[tab2_df['Price Tier'] == t]['Revenue ($)'].dropna().values for t in active_tiers]
+        tier_asp_groups = [(tab2_df[tab2_df['Price Tier'] == t]['Revenue ($)'] / tab2_df[tab2_df['Price Tier'] == t]['Units Sold']).dropna().values for t in active_tiers]
         
         valid_u = [g for g in tier_u_groups if len(g) >= 2]
         
@@ -2626,23 +2515,429 @@ with tab_5g_comp:
                 ]
             })
             
+            if pw_u < 0.001 and pw_r < 0.001 and pw_asp < 0.001:
+                anova_badge_text = "Per-record differences significant &mdash; Welch's ANOVA, p &lt; .001"
+            elif max(pw_u, pw_r, pw_asp) < 0.05:
+                anova_badge_text = "Per-record differences significant &mdash; Welch's ANOVA, p &lt; .05"
+            else:
+                anova_badge_text = "Price-Tier Significance &mdash; Welch's ANOVA"
+        else:
+            anova_df = None
+            anova_badge_text = "Price-Tier Significance &mdash; Welch's ANOVA"
+
+        # Tier Portfolio Aggregates for Hero Combo Chart & Progress Table
+        tier_summary_list = []
+        tot_units_portfolio = tab2_df['Units Sold'].sum()
+        tot_rev_portfolio = tab2_df['Revenue ($)'].sum()
+
+        for t in active_tiers:
+            sub = tab2_df[tab2_df['Price Tier'] == t]
+            u_sum = sub['Units Sold'].sum()
+            r_sum = sub['Revenue ($)'].sum()
+            asp_blended = (r_sum / u_sum) if u_sum > 0 else 0.0
+            u_share = (u_sum / tot_units_portfolio * 100.0) if tot_units_portfolio > 0 else 0.0
+            r_share = (r_sum / tot_rev_portfolio * 100.0) if tot_rev_portfolio > 0 else 0.0
+            tier_summary_list.append({
+                'Price Tier': t,
+                'Records (n)': len(sub),
+                'Total_Units': u_sum,
+                'Total_Revenue': r_sum,
+                'Blended_ASP': asp_blended,
+                'Volume_Share': u_share,
+                'Revenue_Share': r_share
+            })
+        tier_summary_df = pd.DataFrame(tier_summary_list)
+
+        max_tot_u = tier_summary_df['Total_Units'].max()
+        max_tot_r = tier_summary_df['Total_Revenue'].max()
+        max_tot_asp = tier_summary_df['Blended_ASP'].max()
+
+        top_units_tier = tier_summary_df.loc[tier_summary_df['Total_Units'].idxmax(), 'Price Tier']
+        top_rev_tier = tier_summary_df.loc[tier_summary_df['Total_Revenue'].idxmax(), 'Price Tier']
+        top_asp_tier = tier_summary_df.loc[tier_summary_df['Blended_ASP'].idxmax(), 'Price Tier']
+
+        if top_units_tier != top_rev_tier and top_rev_tier != top_asp_tier and top_units_tier != top_asp_tier:
+            dynamic_caption = f"Every tier tells a different part of the story: <strong>{top_units_tier}</strong> wins on volume, <strong>{top_rev_tier}</strong> wins on revenue, and <strong>{top_asp_tier}</strong> wins on price &mdash; no single tier dominates on all three."
+        else:
+            dynamic_caption = f"Tier performance profile: <strong>{top_units_tier}</strong> leads on volume, <strong>{top_rev_tier}</strong> leads on revenue, and <strong>{top_asp_tier}</strong> commands the highest ASP."
+
+        # ----------------------------------------------------------------------
+        # HERO SECTION: Tier Performance Overview Card (Light Samsung One UI)
+        # ----------------------------------------------------------------------
+        header_card_html = (
+            '<div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 12px; padding: 1.15rem 1.35rem 1rem 1.35rem; box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04); margin-bottom: 0.85rem; width: 100%; box-sizing: border-box;">'
+            '<div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 0.35rem;">'
+            '<div>'
+            '<div style="font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #1428A0; margin-bottom: 0.15rem;">PORTFOLIO ARCHITECTURE</div>'
+            '<div style="font-size: 1.28rem; font-weight: 700; color: #0F172A; font-family: Outfit, Poppins, sans-serif; letter-spacing: -0.01em;">Tier Performance Overview</div>'
+            '<div style="font-size: 0.78rem; color: #64748B; font-weight: 500; margin-top: 0.2rem;">Scope: Actual records only (n = 996), 2019&ndash;2026 Q2</div>'
+            '</div>'
+            '<div style="background: #EFF6FF; border: 1px solid #BFDBFE; border-radius: 9999px; padding: 0.28rem 0.85rem; font-size: 0.76rem; font-weight: 600; color: #1D4ED8; display: inline-flex; align-items: center; gap: 0.4rem; box-shadow: 0 1px 2px rgba(29, 78, 216, 0.05);">'
+            '<span style="display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: #2563EB;"></span>'
+            f'{anova_badge_text}'
+            '</div>'
+            '</div>'
+            '<div style="font-size: 0.90rem; color: #334155; line-height: 1.55; background: #F8FAFC; border-left: 3.5px solid #1428A0; padding: 0.55rem 0.85rem; border-radius: 6px; margin-top: 0.45rem;">'
+            f'{dynamic_caption}'
+            '</div>'
+            '</div>'
+        )
+        st.markdown(header_card_html, unsafe_allow_html=True)
+
+        # Interactive metric checkboxes with color-keyed swatches inside chart area
+        st.markdown("""
+        <style>
+        div[data-testid="stCheckbox"]:has(input[aria-label="Units Sold"]) label span[data-testid="stWidgetLabel"] p::before {
+            content: "■ ";
+            color: #2563EB;
+            font-size: 0.95rem;
+            line-height: 1;
+        }
+        div[data-testid="stCheckbox"]:has(input[aria-label="Gross Revenue"]) label span[data-testid="stWidgetLabel"] p::before {
+            content: "■ ";
+            color: #1428A0;
+            font-size: 0.95rem;
+            line-height: 1;
+        }
+        div[data-testid="stCheckbox"]:has(input[aria-label="Blended ASP"]) label span[data-testid="stWidgetLabel"] p::before {
+            content: "■ ";
+            color: #64748B;
+            font-size: 0.95rem;
+            line-height: 1;
+        }
+        </style>
+        """, unsafe_allow_html=True)
+
+        col_tog1, col_tog2, col_tog3, _ = st.columns([1.6, 1.8, 1.8, 4.8])
+        with col_tog1:
+            show_units = st.checkbox("Units Sold", value=True, key="tier_show_units")
+        with col_tog2:
+            show_rev = st.checkbox("Gross Revenue", value=True, key="tier_show_rev")
+        with col_tog3:
+            show_asp = st.checkbox("Blended ASP", value=True, key="tier_show_asp")
+
+        if not (show_units or show_rev or show_asp):
+            show_units = show_rev = show_asp = True
+
+        # Normalized Clustered Bar Chart (Option B Palette)
+        fig_tier_combo = go.Figure()
+
+        if show_units:
+            norm_u_vals = [(u / max_tot_u * 100.0) if max_tot_u > 0 else 0 for u in tier_summary_df['Total_Units']]
+            text_u = [f"{u/1e6:.2f}M" for u in tier_summary_df['Total_Units']]
+            fig_tier_combo.add_trace(go.Bar(
+                name='Units Sold',
+                x=tier_summary_df['Price Tier'],
+                y=norm_u_vals,
+                customdata=np.stack((tier_summary_df['Total_Units'], tier_summary_df['Volume_Share']), axis=-1),
+                marker=dict(
+                    color='#2563EB',
+                    line=dict(color='#FFFFFF', width=1.5)
+                ),
+                text=text_u,
+                textposition='outside',
+                textfont=dict(family='Inter, sans-serif', size=11, color='#0F172A', weight='bold'),
+                hovertemplate='<b>%{x} Tier</b><br>Metric: Units Sold<br>Volume: <b>%{text} (%{customdata[0]:,.0f} units)</b><br>Portfolio Share: <b>%{customdata[1]:.1f}%</b><br>Index of Max: %{y:.1f}%<extra></extra>'
+            ))
+
+        if show_rev:
+            norm_r_vals = [(r / max_tot_r * 100.0) if max_tot_r > 0 else 0 for r in tier_summary_df['Total_Revenue']]
+            text_r = [f"${r/1e9:.2f}B" for r in tier_summary_df['Total_Revenue']]
+            fig_tier_combo.add_trace(go.Bar(
+                name='Gross Revenue',
+                x=tier_summary_df['Price Tier'],
+                y=norm_r_vals,
+                customdata=np.stack((tier_summary_df['Total_Revenue'], tier_summary_df['Revenue_Share']), axis=-1),
+                marker=dict(
+                    color='#1428A0',
+                    line=dict(color='#FFFFFF', width=1.5)
+                ),
+                text=text_r,
+                textposition='outside',
+                textfont=dict(family='Inter, sans-serif', size=11, color='#0F172A', weight='bold'),
+                hovertemplate='<b>%{x} Tier</b><br>Metric: Gross Revenue<br>Revenue: <b>%{text} ($%{customdata[0]:,.2f})</b><br>Portfolio Share: <b>%{customdata[1]:.1f}%</b><br>Index of Max: %{y:.1f}%<extra></extra>'
+            ))
+
+        if show_asp:
+            norm_asp_vals = [(a / max_tot_asp * 100.0) if max_tot_asp > 0 else 0 for a in tier_summary_df['Blended_ASP']]
+            text_asp = [f"${a:,.0f}" for a in tier_summary_df['Blended_ASP']]
+            fig_tier_combo.add_trace(go.Bar(
+                name='Blended ASP',
+                x=tier_summary_df['Price Tier'],
+                y=norm_asp_vals,
+                customdata=np.stack((tier_summary_df['Blended_ASP'], norm_asp_vals), axis=-1),
+                marker=dict(
+                    color='#64748B',
+                    line=dict(color='#FFFFFF', width=1.5)
+                ),
+                text=text_asp,
+                textposition='outside',
+                textfont=dict(family='Inter, sans-serif', size=11, color='#0F172A', weight='bold'),
+                hovertemplate='<b>%{x} Tier</b><br>Metric: Realized Blended ASP<br>ASP: <b>%{text}</b><br>Index of Max ASP: %{y:.1f}%<extra></extra>'
+            ))
+
+        fig_tier_combo.update_layout(
+            barmode='group',
+            bargap=0.22,
+            bargroupgap=0.10,
+            height=370,
+            margin=dict(l=35, r=25, t=25, b=25),
+            paper_bgcolor='#FFFFFF',
+            plot_bgcolor='#FFFFFF',
+            xaxis=dict(
+                title=dict(text="", font=dict(family='Inter, sans-serif', size=11, color='#334155')),
+                tickfont=dict(family='Inter, sans-serif', size=12, color='#0F172A', weight='bold'),
+                showline=True,
+                linecolor='#E2E8F0',
+                showgrid=False
+            ),
+            yaxis=dict(
+                title=dict(text=""),
+                range=[0, 122],
+                tickvals=[0, 25, 50, 75, 100],
+                ticktext=['0%', '25%', '50%', '75%', '100%'],
+                tickfont=dict(family='Inter, sans-serif', size=10, color='#64748B'),
+                gridcolor='#F1F5F9',
+                zeroline=True,
+                zerolinecolor='#E2E8F0'
+            ),
+            showlegend=False
+        )
+        st.plotly_chart(fig_tier_combo, use_container_width=True, config=PLOTLY_CONFIG)
+
+        # Visible scaling note directly under chart
+        st.markdown(
+            '<div style="font-size: 0.78rem; color: #64748B; margin-top: -0.35rem; margin-bottom: 0.85rem; line-height: 1.45; padding-left: 0.25rem;">'
+            '<em>Bars are scaled so each metric\'s highest tier = 100%. Labels show actual values. Bar heights aren\'t comparable across metrics.</em>'
+            '</div>',
+            unsafe_allow_html=True
+        )
+
+        # Inline Progress-Bar Data Table
+        active_metric_count = int(show_units) + int(show_rev) + int(show_asp)
+        col_width_pct = 78 // max(1, active_metric_count) if active_metric_count > 0 else 78
+
+        table_rows_html = []
+        for _, row in tier_summary_df.iterrows():
+            t = row['Price Tier']
+            row_cells = [
+                '<tr style="border-bottom: 1px solid #F1F5F9;">'
+                f'<td style="padding: 10px 14px; font-weight: 600; color: #0F172A; white-space: nowrap;">{t}</td>'
+            ]
+
+            if show_units:
+                u_pct = (row['Total_Units'] / max_tot_u * 100.0) if max_tot_u > 0 else 0
+                u_fmt = f"{row['Total_Units']/1e6:.2f}M"
+                is_u_top = (t == top_units_tier)
+                u_badge = '<span style="background: #2563EB; color: #FFFFFF; font-size: 0.65rem; font-weight: 700; padding: 2px 7px; border-radius: 9999px; margin-left: 8px; letter-spacing: 0.02em; display: inline-flex; align-items: center; gap: 3px;">&#9670; highest</span>' if is_u_top else ''
+                row_cells.append(
+                    '<td style="padding: 8px 12px;">'
+                    '<div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 6px; height: 34px; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: flex-end; padding: 0 10px;">'
+                    f'<div style="position: absolute; left: 0; top: 0; bottom: 0; width: {u_pct:.1f}%; background: rgba(37, 99, 235, 0.14); border-right: 2px solid rgba(37, 99, 235, 0.50);"></div>'
+                    '<div style="position: relative; z-index: 2; display: flex; align-items: center;">'
+                    f'<span style="font-weight: 700; color: #0F172A; font-size: 0.85rem;">{u_fmt}</span>'
+                    f'{u_badge}'
+                    '</div></div></td>'
+                )
+
+            if show_rev:
+                r_pct = (row['Total_Revenue'] / max_tot_r * 100.0) if max_tot_r > 0 else 0
+                r_fmt = f"${row['Total_Revenue']/1e9:.2f}B"
+                is_r_top = (t == top_rev_tier)
+                r_badge = '<span style="background: #1428A0; color: #FFFFFF; font-size: 0.65rem; font-weight: 700; padding: 2px 7px; border-radius: 9999px; margin-left: 8px; letter-spacing: 0.02em; display: inline-flex; align-items: center; gap: 3px;">&#9670; highest</span>' if is_r_top else ''
+                row_cells.append(
+                    '<td style="padding: 8px 12px;">'
+                    '<div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 6px; height: 34px; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: flex-end; padding: 0 10px;">'
+                    f'<div style="position: absolute; left: 0; top: 0; bottom: 0; width: {r_pct:.1f}%; background: rgba(20, 40, 160, 0.12); border-right: 2px solid rgba(20, 40, 160, 0.45);"></div>'
+                    '<div style="position: relative; z-index: 2; display: flex; align-items: center;">'
+                    f'<span style="font-weight: 700; color: #0F172A; font-size: 0.85rem;">{r_fmt}</span>'
+                    f'{r_badge}'
+                    '</div></div></td>'
+                )
+
+            if show_asp:
+                a_pct = (row['Blended_ASP'] / max_tot_asp * 100.0) if max_tot_asp > 0 else 0
+                a_fmt = f"${row['Blended_ASP']:,.0f}"
+                is_a_top = (t == top_asp_tier)
+                a_badge = '<span style="background: #64748B; color: #FFFFFF; font-size: 0.65rem; font-weight: 700; padding: 2px 7px; border-radius: 9999px; margin-left: 8px; letter-spacing: 0.02em; display: inline-flex; align-items: center; gap: 3px;">&#9670; highest</span>' if is_a_top else ''
+                row_cells.append(
+                    '<td style="padding: 8px 12px;">'
+                    '<div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 6px; height: 34px; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: flex-end; padding: 0 10px;">'
+                    f'<div style="position: absolute; left: 0; top: 0; bottom: 0; width: {a_pct:.1f}%; background: rgba(100, 116, 139, 0.14); border-right: 2px solid rgba(100, 116, 139, 0.45);"></div>'
+                    '<div style="position: relative; z-index: 2; display: flex; align-items: center;">'
+                    f'<span style="font-weight: 700; color: #0F172A; font-size: 0.85rem;">{a_fmt}</span>'
+                    f'{a_badge}'
+                    '</div></div></td>'
+                )
+
+            row_cells.append('</tr>')
+            table_rows_html.append(''.join(row_cells))
+
+        table_header_cols = ['<th style="padding: 10px 14px; font-weight: 700; width: 22%;">Price Tier</th>']
+        if show_units:
+            table_header_cols.append(f'<th style="padding: 10px 14px; font-weight: 700; width: {col_width_pct}%;"><span style="display:inline-block; width:8px; height:8px; border-radius:2px; background:#2563EB; margin-right:6px;"></span>Units Sold</th>')
+        if show_rev:
+            table_header_cols.append(f'<th style="padding: 10px 14px; font-weight: 700; width: {col_width_pct}%;"><span style="display:inline-block; width:8px; height:8px; border-radius:2px; background:#1428A0; margin-right:6px;"></span>Gross Revenue</th>')
+        if show_asp:
+            table_header_cols.append(f'<th style="padding: 10px 14px; font-weight: 700; width: {col_width_pct}%;"><span style="display:inline-block; width:8px; height:8px; border-radius:2px; background:#64748B; margin-right:6px;"></span>Blended ASP</th>')
+
+        progress_table_html = (
+            '<div style="overflow-x: auto; margin-top: 0.5rem; margin-bottom: 1.25rem; border-radius: 12px; border: 1px solid #E2E8F0; background: #FFFFFF; box-shadow: 0 1px 3px rgba(15,23,42,0.03); width: 100%; box-sizing: border-box;">'
+            '<table style="width: 100%; border-collapse: collapse; font-family: Inter, sans-serif; font-size: 0.85rem; text-align: left;">'
+            '<thead><tr style="background: #F8FAFC; border-bottom: 2px solid #E2E8F0; color: #475569; font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.05em;">'
+            f'{"".join(table_header_cols)}'
+            '</tr></thead>'
+            '<tbody>'
+            f'{"".join(table_rows_html)}'
+            '</tbody>'
+            '</table>'
+            '</div>'
+        )
+        st.markdown(progress_table_html, unsafe_allow_html=True)
+
+        # ----------------------------------------------------------------------
+        # SECONDARY: Granular Per-Record Metric Distributions Expander
+        # ----------------------------------------------------------------------
+        with st.expander("View granular per-record metric distributions", expanded=False):
+            st.markdown(
+                """<p style="font-size: 0.85rem; color: #64748B; margin-top: 0.2rem; margin-bottom: 0.8rem; line-height: 1.55;">
+                <strong>Methodological Framing:</strong> Evaluates unweighted per-record unit economics (mean Units Sold, mean Revenue, mean ASP per model-region quarter) across Samsung's five product price tiers, matching the inferential group methodology used in the 5G vs. Non-5G comparison.
+                </p>""",
+                unsafe_allow_html=True
+            )
+            
+            tier_stats_list = []
+            for t in active_tiers:
+                sub = tab2_df[tab2_df['Price Tier'] == t]
+                sub_asp = sub['Revenue ($)'] / sub['Units Sold']
+                tier_stats_list.append({
+                    'Price Tier': t,
+                    'Records (n)': len(sub),
+                    'Mean_Units': sub['Units Sold'].mean(),
+                    'SEM_Units': sub['Units Sold'].sem(),
+                    'Mean_Revenue': sub['Revenue ($)'].mean(),
+                    'SEM_Revenue': sub['Revenue ($)'].sem(),
+                    'Mean_ASP': sub_asp.mean(),
+                    'SEM_ASP': sub_asp.sem()
+                })
+            tier_comp_df = pd.DataFrame(tier_stats_list)
+
+            # 3 Side-by-side bar charts across the five price tiers
+            col_pt1, col_pt2, col_pt3 = st.columns(3)
+
+            # 1. Mean Units Sold per record
+            with col_pt1:
+                max_u = tier_comp_df['Mean_Units'].max()
+                fig_bar_units = go.Figure()
+                fig_bar_units.add_trace(go.Bar(
+                    x=tier_comp_df['Price Tier'],
+                    y=tier_comp_df['Mean_Units'],
+                    marker_color=[PRICE_TIER_COLORS.get(t, SAMSUNG_BLUE) for t in tier_comp_df['Price Tier']],
+                    text=[f"{v:,.0f}" for v in tier_comp_df['Mean_Units']],
+                    textposition='outside',
+                    hovertemplate='<b>%{x} Tier</b><br>Mean Units/Record: %{y:,.0f}<extra></extra>'
+                ))
+                fig_bar_units.update_layout(
+                    PLOTLY_LAYOUT_DEFAULTS,
+                    height=390,
+                    margin=dict(l=45, r=60, t=75, b=95),
+                    title=dict(
+                        text="<b>Mean Units Sold per Record</b><br><span style='font-size: 11px; font-weight: normal; color: #64748B;'>Volume distribution across price tiers</span>",
+                        font=dict(family='Outfit, Poppins, sans-serif', size=13, color='#0F172A')
+                    ),
+                    xaxis=dict(
+                        title=dict(text="Price Tier", font=dict(family='Inter, sans-serif', size=11, color='#334155'), standoff=12),
+                        tickangle=-45,
+                        tickfont=dict(family='Inter, sans-serif', size=11, color='#64748B'),
+                        automargin=True
+                    ),
+                    yaxis=dict(title="Mean Units Sold", rangemode='tozero', range=[0, max_u * 1.16], automargin=True),
+                    showlegend=False
+                )
+                st.plotly_chart(fig_bar_units, use_container_width=True, config=PLOTLY_CONFIG)
+
+            # 2. Mean Revenue per record
+            with col_pt2:
+                max_r = tier_comp_df['Mean_Revenue'].max()
+                fig_bar_rev = go.Figure()
+                fig_bar_rev.add_trace(go.Bar(
+                    x=tier_comp_df['Price Tier'],
+                    y=tier_comp_df['Mean_Revenue'],
+                    marker_color=[PRICE_TIER_COLORS.get(t, SAMSUNG_BLUE) for t in tier_comp_df['Price Tier']],
+                    text=[f"${v/1e6:.2f}M" for v in tier_comp_df['Mean_Revenue']],
+                    textposition='outside',
+                    hovertemplate='<b>%{x} Tier</b><br>Mean Revenue/Record: $%{y:,.0f}<extra></extra>'
+                ))
+                fig_bar_rev.update_layout(
+                    PLOTLY_LAYOUT_DEFAULTS,
+                    height=390,
+                    margin=dict(l=45, r=60, t=75, b=95),
+                    title=dict(
+                        text="<b>Mean Gross Revenue per Record ($)</b><br><span style='font-size: 11px; font-weight: normal; color: #64748B;'>Gross revenue generation across price tiers</span>",
+                        font=dict(family='Outfit, Poppins, sans-serif', size=13, color='#0F172A')
+                    ),
+                    xaxis=dict(
+                        title=dict(text="Price Tier", font=dict(family='Inter, sans-serif', size=11, color='#334155'), standoff=12),
+                        tickangle=-45,
+                        tickfont=dict(family='Inter, sans-serif', size=11, color='#64748B'),
+                        automargin=True
+                    ),
+                    yaxis=dict(title="Mean Gross Revenue ($)", rangemode='tozero', range=[0, max_r * 1.16], automargin=True),
+                    showlegend=False
+                )
+                st.plotly_chart(fig_bar_rev, use_container_width=True, config=PLOTLY_CONFIG)
+
+            # 3. Mean ASP per record
+            with col_pt3:
+                max_asp = tier_comp_df['Mean_ASP'].max()
+                fig_bar_asp = go.Figure()
+                fig_bar_asp.add_trace(go.Bar(
+                    x=tier_comp_df['Price Tier'],
+                    y=tier_comp_df['Mean_ASP'],
+                    marker_color=[PRICE_TIER_COLORS.get(t, SAMSUNG_BLUE) for t in tier_comp_df['Price Tier']],
+                    text=[f"${v:,.2f}" for v in tier_comp_df['Mean_ASP']],
+                    textposition='outside',
+                    hovertemplate='<b>%{x} Tier</b><br>Mean ASP/Record: $%{y:,.2f}<extra></extra>'
+                ))
+                fig_bar_asp.update_layout(
+                    PLOTLY_LAYOUT_DEFAULTS,
+                    height=390,
+                    margin=dict(l=45, r=60, t=75, b=95),
+                    title=dict(
+                        text="<b>Mean Derived ASP per Record ($)</b><br><span style='font-size: 11px; font-weight: normal; color: #64748B;'>Unweighted ASP escalation across price tiers</span>",
+                        font=dict(family='Outfit, Poppins, sans-serif', size=13, color='#0F172A')
+                    ),
+                    xaxis=dict(
+                        title=dict(text="Price Tier", font=dict(family='Inter, sans-serif', size=11, color='#334155'), standoff=12),
+                        tickangle=-45,
+                        tickfont=dict(family='Inter, sans-serif', size=11, color='#64748B'),
+                        automargin=True
+                    ),
+                    yaxis=dict(title="Mean Derived ASP ($)", rangemode='tozero', range=[0, max_asp * 1.16], automargin=True),
+                    showlegend=False
+                )
+                st.plotly_chart(fig_bar_asp, use_container_width=True, config=PLOTLY_CONFIG)
+
+        # ----------------------------------------------------------------------
+        # STATISTICAL INFERENCE: Welch's ANOVA Expander
+        # ----------------------------------------------------------------------
+        if anova_df is not None:
             # Plain-language summary line visible by default
             st.markdown("""
-            <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-left: 4px solid #1428A0; border-radius: 10px; padding: 0.85rem 1.15rem; margin: 1rem 0 0.65rem 0;">
+            <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-left: 4px solid #1428A0; border-radius: 10px; padding: 0.85rem 1.15rem; margin: 0.5rem 0 0.65rem 0;">
                 <div style="font-size: 0.74rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #1428A0; margin-bottom: 0.25rem;">Key Statistical Takeaway</div>
                 <div style="font-size: 0.92rem; color: #1E293B; line-height: 1.5; font-weight: 500;">
-                    Units sold, revenue, and price all differ significantly across Samsung's five price tiers.
+                    Units sold, revenue, and price all differ significantly across Samsung's five price tiers (all <em>p</em> &lt; 0.001).
                 </div>
             </div>
             """, unsafe_allow_html=True)
             
-            # Technical ANOVA Table & Justification collapsed behind expander
             with st.expander("View statistical significance testing (price-tier ANOVA)", expanded=False):
                 st.markdown("##### Price-Tier Significance Testing: One-Way Welch's ANOVA")
                 st.dataframe(anova_df, use_container_width=True, hide_index=True)
                 st.markdown(
                     """<p style="font-size: 0.85rem; color: #64748B; margin-top: 0.35rem; line-height: 1.55;">
-                    <strong>Methodological Justification for Welch's ANOVA:</strong> Evaluates whether differences in per-record means across the five price tiers are statistically significant without assuming equal tier variances (Levene's test rejected homoscedasticity, <em>W</em> = 12.79, <em>p</em> &lt; 0.001). All three metrics demonstrate significant tier-based differentiation (<em>p</em> &lt; 0.001).
+                    <strong>Methodological Justification for Welch's ANOVA:</strong> Evaluates whether differences in per-record means across the five price tiers are statistically significant without assuming equal tier variances (Levene's test rejected homoscedasticity, <em>W</em> = 12.79, <em>p</em> &lt; 0.001). All three metrics demonstrate significant tier-based differentiation (<em>p</em> &lt; 0.001) across confirmed historical records (Actual cohort, <em>n</em> = 996: Budget 235, Mid 266, Flagship 230, Premium 70, Foldable 195).
                     </p>""",
                     unsafe_allow_html=True
                 )
@@ -2761,7 +3056,7 @@ with tab_5g_comp:
 MODEL_IMAGE_MAP = {
     "Galaxy A05": "a05.webp",
     "Galaxy A06 4G": "a06.webp",
-    "Galaxy A07 4G": "a07_concept.svg",
+    "Galaxy A07 4G": "a07.webp",
     "Galaxy A14 5G": "a14.webp",
     "Galaxy A15 5G": "a15.avif",
     "Galaxy A16 5G": "a16.avif",
@@ -2770,7 +3065,7 @@ MODEL_IMAGE_MAP = {
     "Galaxy A53 5G": "a53.webp",
     "Galaxy A54 5G": "a54.webp",
     "Galaxy A55 5G": "a55.webp",
-    "Galaxy A56 5G": "a56_concept.svg",
+    "Galaxy A56 5G": "a56.webp",
     "Galaxy A73 5G": "a73.jpg",
     "Galaxy Note10": "note10.jpg",
     "Galaxy Note20": "note20.avif",
