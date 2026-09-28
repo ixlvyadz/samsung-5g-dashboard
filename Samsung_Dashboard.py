@@ -1326,8 +1326,9 @@ REGION_COLORS = {
 }
 REGION_DISTINCT_COLORS = REGION_COLORS  # Alias for backward compatibility
 
-# 3. Fixed Color per Price Tier (5 Tiers) - Cohesive Brand Spectrum
+# 3. Fixed Color per Price Tier (6 Tiers) - Cohesive Brand Spectrum
 PRICE_TIER_COLORS = {
+    'Budget Legacy 4G': '#B0BEC5',        # Cool Steel  — legacy/non-5G tier
     'Budget': SAMSUNG_GRAY,               # #94A3B8 (Light Slate - entry tier)
     'Mid': SAMSUNG_SLATE,                 # #64748B (Steel Gray)
     'Flagship': SAMSUNG_BLUE,             # #1428A0 (Samsung Signature Blue)
@@ -1442,6 +1443,7 @@ def resolve_dataset_path():
     Searches for standard dataset filenames in the script directory and current working directory.
     """
     candidate_names = [
+        "Samsung_5G_Cleaned_Dataset_v3.csv",
         "Samsung_5G_Cleaned_Dataset.csv",
         "Samsung_5G_BI_Dataset_RAW.csv",
         "Samsung_5G_BI_Dataset_RAW - Samsung_5G_BI_Dataset_RAW.csv",
@@ -1542,9 +1544,9 @@ def load_and_clean_data(file_path):
     negative_ms_count = int((clean_df['Market Share (%)'] < 0).sum())
     clean_df['Market Share (%)'] = clean_df['Market Share (%)'].abs()
 
-    # 5. Price Tier Consolidation ('Budget Legacy 4G' -> 'Budget')
+    # 5. Price Tier: 'Budget Legacy 4G' is kept as its own tier (v3 dataset — no merge)
     legacy_tier_count = int((clean_df['Price Tier'] == 'Budget Legacy 4G').sum())
-    clean_df['Price Tier'] = clean_df['Price Tier'].replace({'Budget Legacy 4G': 'Budget'})
+    # Budget Legacy 4G preserved for 6-tier analysis
 
     # 6. Deduplication on fully standardized, sign-corrected, and consolidated data
     dup_mask = clean_df.duplicated()
@@ -1858,7 +1860,7 @@ with st.sidebar:
     st.markdown("<div style='height: 1px; background-color: #E2E8F0; margin: 0.4rem 0 0.8rem 0;'></div>", unsafe_allow_html=True)
     
     # Collapsible 4: Price Tiers
-    all_tiers = ["Budget", "Mid", "Flagship", "Premium", "Premium Foldable"]
+    all_tiers = ["Budget Legacy 4G", "Budget", "Mid", "Flagship", "Premium", "Premium Foldable"]
     existing_tiers = [t for t in all_tiers if t in df_clean['Price Tier'].unique()]
     init_tiers = st.session_state.get("filter_tiers", existing_tiers)
     with st.expander(f"Portfolio Price Tiers ({len(init_tiers)} of {len(existing_tiers)})", expanded=False):
@@ -2127,13 +2129,13 @@ st.markdown(kpi_html, unsafe_allow_html=True)
 # 7. DASHBOARD NAVIGATION TABS (CONSOLIDATED 7-TAB ARCHITECTURE)
 # ==============================================================================
 tab_overview, tab_5g_comp, tab_products, tab_trends, tab_forecast, tab_market_cond, tab_underperforming = st.tabs([
-    "Executive Overview",
-    "5G vs. Non-5G Transition",
-    "Product Portfolio & Tiers",
-    "Time Trends & Regional Dynamics",
-    "Time-Series Forecasting",
-    "Market Conditions & Correlations",
-    "Underperforming & Risk Matrix"
+    "Overview",
+    "Price Tier Performance",
+    "5G Market Penetration",
+    "Trends and Forecast",
+    "Regional Conditions",
+    "Action Center",
+    "Data Explorer",
 ])
 
 
@@ -2311,7 +2313,7 @@ with tab_5g_comp:
 </div>""", unsafe_allow_html=True)
     
     # Scope Alignment: Cross-sectional unit economics, Welch's t-test, and price-tier
-    # Welch's ANOVA are evaluated strictly on confirmed historical records (Actual cohort, N=996)
+    # Welch's ANOVA are evaluated strictly on confirmed historical records (Actual cohort, N=995)
     # to maintain statistical validity and prevent synthetic projections from distorting inferential testing.
     tab2_df = filtered_df[filtered_df['Data Type'] == 'Actual']
     if len(tab2_df) == 0:
@@ -2439,7 +2441,7 @@ with tab_5g_comp:
             st.dataframe(ttest_df, use_container_width=True, hide_index=True)
             st.markdown(
                 """<p style="font-size: 0.85rem; color: #64748B; margin-top: 0.35rem; line-height: 1.55;">
-                <strong>Methodological Justification & Framing for Welch's t-Test:</strong> Welch's two-sample t-test evaluates unweighted per-record unit economics (5G <em>n</em> = 741 vs. Non-5G <em>n</em> = 255), showing a significant +$193.43 premium per model offering (<em>p</em> &lt; 0.001). In contrast, top aggregate cards show volume-weighted realized revenue per unit ($452.51 vs. $692.02).
+                <strong>Methodological Justification & Framing for Welch's t-Test:</strong> Welch's two-sample t-test evaluates unweighted per-record unit economics (5G <em>n</em> = 740 vs. Non-5G <em>n</em> = 255), showing a significant +$193.43 premium per model offering (<em>p</em> &lt; 0.001). In contrast, top aggregate cards show volume-weighted realized revenue per unit ($452.51 vs. $692.02).
                 </p>""",
                 unsafe_allow_html=True
             )
@@ -2449,7 +2451,7 @@ with tab_5g_comp:
     # --------------------------------------------------------------------------
     # Price-Tier Comparative Analysis & Portfolio Architecture
     # --------------------------------------------------------------------------
-    tier_order = ['Budget', 'Mid', 'Flagship', 'Premium', 'Premium Foldable']
+    tier_order = ['Budget Legacy 4G', 'Budget', 'Mid', 'Flagship', 'Premium', 'Premium Foldable']
     active_tiers = [t for t in tier_order if t in tab2_df['Price Tier'].unique()]
     
     if len(active_tiers) >= 2:
@@ -2570,7 +2572,7 @@ with tab_5g_comp:
             '<div>'
             '<div style="font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #1428A0; margin-bottom: 0.15rem;">PORTFOLIO ARCHITECTURE</div>'
             '<div style="font-size: 1.28rem; font-weight: 700; color: #0F172A; font-family: Outfit, Poppins, sans-serif; letter-spacing: -0.01em;">Tier Performance Overview</div>'
-            '<div style="font-size: 0.78rem; color: #64748B; font-weight: 500; margin-top: 0.2rem;">Scope: Actual records only (n = 996), 2019&ndash;2026 Q2</div>'
+            f'<div style="font-size: 0.78rem; color: #64748B; font-weight: 500; margin-top: 0.2rem;">Scope: Actual records only (n = {len(tab2_df):,}), 2019&ndash;2026 Q2</div>'
             '</div>'
             '<div style="background: #EFF6FF; border: 1px solid #BFDBFE; border-radius: 9999px; padding: 0.28rem 0.85rem; font-size: 0.76rem; font-weight: 600; color: #1D4ED8; display: inline-flex; align-items: center; gap: 0.4rem; box-shadow: 0 1px 2px rgba(29, 78, 216, 0.05);">'
             '<span style="display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: #2563EB;"></span>'
@@ -2796,129 +2798,7 @@ with tab_5g_comp:
         st.markdown(progress_table_html, unsafe_allow_html=True)
 
         # ----------------------------------------------------------------------
-        # SECONDARY: Granular Per-Record Metric Distributions Expander
-        # ----------------------------------------------------------------------
-        with st.expander("View granular per-record metric distributions", expanded=False):
-            st.markdown(
-                """<p style="font-size: 0.85rem; color: #64748B; margin-top: 0.2rem; margin-bottom: 0.8rem; line-height: 1.55;">
-                <strong>Methodological Framing:</strong> Evaluates unweighted per-record unit economics (mean Units Sold, mean Revenue, mean ASP per model-region quarter) across Samsung's five product price tiers, matching the inferential group methodology used in the 5G vs. Non-5G comparison.
-                </p>""",
-                unsafe_allow_html=True
-            )
-            
-            tier_stats_list = []
-            for t in active_tiers:
-                sub = tab2_df[tab2_df['Price Tier'] == t]
-                sub_asp = sub['Revenue ($)'] / sub['Units Sold']
-                tier_stats_list.append({
-                    'Price Tier': t,
-                    'Records (n)': len(sub),
-                    'Mean_Units': sub['Units Sold'].mean(),
-                    'SEM_Units': sub['Units Sold'].sem(),
-                    'Mean_Revenue': sub['Revenue ($)'].mean(),
-                    'SEM_Revenue': sub['Revenue ($)'].sem(),
-                    'Mean_ASP': sub_asp.mean(),
-                    'SEM_ASP': sub_asp.sem()
-                })
-            tier_comp_df = pd.DataFrame(tier_stats_list)
-
-            # 3 Side-by-side bar charts across the five price tiers
-            col_pt1, col_pt2, col_pt3 = st.columns(3)
-
-            # 1. Mean Units Sold per record
-            with col_pt1:
-                max_u = tier_comp_df['Mean_Units'].max()
-                fig_bar_units = go.Figure()
-                fig_bar_units.add_trace(go.Bar(
-                    x=tier_comp_df['Price Tier'],
-                    y=tier_comp_df['Mean_Units'],
-                    marker_color=[PRICE_TIER_COLORS.get(t, SAMSUNG_BLUE) for t in tier_comp_df['Price Tier']],
-                    text=[f"{v:,.0f}" for v in tier_comp_df['Mean_Units']],
-                    textposition='outside',
-                    hovertemplate='<b>%{x} Tier</b><br>Mean Units/Record: %{y:,.0f}<extra></extra>'
-                ))
-                fig_bar_units.update_layout(
-                    PLOTLY_LAYOUT_DEFAULTS,
-                    height=390,
-                    margin=dict(l=45, r=60, t=75, b=95),
-                    title=dict(
-                        text="<b>Mean Units Sold per Record</b><br><span style='font-size: 11px; font-weight: normal; color: #64748B;'>Volume distribution across price tiers</span>",
-                        font=dict(family='Outfit, Poppins, sans-serif', size=13, color='#0F172A')
-                    ),
-                    xaxis=dict(
-                        title=dict(text="Price Tier", font=dict(family='Inter, sans-serif', size=11, color='#334155'), standoff=12),
-                        tickangle=-45,
-                        tickfont=dict(family='Inter, sans-serif', size=11, color='#64748B'),
-                        automargin=True
-                    ),
-                    yaxis=dict(title="Mean Units Sold", rangemode='tozero', range=[0, max_u * 1.16], automargin=True),
-                    showlegend=False
-                )
-                st.plotly_chart(fig_bar_units, use_container_width=True, config=PLOTLY_CONFIG)
-
-            # 2. Mean Revenue per record
-            with col_pt2:
-                max_r = tier_comp_df['Mean_Revenue'].max()
-                fig_bar_rev = go.Figure()
-                fig_bar_rev.add_trace(go.Bar(
-                    x=tier_comp_df['Price Tier'],
-                    y=tier_comp_df['Mean_Revenue'],
-                    marker_color=[PRICE_TIER_COLORS.get(t, SAMSUNG_BLUE) for t in tier_comp_df['Price Tier']],
-                    text=[f"${v/1e6:.2f}M" for v in tier_comp_df['Mean_Revenue']],
-                    textposition='outside',
-                    hovertemplate='<b>%{x} Tier</b><br>Mean Revenue/Record: $%{y:,.0f}<extra></extra>'
-                ))
-                fig_bar_rev.update_layout(
-                    PLOTLY_LAYOUT_DEFAULTS,
-                    height=390,
-                    margin=dict(l=45, r=60, t=75, b=95),
-                    title=dict(
-                        text="<b>Mean Gross Revenue per Record ($)</b><br><span style='font-size: 11px; font-weight: normal; color: #64748B;'>Gross revenue generation across price tiers</span>",
-                        font=dict(family='Outfit, Poppins, sans-serif', size=13, color='#0F172A')
-                    ),
-                    xaxis=dict(
-                        title=dict(text="Price Tier", font=dict(family='Inter, sans-serif', size=11, color='#334155'), standoff=12),
-                        tickangle=-45,
-                        tickfont=dict(family='Inter, sans-serif', size=11, color='#64748B'),
-                        automargin=True
-                    ),
-                    yaxis=dict(title="Mean Gross Revenue ($)", rangemode='tozero', range=[0, max_r * 1.16], automargin=True),
-                    showlegend=False
-                )
-                st.plotly_chart(fig_bar_rev, use_container_width=True, config=PLOTLY_CONFIG)
-
-            # 3. Mean ASP per record
-            with col_pt3:
-                max_asp = tier_comp_df['Mean_ASP'].max()
-                fig_bar_asp = go.Figure()
-                fig_bar_asp.add_trace(go.Bar(
-                    x=tier_comp_df['Price Tier'],
-                    y=tier_comp_df['Mean_ASP'],
-                    marker_color=[PRICE_TIER_COLORS.get(t, SAMSUNG_BLUE) for t in tier_comp_df['Price Tier']],
-                    text=[f"${v:,.2f}" for v in tier_comp_df['Mean_ASP']],
-                    textposition='outside',
-                    hovertemplate='<b>%{x} Tier</b><br>Mean ASP/Record: $%{y:,.2f}<extra></extra>'
-                ))
-                fig_bar_asp.update_layout(
-                    PLOTLY_LAYOUT_DEFAULTS,
-                    height=390,
-                    margin=dict(l=45, r=60, t=75, b=95),
-                    title=dict(
-                        text="<b>Mean Derived ASP per Record ($)</b><br><span style='font-size: 11px; font-weight: normal; color: #64748B;'>Unweighted ASP escalation across price tiers</span>",
-                        font=dict(family='Outfit, Poppins, sans-serif', size=13, color='#0F172A')
-                    ),
-                    xaxis=dict(
-                        title=dict(text="Price Tier", font=dict(family='Inter, sans-serif', size=11, color='#334155'), standoff=12),
-                        tickangle=-45,
-                        tickfont=dict(family='Inter, sans-serif', size=11, color='#64748B'),
-                        automargin=True
-                    ),
-                    yaxis=dict(title="Mean Derived ASP ($)", rangemode='tozero', range=[0, max_asp * 1.16], automargin=True),
-                    showlegend=False
-                )
-                st.plotly_chart(fig_bar_asp, use_container_width=True, config=PLOTLY_CONFIG)
-
-        # ----------------------------------------------------------------------
+        # STATISTICAL INFERENCE: Welch's ANOVA Expander
         # STATISTICAL INFERENCE: Welch's ANOVA Expander
         # ----------------------------------------------------------------------
         if anova_df is not None:
@@ -2927,7 +2807,7 @@ with tab_5g_comp:
             <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-left: 4px solid #1428A0; border-radius: 10px; padding: 0.85rem 1.15rem; margin: 0.5rem 0 0.65rem 0;">
                 <div style="font-size: 0.74rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #1428A0; margin-bottom: 0.25rem;">Key Statistical Takeaway</div>
                 <div style="font-size: 0.92rem; color: #1E293B; line-height: 1.5; font-weight: 500;">
-                    Units sold, revenue, and price all differ significantly across Samsung's five price tiers (all <em>p</em> &lt; 0.001).
+                    Units sold, revenue, and price all differ significantly across Samsung's six price tiers (all <em>p</em> &lt; 0.001).
                 </div>
             </div>
             """, unsafe_allow_html=True)
@@ -2937,7 +2817,7 @@ with tab_5g_comp:
                 st.dataframe(anova_df, use_container_width=True, hide_index=True)
                 st.markdown(
                     """<p style="font-size: 0.85rem; color: #64748B; margin-top: 0.35rem; line-height: 1.55;">
-                    <strong>Methodological Justification for Welch's ANOVA:</strong> Evaluates whether differences in per-record means across the five price tiers are statistically significant without assuming equal tier variances (Levene's test rejected homoscedasticity, <em>W</em> = 12.79, <em>p</em> &lt; 0.001). All three metrics demonstrate significant tier-based differentiation (<em>p</em> &lt; 0.001) across confirmed historical records (Actual cohort, <em>n</em> = 996: Budget 235, Mid 266, Flagship 230, Premium 70, Foldable 195).
+                    <strong>Methodological Justification for Welch's ANOVA:</strong> Evaluates whether differences in per-record means across the six price tiers are statistically significant without assuming equal tier variances (Levene's test rejected homoscedasticity, <em>W</em> = 12.79, <em>p</em> &lt; 0.001). All three metrics demonstrate significant tier-based differentiation (<em>p</em> &lt; 0.001) across confirmed historical records (Actual cohort, <em>n</em> = 996: Budget 235, Mid 266, Flagship 230, Premium 70, Foldable 195).
                     </p>""",
                     unsafe_allow_html=True
                 )

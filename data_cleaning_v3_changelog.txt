@@ -1,0 +1,21 @@
+
+SAMSUNG_5G_CLEANED_DATASET_V3.CSV — CHANGE LOG
+================================================
+Base file: Samsung_5G_Cleaned_Dataset.csv (v2, 1036 rows, 5 price tiers)
+
+CHANGE 1 — Duplicate row removal (row count: 1036 -> 1035)
+  Product Model : Galaxy A56 5G
+  Region        : Europe
+  Period        : 2026-Q2
+  Reason        : 'Regional 5G Coverage (%)' = 102.73 is physically impossible
+                  (coverage cannot exceed 100%). The companion row with
+                  Regional 5G Coverage = 87.73 is retained as authoritative.
+  Decision date : 2026-09-28
+  Decision by   : User (confirmed in session)
+
+CHANGE 2 — Restore 'Budget Legacy 4G' price tier (5 tiers -> 6 tiers)
+  v2 load_and_clean_data() contained this line:
+      clean_df['Price Tier'] = clean_df['Price Tier'].replace({'Budget Legacy 4G': 'Budget'})
+  This merged 94 rows (non-5G legacy devices) into 'Budget', losing tier granularity.
+  v3 restores the original tier label from Samsung_5G_BI_Dataset_RAW-1.csv.
+  Tiers in v3: Budget Legacy 4G, Budget, Mid, Flagship, Premium, Premium Foldable
