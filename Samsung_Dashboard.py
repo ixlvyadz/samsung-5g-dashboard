@@ -2444,7 +2444,8 @@ def trends(frame):
                'Q3 2026 is still in progress in the study snapshot; Q3–Q4 2026 remain Forecast records.')
     st.caption('QoQ compares the preceding calendar quarter; YoY compares the same quarter a year earlier. '
                'Growth is unavailable when the baseline is missing or zero. Market-share growth is relative percent change.')
-    with st.expander("Econometric Forecasting Engine (Holt-Winters Seasonal Smoothing)", expanded=False):
+    with st.container(border=True, key='forecasting_engine'):
+        st.markdown("#### Econometric Forecasting Engine (Holt-Winters Seasonal Smoothing)")
         st.markdown("""<div class="section-desc" style="margin-bottom: 0.75rem;">
 Advanced triple exponential smoothing model with quarterly additive seasonality and Holt-Winters trend extrapolation, evaluating forward projections and 95% confidence bounds strictly for historical actuals.
 </div>""", unsafe_allow_html=True)

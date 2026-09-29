@@ -199,8 +199,10 @@ class DashboardTests(unittest.TestCase):
         self.assertEqual(len(area['layout']['xaxis']['tickvals']), 30)
         self.assertFalse(any("Welch's t-test p-value" in item.value.columns for item in self.app.dataframe))
         self.switch('Trends and Forecast')
-        forecasts = next(item for item in self.app.expander if 'Econometric Forecasting Engine' in item.label)
-        fig = json.loads(forecasts.get('plotly_chart')[0].proto.spec)
+        self.assertFalse(any('Econometric Forecasting Engine' in item.label for item in self.app.expander))
+        self.assertTrue(any('#### Econometric Forecasting Engine' in md.value for md in self.app.markdown))
+        self.assertTrue(self.app.selectbox(key='hw_fc_metric'))
+        fig = json.loads(self.app.get('plotly_chart')[-1].proto.spec)
         boundary = fig['layout']['shapes'][0]
         self.assertEqual(boundary['x0'], '2026-Q3')
         self.assertEqual(boundary['line']['color'], '#B91C1C')
