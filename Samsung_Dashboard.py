@@ -133,17 +133,30 @@ SAMSUNG_THEME_CSS = """
         color: #64748B !important;
     }
     
-    /* Global App Container with Generous Whitespace */
+    /* Global App Container with zero gap above tabs */
     .main .block-container {
-        padding-top: 1.8rem;
+        padding-top: 0 !important;
         padding-bottom: 4rem;
         max-width: 1400px;
+    }
+
+    /* Strip Streamlit’s default top wrapper spacing that still creates the blank area */
+    div[data-testid="stMain"] {
+        padding-top: 0 !important;
+    }
+
+    div[data-testid="stVerticalBlock"],
+    div[data-testid="stVerticalBlockBorderWrapper"],
+    div[data-testid="stAppViewContainer"] {
+        margin-top: 0 !important;
+        padding-top: 0 !important;
     }
     
     /* STREAMLIT HEADER & DEVELOPER CHROME CONTROL */
     header[data-testid="stHeader"] {
         background: transparent !important;
-        height: 52px !important;
+        height: 0px !important;
+        min-height: 0px !important;
         border: none !important;
         pointer-events: none !important;
     }
@@ -701,13 +714,14 @@ SAMSUNG_THEME_CSS = """
        ONE UI PILL / SEGMENTED TAB NAVIGATION CONTROLS
        ========================================================================== */
     .stTabs [data-baseweb="tab-list"] {
-        gap: 6px !important;
+        gap: 3px !important;
         background-color: #F1F5F9 !important;
         padding: 5px 8px !important;
         border-radius: 9999px !important;
         border: 1px solid #E2E8F0 !important;
-        box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.04) !important;
-        margin-bottom: 2rem !important;
+        box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.04), inset 0 -1px 0 rgba(148, 163, 184, 0.35) !important;
+        margin-top: 0 !important;
+        margin-bottom: 0.45rem !important;
         overflow-x: auto !important;
         scrollbar-width: none !important;
         display: inline-flex !important;
@@ -812,8 +826,9 @@ SAMSUNG_THEME_CSS = """
        ========================================================================== */
     .samsung-hero-frameless {
         background: transparent !important;
-        padding: 0.25rem 0 0 0 !important;
-        margin-bottom: 1.8rem !important;
+        padding: 0 !important;
+        margin-top: 0 !important;
+        margin-bottom: 0.8rem !important;
         border: none !important;
         box-shadow: none !important;
         width: 100% !important;
@@ -881,14 +896,14 @@ SAMSUNG_THEME_CSS = """
         display: flex !important;
         flex-wrap: wrap !important;
         align-items: center !important;
-        column-gap: 0.85rem !important;
+        column-gap: 0.7rem !important;
         row-gap: 0.45rem !important;
         font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
-        font-size: clamp(0.78rem, 0.95vw, 0.84rem) !important;
+        font-size: 0.8rem !important;
         color: #64748B !important;
-        padding-bottom: 1.35rem !important;
+        padding-bottom: 0.75rem !important;
         border-bottom: 1px solid #E2E8F0 !important;
-        margin-bottom: 1.5rem !important;
+        margin-bottom: 1rem !important;
         line-height: 1.5 !important;
         box-sizing: border-box !important;
     }
@@ -900,14 +915,14 @@ SAMSUNG_THEME_CSS = """
     }
 
     .samsung-hero-meta .meta-label {
-        font-weight: 600 !important;
-        color: #0F172A !important;
-        margin-right: 0.32rem !important;
+        font-weight: 500 !important;
+        color: #64748B !important;
+        margin-right: 0.2rem !important;
     }
 
     .samsung-hero-meta .meta-val {
-        color: #475569 !important;
-        font-weight: 500 !important;
+        color: #334155 !important;
+        font-weight: 600 !important;
     }
 
     .samsung-hero-meta .meta-sep {
@@ -1012,34 +1027,6 @@ SAMSUNG_THEME_CSS = """
         border: 1px solid #C7D2FE;
     }
     
-    /* Section Headers */
-    .section-header-box {
-        background: #FFFFFF;
-        border-radius: 16px;
-        border: 1px solid #E2E8F0;
-        padding: 1.3rem 1.6rem;
-        margin-bottom: 1.5rem;
-        box-shadow: 0 2px 8px -2px rgba(0, 0, 0, 0.03);
-    }
-    
-    .section-title {
-        font-family: 'Outfit', 'Poppins', -apple-system, sans-serif !important;
-        font-size: 1.35rem;
-        font-weight: 800;
-        color: #0F172A;
-        margin: 0;
-        letter-spacing: -0.025em;
-    }
-    
-    .section-desc {
-        font-family: 'Inter', -apple-system, sans-serif !important;
-        font-size: 0.9rem;
-        font-weight: 400;
-        color: #64748B;
-        margin: 0.35rem 0 0 0;
-        line-height: 1.5;
-    }
-    
     /* Info & Alert Callout Cards */
     .samsung-callout {
         background-color: #FFFFFF;
@@ -1092,6 +1079,126 @@ SAMSUNG_THEME_CSS = """
         background-color: #FEE2E2;
         color: #B91C1C;
         border: 1px solid #FECACA;
+    }
+    .action-alert {
+        border-radius: 12px;
+        margin: 0.6rem 0 0.9rem;
+        padding: 1rem 1.1rem;
+    }
+    .action-alert-critical {
+        background: #FFF7F7;
+        border: 1px solid #FECACA;
+        border-left: 5px solid #B91C1C;
+        box-shadow: 0 3px 12px rgba(185, 28, 28, 0.08);
+    }
+    .action-alert-clear {
+        background: #F4FBF7;
+        border: 1px solid #BBF7D0;
+        border-left: 5px solid #16A34A;
+    }
+    .action-alert-kicker {
+        color: #B91C1C;
+        font-size: 0.68rem;
+        font-weight: 800;
+        letter-spacing: 0.09em;
+    }
+    .action-alert-clear .action-alert-kicker {
+        color: #15803D;
+    }
+    .action-alert-title {
+        color: #0F172A;
+        font-family: 'Outfit', 'Poppins', sans-serif;
+        font-size: 1.3rem;
+        font-weight: 800;
+        line-height: 1.2;
+        margin-top: 0.16rem;
+    }
+    .action-alert-copy {
+        color: #475569;
+        font-size: 0.82rem;
+        line-height: 1.45;
+        margin-top: 0.28rem;
+    }
+    .action-criteria-strip {
+        background: #F8FAFC;
+        border-bottom: 1px solid #E2E8F0;
+        border-top: 1px solid #E2E8F0;
+        color: #64748B;
+        display: flex;
+        flex-wrap: wrap;
+        font-size: 0.76rem;
+        gap: 0.8rem 1.5rem;
+        margin: 0.2rem 0 1.1rem;
+        padding: 0.6rem 0.2rem;
+    }
+    .action-criteria-strip b {
+        color: #334155;
+    }
+    .action-rule-panel {
+        display: grid;
+        gap: 1rem;
+    }
+    .action-rule-section {
+        background: #F8FAFC;
+        border: 1px solid #E2E8F0;
+        border-radius: 10px;
+        padding: 0.8rem 0.9rem;
+    }
+    .action-rule-heading {
+        color: #334155;
+        font-size: 0.72rem;
+        font-weight: 800;
+        letter-spacing: 0.07em;
+        margin-bottom: 0.45rem;
+        text-transform: uppercase;
+    }
+    .action-rule-row {
+        align-items: center;
+        border-top: 1px solid #E2E8F0;
+        display: flex;
+        gap: 0.7rem;
+        padding: 0.58rem 0;
+    }
+    .action-rule-row:first-of-type {
+        border-top: 0;
+    }
+    .action-rule-row b {
+        color: #0F172A;
+        display: block;
+        font-size: 0.82rem;
+    }
+    .action-rule-row small {
+        color: #64748B;
+        display: block;
+        font-size: 0.74rem;
+        margin-top: 0.12rem;
+    }
+    .action-rule-badge {
+        border-radius: 999px;
+        flex: 0 0 auto;
+        font-size: 0.67rem;
+        font-weight: 800;
+        min-width: 4.5rem;
+        padding: 0.28rem 0.5rem;
+        text-align: center;
+    }
+    .action-rule-immediate {
+        background: #FEE2E2;
+        color: #B91C1C;
+    }
+    .action-rule-high {
+        background: #FEF3C7;
+        color: #B45309;
+    }
+    .action-rule-review {
+        background: #E0F2FE;
+        color: #0369A1;
+    }
+    .action-rule-footnote {
+        color: #64748B;
+        font-size: 0.74rem;
+        line-height: 1.45;
+        padding: 0 0.15rem;
     }
     
     /* Primary Action Buttons (Download Dataset, Main CTAs): Solid Charcoal/Black with Crisp White Text */
@@ -1148,8 +1255,8 @@ SAMSUNG_THEME_CSS = """
         max-width: 1440px !important;
         width: 100% !important;
         box-sizing: border-box !important;
-        padding-top: clamp(1rem, 2vw, 2rem) !important;
-        padding-bottom: clamp(1.5rem, 3vw, 3rem) !important;
+        padding-top: 0 !important;
+        padding-bottom: 0.5rem !important;
         padding-left: clamp(1.1rem, 2.8vw, 2.5rem) !important;
         padding-right: clamp(1.1rem, 2.8vw, 2.5rem) !important;
         overflow-x: hidden !important;
@@ -1158,6 +1265,9 @@ SAMSUNG_THEME_CSS = """
     .samsung-hero-frameless {
         max-width: 100% !important;
         box-sizing: border-box !important;
+        margin-top: 0 !important;
+        margin-bottom: 0.5rem !important;
+        padding-top: 0 !important;
     }
     
     /* Fluid Multi-column wrapping */
@@ -1216,6 +1326,119 @@ SAMSUNG_THEME_CSS = """
             height: 38px !important;
             padding: 0 12px !important;
             font-size: 0.8rem !important;
+        }
+    }
+
+    .forecast-engine-header {
+        background: linear-gradient(135deg, #F8FAFC 0%, #EEF4FF 100%);
+        border: 1px solid #DCE6F8;
+        border-left: 4px solid #1428A0;
+        border-radius: 10px;
+        padding: 0.9rem 1rem;
+        margin-bottom: 1rem;
+    }
+    .forecast-engine-eyebrow {
+        color: #1428A0;
+        font-size: 0.68rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+    }
+    .forecast-engine-eyebrow span {
+        color: #64748B;
+        font-weight: 600;
+        letter-spacing: 0;
+        margin-left: 0.55rem;
+        text-transform: none;
+    }
+    .forecast-engine-title {
+        color: #0F172A;
+        font-family: 'Outfit', 'Poppins', sans-serif;
+        font-size: 1.3rem;
+        font-weight: 800;
+        line-height: 1.2;
+        margin-top: 0.18rem;
+    }
+    .forecast-engine-copy {
+        color: #64748B;
+        font-size: 0.8rem;
+        margin-top: 0.25rem;
+    }
+    .forecast-kpi-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 0.75rem;
+        margin: 1rem 0 0.45rem;
+    }
+    .forecast-kpi-card {
+        background: #FFFFFF;
+        border: 1px solid #E2E8F0;
+        border-radius: 10px;
+        padding: 0.8rem 0.9rem;
+        box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+    }
+    .forecast-kpi-card-accent {
+        background: #F6F8FF;
+        border-color: #C7D2FE;
+    }
+    .forecast-kpi-label {
+        color: #64748B;
+        font-size: 0.68rem;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+    }
+    .forecast-kpi-value {
+        color: #0F172A;
+        font-family: 'Outfit', 'Poppins', sans-serif;
+        font-size: 1.65rem;
+        font-weight: 800;
+        line-height: 1.1;
+        margin-top: 0.35rem;
+    }
+    .forecast-kpi-card-accent .forecast-kpi-value {
+        color: #1428A0;
+    }
+    .forecast-kpi-growth {
+        color: #B91C1C;
+    }
+    .forecast-kpi-note {
+        color: #94A3B8;
+        font-size: 0.7rem;
+        margin-top: 0.25rem;
+    }
+    .regional-insight {
+        background: #FFFFFF;
+        border: 1px solid #DCE6F8;
+        border-left: 4px solid #2563EB;
+        border-radius: 10px;
+        box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+        margin: 0.7rem 0 1rem;
+        padding: 0.85rem 1rem;
+    }
+    .regional-insight-label {
+        color: #2563EB;
+        font-size: 0.68rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+    }
+    .regional-insight-text {
+        color: #0F172A;
+        font-family: 'Outfit', 'Poppins', sans-serif;
+        font-size: 1.05rem;
+        font-weight: 700;
+        line-height: 1.35;
+        margin-top: 0.2rem;
+    }
+    .regional-insight-note {
+        color: #64748B;
+        font-size: 0.76rem;
+        margin-top: 0.3rem;
+    }
+    @media (max-width: 768px) {
+        .forecast-kpi-grid {
+            grid-template-columns: 1fr;
         }
     }
 
@@ -1661,9 +1884,6 @@ from dashboard_analytics import (
 
 TAB_NAMES = ['Overview', 'Price Tier Performance', '5G Market Penetration',
              'Trends and Forecast', 'Regional Conditions', 'Action Center', 'Data Explorer']
-QUESTIONS = ['How is Samsung doing overall?', 'Is 5G growth even across price tiers?',
-             'How far has the 5G transition gone, and where?', 'Is 5G momentum accelerating or stalling?',
-             'What explains regional differences?', 'Where should Samsung act?', 'Can I see the actual records?']
 TIER_ORDER = ['Budget Legacy 4G', 'Budget', 'Mid', 'Flagship', 'Premium', 'Premium Foldable']
 
 
@@ -1681,7 +1901,29 @@ def chart(fig, title, height=420):
 
 
 def table(frame):
-    st.dataframe(frame, width='stretch', hide_index=True)
+    display_frame = frame.copy()
+    formatters = {}
+    count_columns = {
+        'Units', 'Units Sold', 'FiveGUnits', 'Total Units Sold', 'Total_Units',
+        'Selected rows', 'Missing cells', 'Exact duplicate rows', 'Observations'
+    }
+    for column_name in display_frame.columns:
+        if not pd.api.types.is_numeric_dtype(display_frame[column_name]):
+            continue
+        if '%' in column_name:
+            formatters[column_name] = '{:.2f}%'
+        elif 'percentage points' in column_name:
+            formatters[column_name] = '{:+.2f} pp'
+        elif 'Revenue' in column_name:
+            formatters[column_name] = '${:,.0f}'
+        elif 'ASP' in column_name:
+            formatters[column_name] = '${:,.2f}'
+        elif column_name in count_columns:
+            formatters[column_name] = '{:,.0f}'
+        elif column_name in {'Pearson r', 'p-value'}:
+            formatters[column_name] = '{:.3f}'
+    styled_frame = display_frame.style.format(formatters, na_rep='N/A')
+    st.dataframe(styled_frame, width='stretch', hide_index=True)
 
 
 def fmt_number(value, money=False):
@@ -1695,7 +1937,7 @@ def fmt_number(value, money=False):
 
 
 def pct(value):
-    return 'N/A' if pd.isna(value) else f'{value:+.1f}%'
+    return 'N/A' if pd.isna(value) else f'{value:+.2f}%'
 
 
 @st.cache_data(show_spinner=False)
@@ -1876,7 +2118,7 @@ def fit_time_series_forecast(df_series, metric_col, horizon_quarters=4):
 
 def trend_badge(value, period, unit):
     if pd.notna(value):
-        value = round(value, 2 if unit in ['$', ' pp'] else 1)
+        value = round(value, 2)
     if pd.isna(value):
         text, color, background = f'{period} N/A', '#64748B', '#F1F5F9'
     else:
@@ -1884,7 +2126,7 @@ def trend_badge(value, period, unit):
         color = '#16A34A' if value > 0.0001 else '#DC2626' if value < -0.0001 else '#64748B'
         background = 'rgba(22,163,74,.08)' if value > 0.0001 else 'rgba(220,38,38,.08)' if value < -0.0001 else '#F1F5F9'
         amount = (f'${abs(value):,.2f}' if unit == '$' else
-                  f'{abs(value):.2f}{unit}' if unit == ' pp' else f'{abs(value):.1f}{unit}')
+                  f'{abs(value):.2f}{unit}' if unit == ' pp' else f'{abs(value):.2f}{unit}')
         text = f'{symbol} {amount} {period}'
     return (f'<span style="display:inline-block;white-space:nowrap;margin:3px 3px 0 0;padding:3px 6px;'
             f'border-radius:4px;font-size:.73rem;font-weight:600;color:{color};background:{background};">{text}</span>')
@@ -1895,10 +2137,10 @@ def overview(frame):
     last = quarterly.iloc[-1]
     units, revenue = frame['Units Sold'].sum(), frame['Revenue ($)'].sum()
     cards = [
-        ('5G Adoption Rate', f'{adoption_rate(frame):.1f}%', '5G units ÷ all units'),
+        ('5G Adoption Rate', f'{adoption_rate(frame):.2f}%', '5G units ÷ all units'),
         ('Blended ASP', fmt_number(revenue / units if units else np.nan, True), 'Revenue ÷ units sold'),
         ('Revenue Growth Rate', pct(last['QoQ (%)']), f"QoQ · {pct(last['YoY (%)'])} YoY · {last['Period']}"),
-        ('Samsung Market Share', f"{frame['Market Share (%)'].mean():.1f}%", 'Mean reported market share'),
+        ('Samsung Market Share', f"{frame['Market Share (%)'].mean():.2f}%", 'Mean reported market share'),
         ('Total Units Sold', fmt_number(units), 'Historical Actuals'),
     ]
     latest_period, changes = kpi_changes(frame)
@@ -1909,9 +2151,44 @@ def overview(frame):
                    f'<div class="kpi-value">{value}</div><div class="kpi-subtext">{sub}</div></div>'
                    for label, value, sub in cards)
     st.markdown(f'<div class="kpi-container">{html}</div>', unsafe_allow_html=True)
-    st.caption(f'Actual data within the selected regions, tiers, and years; adoption includes both capabilities. '
-               f'Indicators compare {latest_period} with the preceding quarter (QoQ) and the same quarter last year (YoY). '
-               'Adoption and market share changes are percentage points (pp); ASP changes are dollars. Missing baselines show N/A.')
+
+    model_summary = (
+        frame.groupby('Product Model', as_index=False)
+        .agg(Units=('Units Sold', 'sum'), Revenue=('Revenue ($)', 'sum'))
+        .sort_values(['Units', 'Revenue'], ascending=[False, False])
+        .reset_index(drop=True)
+    )
+    if not model_summary.empty:
+        top_model = model_summary.iloc[0]
+        total_units = frame['Units Sold'].sum()
+        top_share = (top_model['Units'] / total_units * 100) if total_units else 0.0
+        top_model_html = get_model_showcase_html(top_model['Product Model'])
+        st.markdown(f'''
+        <div class="model-card-container" style="padding: 1.2rem 1.4rem; margin-top: 1.1rem;">
+            <div class="model-card-main-layout" style="gap: 1.2rem; align-items: center;">
+                {top_model_html}
+                <div style="flex: 1; min-width: 0;">
+                    <div style="font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; color: #1428A0; text-transform: uppercase; margin-bottom: 0.35rem;">Current Quarter Top Model</div>
+                    <div style="font-size: clamp(1.5rem, 2vw, 2rem); font-weight: 800; color: #0F172A; font-family: Outfit, Poppins, sans-serif; line-height: 1.1; margin-bottom: 0.7rem;">{escape(top_model['Product Model'])}</div>
+                    <div style="display: grid; grid-template-columns: repeat(3, minmax(120px, 1fr)); gap: 0.8rem;">
+                        <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 10px; padding: 0.7rem 0.8rem;">
+                            <div style="font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.06em; color: #64748B; margin-bottom: 0.3rem;">Units</div>
+                            <div style="font-size: 1.18rem; font-weight: 700; color: #0F172A;">{fmt_number(top_model['Units'])}</div>
+                        </div>
+                        <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 10px; padding: 0.7rem 0.8rem;">
+                            <div style="font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.06em; color: #64748B; margin-bottom: 0.3rem;">Revenue</div>
+                            <div style="font-size: 1.18rem; font-weight: 700; color: #0F172A;">{fmt_number(top_model['Revenue'], True)}</div>
+                        </div>
+                        <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 10px; padding: 0.7rem 0.8rem;">
+                            <div style="font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.06em; color: #64748B; margin-bottom: 0.3rem;">Share</div>
+                            <div style="font-size: 1.18rem; font-weight: 700; color: #0F172A;">{top_share:.2f}%</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        ''', unsafe_allow_html=True)
+    st.caption(f'Actual data within the selected filters. QoQ and YoY comparisons shown where available.')
     q_units = quarterly_series(frame, 'Units Sold')
     left, right = st.columns([3, 2])
     with left:
@@ -1929,17 +2206,6 @@ def overview(frame):
         fig = px.pie(totals, names='Capability', values='Units Sold', hole=.65,
                      color='Capability', color_discrete_map=CAPABILITY_COLORS)
         chart(fig, '5G vs. Non-5G Unit Share')
-    st.markdown("""
-    <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-left: 4px solid #1428A0; border-radius: 8px; padding: 0.85rem 1.25rem; margin-top: 1rem; margin-bottom: 0.5rem; font-size: 0.88rem; color: #1E293B;">
-        <strong style="color: #0F172A; font-size: 0.95rem;">Executive Strategic Insights: Inflection Points &amp; Transition Trajectory</strong>
-        <p style="margin: 0.4rem 0 0.3rem 0; line-height: 1.55;">
-            • <strong>2021 Tipping Point:</strong> Portfolio analysis marks 2021 as the pivotal transition threshold where Samsung 5G handset volume officially superseded legacy 4G shipments, catalyzed by mid-tier network rollouts and carrier trade-in programs.<br/>
-            • <strong>High-Adoption Plateau (~96–98%):</strong> From 2023 onward, developed markets stabilized at a mature 5G penetration plateau, shifting the strategic battlefield from device connectivity upgrades to flagship ASP preservation and ecosystem lock-in.<br/>
-            • <strong>Budget A-Series Acceleration:</strong> The mass transition was solidified by bringing 5G hardware to sub-$300 devices (Galaxy A-series), eliminating the price barrier for emerging and value-conscious consumer demographics.
-        </p>
-    </div>
-    """, unsafe_allow_html=True)
-
 
 def price_tiers(frame):
     active_tiers = [tier for tier in TIER_ORDER if tier in frame['Price Tier'].unique()]
@@ -2061,7 +2327,7 @@ def price_tiers(frame):
             textposition='outside',
         cliponaxis=False,
             textfont=dict(family='Inter, sans-serif', size=11, color='#0F172A', weight='bold'),
-            hovertemplate='<b>%{x} Tier</b><br>Metric: Units Sold<br>Volume: <b>%{text} (%{customdata[0]:,.0f} units)</b><br>Portfolio Share: <b>%{customdata[1]:.1f}%</b><br>Index of Max: %{y:.1f}%<extra></extra>'
+            hovertemplate='<b>%{x} Tier</b><br>Metric: Units Sold<br>Volume: <b>%{text} (%{customdata[0]:,.0f} units)</b><br>Portfolio Share: <b>%{customdata[1]:.2f}%</b><br>Index of Max: %{y:.2f}%<extra></extra>'
         ))
 
     if show_rev:
@@ -2080,7 +2346,7 @@ def price_tiers(frame):
             textposition='outside',
         cliponaxis=False,
             textfont=dict(family='Inter, sans-serif', size=11, color='#0F172A', weight='bold'),
-            hovertemplate='<b>%{x} Tier</b><br>Metric: Gross Revenue<br>Revenue: <b>%{text} ($%{customdata[0]:,.2f})</b><br>Portfolio Share: <b>%{customdata[1]:.1f}%</b><br>Index of Max: %{y:.1f}%<extra></extra>'
+            hovertemplate='<b>%{x} Tier</b><br>Metric: Gross Revenue<br>Revenue: <b>%{text} ($%{customdata[0]:,.2f})</b><br>Portfolio Share: <b>%{customdata[1]:.2f}%</b><br>Index of Max: %{y:.2f}%<extra></extra>'
         ))
 
     if show_asp:
@@ -2099,7 +2365,7 @@ def price_tiers(frame):
             textposition='outside',
         cliponaxis=False,
             textfont=dict(family='Inter, sans-serif', size=11, color='#0F172A', weight='bold'),
-            hovertemplate='<b>%{x} Tier</b><br>Metric: Realized Blended ASP<br>ASP: <b>%{text}</b><br>Index of Max ASP: %{y:.1f}%<extra></extra>'
+            hovertemplate='<b>%{x} Tier</b><br>Metric: Realized Blended ASP<br>ASP: <b>%{text}</b><br>Index of Max ASP: %{y:.2f}%<extra></extra>'
         ))
 
     fig_tier_combo.update_layout(
@@ -2220,15 +2486,16 @@ def price_tiers(frame):
         '</table>'
         '</div>'
     )
-    st.markdown(progress_table_html, unsafe_allow_html=True)
+    with st.expander('Tier performance detail', expanded=False):
+        st.markdown(progress_table_html, unsafe_allow_html=True)
 
     share = adoption_by(frame, ['Price Tier', 'Year'])
     matrix = share.pivot(index='Price Tier', columns='Year', values='Adoption (%)')
     matrix = matrix.reindex([tier for tier in TIER_ORDER if tier in matrix.index])
     fig = go.Figure(go.Heatmap(z=matrix.values, x=matrix.columns.astype(str), y=matrix.index,
                                zmin=0, zmax=100, colorscale=SAMSUNG_CONTINUOUS_SCALE,
-                               colorbar=dict(title='%'), texttemplate='%{z:.1f}%',
-                               hovertemplate='%{y} · %{x}<br>5G unit share: %{z:.1f}%<extra></extra>'))
+                               colorbar=dict(title='%'), texttemplate='%{z:.2f}%',
+                               hovertemplate='%{y} · %{x}<br>5G unit share: %{z:.2f}%<extra></extra>'))
     chart(fig, '5G Unit Share by Tier and Year')
 
 
@@ -2252,13 +2519,23 @@ def penetration(frame):
         chart(fig, '5G vs. Non-5G Units over Time')
     with right:
         regional = adoption_by(frame, ['Region']).sort_values('Adoption (%)')
-        fig = px.bar(regional, x='Adoption (%)', y='Region', orientation='h', text_auto='.1f',
+        fig = px.bar(regional, x='Adoption (%)', y='Region', orientation='h', text_auto='.2f',
                      color_discrete_sequence=[SAMSUNG_BLUE])
         fig.update_xaxes(range=[0, 100], ticksuffix='%')
         chart(fig, 'Regional 5G Adoption — Ranked')
-    st.markdown('#### 5G vs. Non-5G Comparison')
     groups = [frame.loc[frame['5G Capability'].eq(cap)] for cap in ['Yes', 'No']]
     total_revenue = frame['Revenue ($)'].sum()
+    capability_revenue = {
+        label: group['Revenue ($)'].sum()
+        for label, group in zip(['5G', 'Non-5G'], groups)
+    }
+    five_g_revenue_share = (capability_revenue['5G'] / total_revenue * 100) if total_revenue else np.nan
+    st.caption(
+        f"5G contributes {five_g_revenue_share:.2f}% of revenue in the selected portfolio. "
+        'Open the detailed comparison for per-record means and significance testing.'
+        if not pd.isna(five_g_revenue_share)
+        else 'Revenue contribution is unavailable for the selected portfolio.'
+    )
     rows = []
     for metric in ['Units Sold', 'Revenue ($)', 'ASP']:
         x, y = [g[metric].dropna() for g in groups]
@@ -2267,12 +2544,13 @@ def penetration(frame):
             p = stats.ttest_ind(x, y, equal_var=False).pvalue
         rows.append({'Metric (per-record mean)': metric, '5G': x.mean(), 'Non-5G': y.mean(),
                      'Difference': 'Insufficient variation/data' if pd.isna(p) else ('Significant' if p < .05 else 'Not significant')})
-    table(pd.DataFrame(rows))
     contributions = pd.DataFrame([{'Capability': label, 'Revenue ($)': g['Revenue ($)'].sum(),
                                    'Revenue contribution (%)': g['Revenue ($)'].sum() / total_revenue * 100 if total_revenue else np.nan}
                                   for label, g in zip(['5G', 'Non-5G'], groups)])
-    table(contributions)
-    st.caption('Welch tests compare per-record means at α = 0.05. Mean ASP differs from blended ASP; repeated records may not be independent.')
+    with st.expander('Detailed 5G vs. Non-5G comparison', expanded=False):
+        table(pd.DataFrame(rows))
+        table(contributions)
+        st.caption('Welch tests compare per-record means at α = 0.05. Mean ASP differs from blended ASP; repeated records may not be independent.')
     st.markdown('---')
     st.markdown('#### Product Model Showcase & Hardware Drilldown')
     available_models = sorted(frame['Product Model'].unique().tolist())
@@ -2338,12 +2616,12 @@ def penetration(frame):
                 m_reg_split = m_data.groupby('Region', observed=True).agg(
                     Units=('Units Sold', 'sum'), Revenue=('Revenue ($)', 'sum')
                 ).reset_index()
-                m_reg_split['Volume Share (%)'] = (m_reg_split['Units'] / m_units * 100).round(1) if m_units else 0.0
+                m_reg_split['Volume Share (%)'] = (m_reg_split['Units'] / m_units * 100).round(2) if m_units else 0.0
                 st.dataframe(
                     m_reg_split.rename(columns={'Revenue': 'Revenue ($)'}).style.format({
                         'Units': '{:,.0f}',
                         'Revenue ($)': '${:,.0f}',
-                        'Volume Share (%)': '{:.1f}%'
+                            'Volume Share (%)': '{:.2f}%'
                     }),
                     width='stretch', hide_index=True
                 )
@@ -2439,16 +2717,14 @@ def trends(frame):
     bars.update_xaxes(categoryorder='array', categoryarray=periods)
     bars.update_yaxes(title_text=f'{growth} growth (%)', ticksuffix='%')
     chart(bars, f'{growth} Growth — {metric}')
-    st.caption('Forecasts are shown only in this tab. Select Actual + Forecast in the sidebar to compare them. '
-               'Dashed lines and patterned bars identify projections, not confirmed results. '
-               'Q3 2026 is still in progress in the study snapshot; Q3–Q4 2026 remain Forecast records.')
-    st.caption('QoQ compares the preceding calendar quarter; YoY compares the same quarter a year earlier. '
-               'Growth is unavailable when the baseline is missing or zero. Market-share growth is relative percent change.')
-    with st.container(border=True, key='forecasting_engine'):
-        st.markdown("#### Econometric Forecasting Engine (Holt-Winters Seasonal Smoothing)")
-        st.markdown("""<div class="section-desc" style="margin-bottom: 0.75rem;">
-Advanced triple exponential smoothing model with quarterly additive seasonality and Holt-Winters trend extrapolation, evaluating forward projections and 95% confidence bounds strictly for historical actuals.
-</div>""", unsafe_allow_html=True)
+    st.caption('Dashed lines and patterned bars indicate forecasts. QoQ compares the previous quarter; '
+               'YoY compares the same quarter last year. Q3 2026 is still in progress in the study snapshot.')
+    with st.expander('Advanced Forecasting Model', expanded=False):
+        st.markdown("""<div class="forecast-engine-header">
+    <div class="forecast-engine-eyebrow">MODEL-BASED OUTLOOK <span>95% prediction interval</span></div>
+    <div class="forecast-engine-title">Quarterly forecast workspace</div>
+    <div class="forecast-engine-copy">Holt-Winters smoothing extends historical quarterly patterns into a forward outlook.</div>
+    </div>""", unsafe_allow_html=True)
         f_col1, f_col2, f_col3 = st.columns([1, 1, 1])
         with f_col1:
             fc_target_metric = st.selectbox(
@@ -2503,19 +2779,15 @@ Advanced triple exponential smoothing model with quarterly additive seasonality 
                 elif metric == "ASP":
                     return f"${val:.2f}"
                 else:
-                    return f"{val:.1f}%"
+                    return f"{val:.2f}%"
 
-            fk1, fk2, fk3, fk4 = st.columns(4)
-            with fk1:
-                st.metric("Latest Historical Actual", fmt_fc_val(diag['last_actual'], fc_target_metric))
-            with fk2:
-                st.metric("Forecast (Next Quarter)", fmt_fc_val(diag['forecast_1'], fc_target_metric))
-            with fk3:
-                growth_fc = diag['growth_rate']
-                st.metric("Expected QoQ Growth", f"{growth_fc:+.1f}%")
-            with fk4:
-                st.metric("Statistical Method", "Holt-Winters" if "Holt-Winters" in diag['method'] else "Holt Exponential")
-                st.caption(f"Horizon: {fc_horizon}Q")
+            growth_fc = diag['growth_rate']
+            st.markdown(f"""<div class="forecast-kpi-grid">
+<div class="forecast-kpi-card"><div class="forecast-kpi-label">Latest historical actual</div><div class="forecast-kpi-value">{fmt_fc_val(diag['last_actual'], fc_target_metric)}</div><div class="forecast-kpi-note">Most recent observed quarter</div></div>
+<div class="forecast-kpi-card forecast-kpi-card-accent"><div class="forecast-kpi-label">Forecast · next quarter</div><div class="forecast-kpi-value">{fmt_fc_val(diag['forecast_1'], fc_target_metric)}</div><div class="forecast-kpi-note">Model projection</div></div>
+<div class="forecast-kpi-card"><div class="forecast-kpi-label">Expected QoQ growth</div><div class="forecast-kpi-value forecast-kpi-growth">{growth_fc:+.2f}%</div><div class="forecast-kpi-note">Versus latest actual</div></div>
+</div>""", unsafe_allow_html=True)
+            st.caption(f"Method: {diag['method'].split(' (')[0]} · Forecast horizon: {fc_horizon} quarters")
                 
             fig_fc = go.Figure()
             
@@ -2583,20 +2855,35 @@ Advanced triple exponential smoothing model with quarterly additive seasonality 
 
 def regional_conditions(frame):
     rq = regional_quarters(frame)
-    st.caption('Correlation is not causation. A shared time trend may inflate these correlations.')
-    st.markdown('#### Infrastructure vs. 5G Units — Pooled and by Region')
+    st.markdown('#### Regional Drivers of 5G Adoption')
     correlations = correlation_table(rq)
     indicator_names = dict(zip(INDICATORS, ['Coverage', 'Subscribers', 'Speed', 'Preference']))
+    pooled = correlations[correlations['Scope'].eq('Pooled')].copy()
+    valid_pooled = pooled.dropna(subset=['Pearson r', 'p-value'])
+    if valid_pooled.empty:
+        insight = 'The pooled data does not contain enough variation to identify a reliable infrastructure signal.'
+    else:
+        strongest = valid_pooled.loc[valid_pooled['Pearson r'].abs().idxmax()]
+        strongest_name = indicator_names[strongest['Indicator']]
+        strongest_result = correlation_description(strongest['Pearson r'], strongest['p-value'])
+        if strongest_result == 'No clear relationship':
+            insight = f"The strongest observed signal is {strongest_name.lower()}, but the pooled data shows no clear relationship with 5G unit sales."
+        else:
+            insight = f"The strongest pooled signal is {strongest_name.lower()}: {strongest_result.lower()} with 5G unit sales."
+    st.markdown(f'''<div class="regional-insight">
+<div class="regional-insight-label">Decision signal</div>
+<div class="regional-insight-text">{insight}</div>
+<div class="regional-insight-note">Associations are descriptive; a shared time trend may inflate correlations.</div>
+</div>''', unsafe_allow_html=True)
     correlations['Indicator'] = correlations['Indicator'].map(indicator_names)
     correlations['Result'] = correlations.apply(lambda row: correlation_description(row['Pearson r'], row['p-value']), axis=1)
     compact = correlations.pivot(index='Scope', columns='Indicator', values='Result')
     scope_order = ['Pooled'] + sorted(rq['Region'].unique().tolist())
     compact = compact.reindex(index=scope_order, columns=['Coverage', 'Subscribers', 'Speed', 'Preference']).reset_index()
-    table(compact)
-    st.caption('Positive link: higher indicator values tend to occur alongside higher 5G sales. '
-               'Negative link: higher indicator values tend to occur alongside lower sales. '
-               'Strong, moderate, and weak describe how closely the values move together. '
-               'No clear relationship means the evidence is weak or inconclusive; not enough data means the comparison cannot be assessed.')
+    with st.expander('Detailed regional correlation results', expanded=False):
+        table(compact)
+        st.caption('Positive and negative links describe direction; strong, moderate, and weak describe association strength. '
+                   'No clear relationship means the evidence is weak or inconclusive. Not enough data means the comparison cannot be assessed.')
     indicator = st.selectbox('Infrastructure indicator', INDICATORS, key='regional_indicator')
     left, right = st.columns(2)
     with left:
@@ -2612,9 +2899,8 @@ def regional_conditions(frame):
                      color_discrete_map={'Stated preference': SAMSUNG_SLATE, 'Actual adoption': SAMSUNG_BLUE})
         fig.update_yaxes(range=[0, 100], ticksuffix='%')
         chart(fig, 'Stated Preference vs. Actual 5G Adoption')
-    st.caption('Infrastructure values are averaged once per region-quarter. Actual adoption is the unit-weighted '
-               '5G share; stated preference is the mean across the selected region-quarters. Correlations require '
-               'at least three observations and variation in both measures.')
+    st.caption('Infrastructure values are averaged once per region-quarter. Actual adoption is the unit-weighted 5G share; '
+               'stated preference is the mean across the selected region-quarters.')
     with st.expander("Regional Commercial Performance Matrix", expanded=False):
         reg_summary = frame.groupby('Region', observed=True).agg(
             Total_Units=('Units Sold', 'sum'),
@@ -2637,65 +2923,90 @@ def regional_conditions(frame):
                 'Total Units Sold': '{:,.0f}',
                 'Gross Revenue ($)': '${:,.0f}',
                 'Blended ASP ($)': '${:.2f}',
-                'Market Share (%)': '{:.2f}%',
-                '5G Coverage (%)': '{:.1f}%',
+                            'Market Share (%)': '{:.2f}%',
+                            '5G Coverage (%)': '{:.2f}%',
                 'Avg Speed (Mbps)': '{:.1f}',
-                '5G Preference (%)': '{:.1f}%'
+                            '5G Preference (%)': '{:.2f}%'
             }),
             width='stretch', hide_index=True
         )
 
 
 def action_center(frame):
+    priority_styles = {
+        'Immediate': 'background-color: #FEE2E2; color: #B91C1C; font-weight: 800;',
+        'High': 'background-color: #FEF3C7; color: #B45309; font-weight: 800;',
+        'Review': 'background-color: #E0F2FE; color: #0369A1; font-weight: 800;'
+    }
+
+    def style_priority(value):
+        return priority_styles.get(value, '')
+
     latest = int(frame['Quarter_Index'].max())
     current = frame[frame['Quarter_Index'].eq(latest)]
     benchmark = adoption_rate(current)
-    st.markdown(f'''<div class="model-card-container">
-<div class="kpi-label">Action Center Criteria · {quarter_label(latest)}</div>
-<p>Flag regions whose 5G unit adoption is below the overall average of <b>{benchmark:.1f}%</b>
-across the selected portfolio in the latest Actual quarter.</p>
-<p>Flag models active in that quarter with negative YoY unit growth for <b>two or more consecutive calendar quarters</b>.
-Suggested actions use pricing, marketing, or product rules.</p></div>''', unsafe_allow_html=True)
-    st.markdown('#### Flagged Regions')
     regions = adoption_by(current, ['Region'])
     regions['Overall average (%)'] = benchmark
     regions['Gap (percentage points)'] = regions['Adoption (%)'] - benchmark
     regions = regions[regions['Gap (percentage points)'] < -1e-9].copy()
+    regions['Priority'] = regions['Gap (percentage points)'].map(
+        lambda gap: 'Immediate' if gap < -5 else 'High' if gap < -2 else 'Review')
+    regions['Priority'] = pd.Categorical(regions['Priority'], categories=['Immediate', 'High', 'Review'], ordered=True)
     regions['Suggested action'] = regions['Gap (percentage points)'].map(
         lambda gap: 'Pricing — review entry-level 5G offers' if gap < -5 else
         ('Marketing — improve 5G awareness' if gap < -2 else 'Product — review 5G availability'))
-    if regions.empty:
-        st.info('No regions fall below the selected portfolio average in the latest Actual quarter.')
-    else:
-        table(regions[['Region', 'Adoption (%)', 'Overall average (%)', 'Gap (percentage points)', 'Suggested action']]
-              .sort_values('Gap (percentage points)'))
-    st.markdown('#### Flagged Models')
     models = flagged_models(frame)
-    if models.empty:
-        st.info('No active models have two or more consecutive quarters of negative YoY unit growth in the selected history.')
+    flag_count = len(regions) + len(models)
+    if flag_count:
+        region_word = 'region' if len(regions) == 1 else 'regions'
+        model_word = 'model' if len(models) == 1 else 'models'
+        st.markdown(f'''<div class="action-alert action-alert-critical">
+<div class="action-alert-kicker">ACTION REQUIRED · {quarter_label(latest)}</div>
+<div class="action-alert-title">{flag_count} concern{'s' if flag_count != 1 else ''} need attention</div>
+<div class="action-alert-copy">Review {len(regions)} flagged {region_word} and {len(models)} flagged {model_word}. Prioritize items marked <b>Immediate</b> before broader portfolio planning.</div>
+</div>''', unsafe_allow_html=True)
     else:
-        table(models)
-    with st.expander('Suggested-action rules', expanded=False):
-        st.markdown('Regions: a gap below −5 points → pricing; below −2 points → marketing; otherwise → product availability. '
-                    'Models: Flagship, Premium, and Premium Foldable → pricing review; other tiers → product refresh/retirement review. '
-                    'These are rule-based suggestions, not observed causes. Missing or zero prior-year baselines do not count as declines.')
-    st.markdown("#### Data-Driven Strategic Prescriptions")
-    st.markdown(r"""
-    | Focus Area | Identified Core Risk | Recommended Strategic Action | Action Category |
-    | :--- | :--- | :--- | :--- |
-    | **North America** | Lowest Market Share (28.6%) | **Carrier Trade-In Subsidies** <span title="Aggressive retail carrier promotions targeting competitive flagship switchers (Galaxy S24/S25/S26)." style="cursor:help; color:#94A3B8;">ⓘ</span> | Retain Flagship Share |
-    | **Latin America & MEA** | Lagging Carrier Coverage (<45%) | **Budget 5G Penetration** <span title="Prioritize mass distribution of sub-\$250 models (Galaxy A15/A16 5G) to capture pre-emptive upgrade waves." style="cursor:help; color:#94A3B8;">ⓘ</span> | Volume Leadership |
-    | **Premium Foldables** | Niche Volume (<200K units) | **Price Elasticity Realignment** <span title="Scale display manufacturing efficiencies to lower foldable ASP entry barrier toward the \$1,100–\$1,200 sweet spot." style="cursor:help; color:#94A3B8;">ⓘ</span> | ASP Optimization |
-    | **Legacy 4G Devices** | Channel Cannibalization (0% 5G) | **Accelerated Portfolio Sunsetting** <span title="Eliminate legacy inventory holding costs and channel friction via aggressive end-of-life trade-in incentives." style="cursor:help; color:#94A3B8;">ⓘ</span> | Inventory Health |
-    """, unsafe_allow_html=True)
-    
-    with st.expander("Strategic Playbook & Implementation Roadmap", expanded=False):
-        st.markdown(r"""
-        - **North America (Carrier Trade-In Subsidies):** Despite leading in 5G speeds (200.7 Mbps) and consumer preference (72.9%), Samsung market share lags at 28.6%. Deploy carrier multi-line subsidies and aggressive switcher credits targeting competing flagship users.
-        - **Latin America & MEA (Budget 5G Penetration):** Samsung holds strong market dominance (38-39%), but network coverage remains below 45%. As carrier infrastructure expands, pre-populate channels with affordable A-series hardware.
-        - **Premium Foldables (Price Elasticity Realignment):** Foldable ASP exceeds \$1,600, limiting volume adoption. Drive manufacturing yield improvements to bring entry foldables into the \$1,100–\$1,200 range to unlock broader enterprise adoption.
-        - **Legacy 4G Devices (Accelerated Sunsetting):** Older 4G models tie up retail floor space and working capital. Channel all promotional subsidies into 5G trade-ins to accelerate total device transition.
-        """)
+        st.markdown(f'''<div class="action-alert action-alert-clear">
+<div class="action-alert-kicker">CLEAR · {quarter_label(latest)}</div>
+<div class="action-alert-title">No immediate action flags</div>
+<div class="action-alert-copy">No regions are below the selected portfolio benchmark and no active models have sustained YoY unit declines.</div>
+</div>''', unsafe_allow_html=True)
+    st.markdown(f'''<div class="action-criteria-strip">
+<span><b>Benchmark:</b> {benchmark:.2f}% 5G adoption</span>
+<span><b>Region trigger:</b> below benchmark</span>
+<span><b>Model trigger:</b> 2+ consecutive declining YoY quarters</span>
+</div>''', unsafe_allow_html=True)
+    findings_col, rules_col = st.columns([2.2, 1], gap='large')
+    with findings_col:
+        st.markdown(f'#### Flagged Regions · {len(regions)}')
+        if regions.empty:
+            st.caption('No regions fall below the selected portfolio average in the latest Actual quarter.')
+        else:
+            region_table = regions[['Priority', 'Region', 'Adoption (%)', 'Overall average (%)', 'Gap (percentage points)', 'Suggested action']]
+            region_table = region_table.sort_values(['Priority', 'Gap (percentage points)'], ascending=[True, True])
+            st.dataframe(region_table.style.map(style_priority, subset=['Priority']), width='stretch', hide_index=True)
+        st.markdown(f'#### Flagged Models · {len(models)}')
+        if models.empty:
+            st.caption('No active models have two or more consecutive quarters of negative YoY unit growth in the selected history.')
+        else:
+            models = models.copy()
+            models.insert(0, 'Priority', np.where(models['Consecutive declining quarters'] >= 3, 'Immediate', 'High'))
+            st.dataframe(models.style.map(style_priority, subset=['Priority']), width='stretch', hide_index=True)
+    with rules_col:
+        st.markdown('''<div class="action-rule-panel action-rule-panel-side">
+<div class="action-rule-section">
+<div class="action-rule-heading">Regional adoption gaps</div>
+<div class="action-rule-row"><span class="action-rule-badge action-rule-immediate">Immediate</span><div><b>Below -5 points</b><small>Pricing review for entry-level 5G offers</small></div></div>
+<div class="action-rule-row"><span class="action-rule-badge action-rule-high">High</span><div><b>-5 to -2 points</b><small>Marketing review to improve 5G awareness</small></div></div>
+<div class="action-rule-row"><span class="action-rule-badge action-rule-review">Review</span><div><b>Below benchmark</b><small>Product review for 5G availability</small></div></div>
+</div>
+<div class="action-rule-section">
+<div class="action-rule-heading">Model decline signals</div>
+<div class="action-rule-row"><span class="action-rule-badge action-rule-immediate">Premium</span><div><b>2+ consecutive declining YoY quarters</b><small>Flagship, Premium, and Premium Foldable: pricing review</small></div></div>
+<div class="action-rule-row"><span class="action-rule-badge action-rule-high">Other tiers</span><div><b>2+ consecutive declining YoY quarters</b><small>Product refresh or retirement review</small></div></div>
+</div>
+<div class="action-rule-footnote">These are rule-based suggestions, not observed causes. Missing or zero prior-year baselines do not count as declines.</div>
+</div>''', unsafe_allow_html=True)
     
 
 
@@ -2824,18 +3135,14 @@ if capability != 'All Products':
 hero.markdown(f'''<div class="samsung-hero-frameless">
 <div class="samsung-hero-eyebrow"><span class="eyebrow-brand">SAMSUNG ELECTRONICS</span>
 <span class="eyebrow-pipe">│</span><span class="eyebrow-sub">EXECUTIVE BI &amp; ANALYTICS</span></div>
-<h1 class="samsung-hero-title">Decoding Demand: Samsung 5G Sales &amp; Market Adoption</h1>
+<h1 class="samsung-hero-title">Samsung 5G Sales &amp; Market Adoption</h1>
 <p class="samsung-hero-subtitle">Longitudinal performance and market penetration across Samsung mobile portfolios,
 geographic regions, and carrier network conditions (2019–2026).</p>
-<div class="samsung-hero-meta"><span class="meta-item"><span class="meta-label">Scope:</span>
-<span class="meta-val">{escape(horizon)}</span></span><span class="meta-sep">•</span>
-<span class="meta-item"><span class="meta-label">Timeline:</span><span class="meta-val">{years[0]}–{years[1]}</span></span>
-<span class="meta-sep">•</span><span class="meta-item"><span class="meta-label">Data:</span>
-<span class="meta-val">{len(filtered_df):,} Records</span></span></div></div>''', unsafe_allow_html=True)
+<div class="samsung-hero-meta"><span class="meta-item"><span class="meta-val">{escape(horizon)}</span></span>
+<span class="meta-sep">•</span><span class="meta-item"><span class="meta-val">{years[0]}–{years[1]}</span></span>
+<span class="meta-sep">•</span><span class="meta-item"><span class="meta-val">{len(filtered_df):,} records</span></span></div></div>''', unsafe_allow_html=True)
 
 with tabs[active_index]:
-    st.markdown(f'<div class="section-header-box"><h2 class="section-title">{QUESTIONS[active_index]}</h2></div>',
-                unsafe_allow_html=True)
     if filtered_df.empty:
         st.info('No records match these filters. Expand the selection or reset the filters.')
     elif active_index == 6:

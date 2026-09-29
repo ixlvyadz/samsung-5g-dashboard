@@ -182,7 +182,7 @@ class DashboardTests(unittest.TestCase):
         self.assertTrue(any(item.label == 'Regional Commercial Performance Matrix' for item in self.app.expander))
         self.assertFalse(any('Heatmap' in item.label for item in self.app.expander))
         self.switch('Action Center')
-        self.assertTrue(any(item.label == 'Strategic Playbook & Implementation Roadmap' for item in self.app.expander))
+        self.assertFalse(any(item.label == 'Strategic Playbook & Implementation Roadmap' for item in self.app.expander))
         self.assertFalse(any('Health Classification' in item.label for item in self.app.expander))
 
     def test_05_version4_requested_changes(self):
@@ -200,7 +200,7 @@ class DashboardTests(unittest.TestCase):
         self.assertFalse(any("Welch's t-test p-value" in item.value.columns for item in self.app.dataframe))
         self.switch('Trends and Forecast')
         self.assertFalse(any('Econometric Forecasting Engine' in item.label for item in self.app.expander))
-        self.assertTrue(any('#### Econometric Forecasting Engine' in md.value for md in self.app.markdown))
+        self.assertTrue(any('Quarterly forecast workspace' in md.value for md in self.app.markdown))
         self.assertTrue(self.app.selectbox(key='hw_fc_metric'))
         fig = json.loads(self.app.get('plotly_chart')[-1].proto.spec)
         boundary = fig['layout']['shapes'][0]
