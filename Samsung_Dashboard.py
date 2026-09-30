@@ -808,6 +808,7 @@ SAMSUNG_THEME_CSS = """
         box-shadow: 0 4px 20px -2px rgba(20, 40, 160, 0.04), 0 2px 6px -1px rgba(0, 0, 0, 0.02) !important;
         margin-bottom: 1.5rem !important;
         box-sizing: border-box !important;
+        overflow: hidden !important;
         transition: box-shadow 0.2s ease, border-color 0.2s ease !important;
     }
     
