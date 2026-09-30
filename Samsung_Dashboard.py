@@ -2374,7 +2374,7 @@ def price_tiers(frame):
         bargap=0.22,
         bargroupgap=0.10,
         height=440,
-        margin=dict(l=45, r=105, t=70, b=60),
+        margin=dict(l=45, r=105, t=60, b=60),
         paper_bgcolor='#FFFFFF',
         plot_bgcolor='#FFFFFF',
         xaxis=dict(
